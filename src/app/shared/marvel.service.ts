@@ -22,9 +22,16 @@ export class MarvelService {
     return response.json();
   }
 
-  getComicsList(): Observable<Response> {
+  getComics(): Observable<Response> {
     this.loading = true;
     return this.http.request('/data/comics.mock.json')
+      .map(this.checkStatus)
+      .map(this.parseJSON);
+  }
+
+  getSeries(): Observable<Response> {
+    this.loading = true;
+    return this.http.request('/data/series.mock.json')
       .map(this.checkStatus)
       .map(this.parseJSON);
   }
