@@ -1,0 +1,33 @@
+@import '../../../style/config.scss';
+
+ul {
+  list-style: none;
+  padding: 4rem;
+  max-width: 1024px;
+  margin: auto;
+}
+
+li {
+  display: inline-block;
+}
+
+.comic {
+  margin-bottom: 2rem;
+
+  &-cover {
+    background: $lighter-grey;
+    width: 100%;
+    height: 0;
+    padding-bottom: 150%;
+    margin-bottom: 1rem;
+    overflow: hidden;
+
+    img {
+      display: block;
+    }
+  }
+
+  &-title {
+    font-size: 1.3em;
+  }
+}

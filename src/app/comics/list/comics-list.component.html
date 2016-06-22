@@ -1,0 +1,8 @@
+<ul class="grid-4">
+  <li *ngFor="let comic of comics" class="comic">
+    <div class="comic-cover">
+      <img [src]="comic.thumbnail.path" [alt]="comic.title + ' cover'"/>
+    </div>
+    <div class="comic-title">{{ comic.title }}</div>
+  </li>
+</ul>
