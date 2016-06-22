@@ -1,8 +1,6 @@
 import { Component } from '@angular/core';
 import { ROUTER_DIRECTIVES } from '@angular/router';
 
-import { ApiService } from './shared';
-
 import '../style/app.scss';
 
 /*
@@ -10,15 +8,12 @@ import '../style/app.scss';
  * Top Level Component
  */
 @Component({
-  selector: 'my-app', // <my-app></my-app>
-  providers: [ApiService],
+  selector: 'mrs-app',
+  providers: [],
   directives: [...ROUTER_DIRECTIVES],
   template: require('./app.component.html'),
   styles: [require('./app.component.scss')],
 })
 export class AppComponent {
-  url = 'https://github.com/preboot/angular2-webpack';
-
-  constructor(private api: ApiService) {
-  }
+  title: string = 'Marvel reading stats';
 }

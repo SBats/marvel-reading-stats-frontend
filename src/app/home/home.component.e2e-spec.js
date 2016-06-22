@@ -4,10 +4,9 @@ describe('Home', function () {
     browser.get('/');
   });
 
-  it('should have <my-home>', function () {
-    var home = element(by.css('my-app my-home'));
+  it('should have <mrs-home>', function () {
+    var home = element(by.css('mrs-app mrs-home'));
     expect(home.isPresent()).toEqual(true);
-    expect(home.getText()).toEqual("Home Works!");
   });
 
 });

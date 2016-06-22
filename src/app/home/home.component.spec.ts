@@ -14,12 +14,4 @@ describe('Home', () => {
     HomeComponent
   ]);
 
-  it('should log ngOnInit', inject([HomeComponent], (home) => {
-    spyOn(console, 'log');
-    expect(console.log).not.toHaveBeenCalled();
-
-    home.ngOnInit();
-    expect(console.log).toHaveBeenCalledWith('Hello Home');
-  }));
-
 });
