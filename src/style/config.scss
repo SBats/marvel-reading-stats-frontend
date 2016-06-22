@@ -1,5 +1,8 @@
 // APP CONFIG
 
+// Fonts
+$main-font: "Oswald", sans-serif;
+
 // Colors
 $main-color: #345345;
 $dark-grey: #333;
@@ -20,7 +23,7 @@ $lighter-grey: #ddd;
 // $h6-size        : 1.6rem; // equiv "16px"
 
 // font stacks
-// $font-stack-common    : sans-serif; // common font
+$font-stack-common    : $main-font; // common font
 // $font-stack-headings  : sans-serif; // headings font
 // $font-stack-monospace : consolas, courier, monospace; // monospace font
 
