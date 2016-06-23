@@ -10,7 +10,9 @@ export class StorageService {
   }
 
   initStorage(): any {
-    this.updateStorage({});
+    this.updateStorage({
+      comics: []
+    });
   }
 
   getStorage(): any {
