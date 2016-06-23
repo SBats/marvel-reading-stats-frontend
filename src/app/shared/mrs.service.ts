@@ -1,49 +1,27 @@
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, Subject } from 'rxjs';
 
-interface StorageModel {
-  comics: number[]
-}
+import { StorageService, userDataModel } from './';
 
 @Injectable()
 export class MRSService {
-  storageKey: string = 'marvel-readin-stats';
-  defaultModel: StorageModel = {
+  defaultModel: userDataModel = {
     comics: []
   };
-  currentStorage: StorageModel = null;
+  userData: Subject<any> = new Subject<any>(null);
 
-  constructor() {
-    this.initStorage();
+  constructor(private _storageService: StorageService) {
+    this._storageService.currentStorage
+      .subscribe(this.userData);
+    this._storageService.getStorage();
   }
 
-  initStorage() {
-    let storage: StorageModel = this.getStorage();
-    if (!storage) {
-      this.updateStorage(this.defaultModel);
-    }
+  AddComic() {
+
   }
 
-  getStorage(): StorageModel {
-    let storage = JSON.parse(localStorage.getItem(this.storageKey));
-    this.currentStorage = storage;
-    return storage;
-  }
+  RemoveComic() {
 
-  updateStorage(newStorage: StorageModel): void {
-    localStorage.setItem(
-      this.storageKey,
-      JSON.stringify(newStorage)
-    );
-    this.currentStorage = newStorage;
-  }
-
-  deleteStorage() {
-    let storage: StorageModel = this.getStorage();
-    if (!storage) {
-      localStorage.removeItem(this.storageKey);
-      this.currentStorage = null;
-    }
   }
 
 
