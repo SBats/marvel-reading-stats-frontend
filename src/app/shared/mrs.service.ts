@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
 import { Observable, Subject } from 'rxjs';
 
-import { StorageService, userDataModel } from './';
+import { StorageService } from './storage.service';
+import { userDataModel } from './models';
 
 @Injectable()
 export class MRSService {
