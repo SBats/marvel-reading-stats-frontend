@@ -3,7 +3,7 @@ import { Subject, BehaviorSubject, Observable } from 'rxjs';
 
 @Injectable()
 export class StorageService {
-  storageKey: string = 'marvel-readin-stats';
+  storageKey: string = 'marvel-reading-stats';
   currentStorage: Subject<any> = new BehaviorSubject<any>(null);
 
   constructor() {
