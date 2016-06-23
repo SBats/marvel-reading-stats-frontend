@@ -6,7 +6,7 @@ import { HTTP_PROVIDERS } from '@angular/http';
 
 import { AppComponent } from './app/app.component';
 import { APP_ROUTER_PROVIDERS } from './app/app.routes';
-import { MARVEL_PROVIDERS, MRS_PROVIDERS } from './app/shared';
+import { MRS_APP_PROVIDER } from './app/shared';
 
 const ENV_PROVIDERS = [];
 declare const process;
@@ -21,8 +21,7 @@ bootstrap(AppComponent, [
     // These are dependencies of our App
     ...HTTP_PROVIDERS,
     ...APP_ROUTER_PROVIDERS,
-    ...MARVEL_PROVIDERS,
-    ...MRS_PROVIDERS,
+    ...MRS_APP_PROVIDER,
     ...ENV_PROVIDERS,
     { provide: LocationStrategy, useClass: HashLocationStrategy } // use #/ routes, remove this for HTML5 mode
   ])

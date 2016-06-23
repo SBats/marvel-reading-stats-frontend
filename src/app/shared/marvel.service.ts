@@ -1,4 +1,4 @@
-import { Injectable, provide } from '@angular/core';
+import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import { Http, Response } from '@angular/http';
 
@@ -22,21 +22,17 @@ export class MarvelService {
     return response.json();
   }
 
-  getComics(): Observable<Response> {
+  getComics(): Observable<any> {
     this.loading = true;
     return this.http.request('/data/comics.mock.json')
       .map(this.checkStatus)
       .map(this.parseJSON);
   }
 
-  getSeries(): Observable<Response> {
+  getSeries(): Observable<any> {
     this.loading = true;
     return this.http.request('/data/series.mock.json')
       .map(this.checkStatus)
       .map(this.parseJSON);
   }
 }
-
-export var MARVEL_PROVIDERS: Array<any> = [
-  provide(MarvelService, {useClass: MarvelService})
-];

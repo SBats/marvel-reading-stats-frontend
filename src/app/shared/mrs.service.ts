@@ -1,5 +1,5 @@
-import { Injectable, provide } from '@angular/core';
-import { Observable } from 'rxjs/Observable';
+import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
 
 interface StorageModel {
   comics: number[]
@@ -48,7 +48,3 @@ export class MRSService {
 
 
 }
-
-export var MRS_PROVIDERS: Array<any> = [
-  provide(MRSService, {useClass: MRSService})
-];
