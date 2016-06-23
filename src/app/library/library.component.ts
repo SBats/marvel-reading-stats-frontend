@@ -14,7 +14,7 @@ export class LibraryComponent implements OnInit {
   constructor(public marvelService: MarvelService) {}
 
   ngOnInit(): void {
-    this.marvelService.getSeries()
+    this.marvelService.getComics()
       .subscribe((res: any) => {
         this.elements = res.results;
       });
