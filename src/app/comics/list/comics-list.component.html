@@ -2,7 +2,7 @@
   <li *ngFor="let item of list" class="comic">
     <div class="comic-cover-container">
       <div class="comic-cover">
-        <img [src]="item.thumbnail.path" [alt]="item.title + ' cover'"/>
+        <img [src]="item.thumbnail.path + '/portrait_uncanny.' + item.thumbnail.extension" [alt]="item.title + ' cover'"/>
       </div>
       <div class="comic-actions">
         <button
