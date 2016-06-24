@@ -8,10 +8,14 @@ import { UserData } from './interfaces';
 @Injectable()
 export class MRSService {
   userData: BehaviorSubject<UserData> = new BehaviorSubject<UserData>(null);
+  userHasCollection: boolean = false;
 
   constructor(private _storageService: StorageService) {
     this._storageService.currentStorage
-      .subscribe(this.userData);
+      .subscribe((storage) => {
+        this.userData.next(storage);
+        this.userHasCollection = storage.comics.size > 0;
+      });
   }
 
   addComic(comic) {
