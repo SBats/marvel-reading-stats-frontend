@@ -138,5 +138,5 @@ export interface EventSummary {
 }
 
 export interface UserData {
-  comics: Comic[]
+  comics: Set<Comic>
 }

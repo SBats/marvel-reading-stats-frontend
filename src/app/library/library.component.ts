@@ -31,16 +31,16 @@ export class LibraryComponent implements OnInit {
     this._mrsService.userData
       .subscribe((data: UserData) =>
         this.elements.map(element =>
-          element.isInCollection = data.comics.indexOf(element.id)
+          element.isInCollection = data.comics.has(element.id)
         )
       );
   }
 
   addComicToCollection(comic) {
-    console.log(comic);
+    this._mrsService.addComic(comic.id);
   }
 
   removeComicFromCollection(comic) {
-    console.log(comic);
+    this._mrsService.removeComic(comic.id);
   }
 }

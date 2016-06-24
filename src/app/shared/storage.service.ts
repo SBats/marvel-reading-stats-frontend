@@ -1,18 +1,21 @@
 import { Injectable } from '@angular/core';
 import { Subject, BehaviorSubject, Observable } from 'rxjs';
 
+import { UserData } from './interfaces';
+
 @Injectable()
 export class StorageService {
   storageKey: string = 'marvel-reading-stats';
   currentStorage: Subject<any> = new BehaviorSubject<any>(null);
+  defaultModel: UserData = {
+    comics: new Set([])
+  };
 
   constructor() {
   }
 
   initStorage(): any {
-    this.updateStorage({
-      comics: []
-    });
+    this.updateStorage(this.defaultModel);
   }
 
   getStorage(): any {
@@ -20,15 +23,20 @@ export class StorageService {
     if (!storage) {
       this.initStorage();
     } else {
+      //Convert localStorage Array to Set
+      storage.comics = new Set(storage.comics);
       this.currentStorage.next(storage);
     }
 
   }
 
   updateStorage(newStorage: any): void {
+    const storageItem = Object.assign({}, newStorage);
+    //Convert Set to Array for localStorage
+    storageItem.comics = Array.from(storageItem.comics);
     localStorage.setItem(
       this.storageKey,
-      JSON.stringify(newStorage)
+      JSON.stringify(storageItem)
     );
     this.currentStorage.next(newStorage);
   }
