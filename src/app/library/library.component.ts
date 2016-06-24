@@ -4,7 +4,8 @@ import {
   MarvelService,
   MRSService,
   ComicDataWrapper,
-  UserData
+  UserData,
+  Comic
 } from '../shared';
 
 import { ComicsListComponent } from '../comics/list';
@@ -37,10 +38,10 @@ export class LibraryComponent implements OnInit {
   }
 
   addComicToCollection(comic) {
-    this._mrsService.addComic(comic.id);
+    this._mrsService.addComic(comic);
   }
 
   removeComicFromCollection(comic) {
-    this._mrsService.removeComic(comic.id);
+    this._mrsService.removeComic(comic);
   }
 }

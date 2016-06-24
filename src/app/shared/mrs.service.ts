@@ -3,25 +3,26 @@ import { Subject, BehaviorSubject } from 'rxjs';
 
 import { StorageService } from './storage.service';
 import { Comic } from './models';
+import { UserData } from './interfaces';
 
 @Injectable()
 export class MRSService {
-  userData: BehaviorSubject<any> = new BehaviorSubject<any>(null);
+  userData: BehaviorSubject<UserData> = new BehaviorSubject<UserData>(null);
 
   constructor(private _storageService: StorageService) {
     this._storageService.currentStorage
       .subscribe(this.userData);
   }
 
-  addComic(comicId) {
+  addComic(comic) {
     let newValue = this.userData.getValue();
-    newValue.comics.add(comicId);
+    newValue.comics.set(comic.id, comic);
     this._storageService.updateStorage(newValue);
   }
 
-  removeComic(comicId) {
+  removeComic(comic) {
     let newValue = this.userData.getValue();
-    newValue.comics.delete(comicId);
+    newValue.comics.delete(comic.id);
     this._storageService.updateStorage(newValue);
   }
 

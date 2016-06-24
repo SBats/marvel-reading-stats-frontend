@@ -5,5 +5,5 @@ export class Comic implements MarvelComic {
 }
 
 export class ComicsCollection {
-  collection: Comic[];
+  collection: Map<any, any>;
 }

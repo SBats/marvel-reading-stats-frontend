@@ -8,7 +8,7 @@ export class StorageService {
   storageKey: string = 'marvel-reading-stats';
   currentStorage: Subject<any> = new BehaviorSubject<any>(null);
   defaultModel: UserData = {
-    comics: new Set([])
+    comics: new Map()
   };
 
   constructor() {
@@ -23,8 +23,8 @@ export class StorageService {
     if (!storage) {
       this.initStorage();
     } else {
-      //Convert localStorage Array to Set
-      storage.comics = new Set(storage.comics);
+      //Convert localStorage Array to Map
+      storage.comics = new Map(storage.comics);
       this.currentStorage.next(storage);
     }
 
@@ -32,7 +32,7 @@ export class StorageService {
 
   updateStorage(newStorage: any): void {
     const storageItem = Object.assign({}, newStorage);
-    //Convert Set to Array for localStorage
+    //Convert Map to Array for localStorage
     storageItem.comics = Array.from(storageItem.comics);
     localStorage.setItem(
       this.storageKey,
