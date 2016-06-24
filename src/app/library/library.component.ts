@@ -1,6 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
-import { MarvelService, MRSService, ComicDataWrapper } from '../shared';
+import {
+  MarvelService,
+  MRSService,
+  ComicDataWrapper,
+  UserData
+} from '../shared';
 
 import { ComicsListComponent } from '../comics/list';
 @Component({
@@ -19,12 +24,16 @@ export class LibraryComponent implements OnInit {
 
   ngOnInit(): void {
     this._marvelService.getComics()
-      .subscribe((res: ComicDataWrapper) => {
-        this.elements = res.data.results;
-      });
+      .subscribe((res: ComicDataWrapper) =>
+        this.elements = res.data.results
+      );
 
     this._mrsService.userData
-      .subscribe(data => console.log(data));
+      .subscribe((data: UserData) =>
+        this.elements.map(element =>
+          element.isInCollection = data.comics.indexOf(element.id)
+        )
+      );
   }
 
   addComicToCollection(comic) {
