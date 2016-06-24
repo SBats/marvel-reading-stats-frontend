@@ -5,9 +5,9 @@ import { MRSService } from '../shared';
 
 @Component({
   selector: 'mrs-home',
-  directives: [...ROUTER_DIRECTIVES],
   template: require('./home.component.html'),
-  styles: [require('./home.component.scss')]
+  styles: [require('./home.component.scss')],
+  directives: [...ROUTER_DIRECTIVES]
 })
 export class HomeComponent implements OnInit {
   userHasCollection: boolean = false;
