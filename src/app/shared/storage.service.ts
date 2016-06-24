@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Subject, BehaviorSubject, Observable } from 'rxjs';
+import { Subject, BehaviorSubject } from 'rxjs';
 
 import { UserData } from './interfaces';
 
@@ -23,7 +23,7 @@ export class StorageService {
     if (!storage) {
       this.initStorage();
     } else {
-      //Convert localStorage Array to Map
+      // Convert localStorage Array to Map
       storage.comics = new Map(storage.comics);
       this.currentStorage.next(storage);
     }
@@ -32,7 +32,7 @@ export class StorageService {
 
   updateStorage(newStorage: any): void {
     const storageItem = Object.assign({}, newStorage);
-    //Convert Map to Array for localStorage
+    // Convert Map to Array for localStorage
     storageItem.comics = Array.from(storageItem.comics);
     localStorage.setItem(
       this.storageKey,

@@ -1,8 +1,7 @@
 import { Injectable } from '@angular/core';
-import { Subject, BehaviorSubject } from 'rxjs';
+import { BehaviorSubject } from 'rxjs';
 
 import { StorageService } from './storage.service';
-import { Comic } from './models';
 import { UserData } from './interfaces';
 
 @Injectable()

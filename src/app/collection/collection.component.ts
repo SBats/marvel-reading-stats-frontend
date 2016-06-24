@@ -1,7 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ROUTER_DIRECTIVES } from '@angular/router';
 
-import { MRSService, UserData } from '../shared';
+import { MRSService } from '../shared';
 import { ComicsListComponent } from '../comics/list';
 
 @Component({
@@ -13,7 +13,7 @@ import { ComicsListComponent } from '../comics/list';
     ComicsListComponent
   ]
 })
-export class CollectionComponent {
+export class CollectionComponent implements OnInit {
   userHasCollection: boolean = false;
   collection: any[] = [];
 

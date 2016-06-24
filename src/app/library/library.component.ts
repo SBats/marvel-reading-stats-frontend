@@ -1,11 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { Observable } from 'rxjs';
 import {
   MarvelService,
   MRSService,
   ComicDataWrapper,
   UserData,
-  Comic
 } from '../shared';
 
 import { ComicsListComponent } from '../comics/list';
@@ -39,9 +37,9 @@ export class LibraryComponent implements OnInit {
   }
 
   checkCollectionElements(elements, collection) {
-    this.elements.map(element => {
+    this.elements.map(element =>
       element.isInCollection = collection.comics.has(element.id)
-    })
+    );
   }
 
   addComicToCollection(comic) {
