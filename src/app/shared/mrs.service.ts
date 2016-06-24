@@ -16,12 +16,10 @@ export class MRSService {
       .subscribe(this.userData);
   }
 
-  AddComic() {
-
+  addComic(comicId) {
   }
 
-  RemoveComic() {
-
+  removeComic(comicId) {
   }
 
 
