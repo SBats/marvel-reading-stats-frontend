@@ -2,11 +2,11 @@ import { Injectable } from '@angular/core';
 import { Subject, BehaviorSubject } from 'rxjs';
 
 import { StorageService } from './storage.service';
-import { userDataModel } from './models';
+import { UserData } from './interfaces';
 
 @Injectable()
 export class MRSService {
-  defaultModel: userDataModel = {
+  defaultModel: UserData = {
     comics: []
   };
   userData: Subject<any> = new BehaviorSubject<any>(null);

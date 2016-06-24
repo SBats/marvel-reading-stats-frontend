@@ -1,6 +1,6 @@
-import { Comic as ComicInterface } from './interfaces';
+import { MarvelComic } from './interfaces';
 
-export class Comic implements ComicInterface {
+export class Comic implements MarvelComic {
   id: number;
   isInCollection: boolean = false;
 

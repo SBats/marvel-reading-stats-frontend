@@ -1,3 +1,5 @@
+import { Comic } from './models';
+
 export interface ComicDataWrapper {
   code?: number;
   status?: string;
@@ -13,10 +15,10 @@ export interface ComicDataContainer {
   limit?: number;
   total?: number;
   count?: number;
-  results?: Comic[];
+  results?: MarvelComic[];
 }
 
-export interface Comic {
+export interface MarvelComic {
   id?: number;
   digitalId?: number;
   title?: string;
