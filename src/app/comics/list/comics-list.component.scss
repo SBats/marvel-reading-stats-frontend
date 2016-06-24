@@ -1,4 +1,5 @@
 @import '../../../style/config.scss';
+@import '~knacss/sass/_include-media/_include-media.scss';
 
 ul {
   list-style: none;
@@ -12,18 +13,56 @@ li {
 }
 
 .comic {
-  margin-bottom: 2rem;
+  margin-bottom: 4rem;
+
+  &-cover-container {
+    position: relative;
+    margin-bottom: 1rem;
+  }
 
   &-cover {
     background: $lighter-grey;
     width: 100%;
     height: 0;
-    padding-bottom: 150%;
-    margin-bottom: 1rem;
     overflow: hidden;
+    padding-bottom: 150%;
 
     img {
       display: block;
+    }
+  }
+
+  &-actions {
+
+    button {
+      cursor: pointer;
+      border: none;
+      font-size: 1.4rem;
+      padding: 0.6rem;
+      background: transparentize($marvel-color, 0.2);
+      color: white;
+      width: 100%;
+      transition: background 0.15s ease-out;
+
+      &:hover, &:focus {
+        background: $marvel-color;
+      }
+
+      span {
+        font-size: 1.6rem;
+        display: block;
+        padding: 1rem;
+        text-align: center;
+        width: 100%;
+        text-transform: uppercase;
+      }
+    }
+
+    @include media('>tablet') {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
     }
   }
 

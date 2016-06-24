@@ -1,25 +1,23 @@
 <ul class="grid-4">
   <li *ngFor="let item of list" class="comic">
-    <div class="comic-cover">
-      <img [src]="item.thumbnail.path" [alt]="item.title + ' cover'"/>
-    </div>
-    <div class="comic-actions">
-      <button
+    <div class="comic-cover-container">
+      <div class="comic-cover">
+        <img [src]="item.thumbnail.path" [alt]="item.title + ' cover'"/>
+      </div>
+      <div class="comic-actions">
+        <button
         (click)="add(item)"
         *ngIf="!item.isInCollection"
         class="comic-actions-item">
-
-        <i class="icon">+</i>
-        <span class="label">Add to your collection</span>
-      </button>
-      <button
+          <span class="label">Add to your collection</span>
+        </button>
+        <button
         (click)="remove(item)"
         *ngIf="item.isInCollection"
         class="comic-actions-item">
-
-        <i class="icon">-</i>
-        <span class="label">Remove from your collection</span>
-      </button>
+          <span class="label">Remove from your collection</span>
+        </button>
+      </div>
     </div>
     <div class="comic-title">{{ item.title }}</div>
   </li>
