@@ -1,5 +1,14 @@
 <div *ngIf="!userHasCollection">
-  <a [routerLink]="['library']">
-    <h3>Commencez par remplir votre collection !</h3>
+  <a [routerLink]="['/library']">
+    Add comics to your collection !
+  </a>
+</div>
+<div *ngIf="userHasCollection">
+  <a [routerLink]="['/collection']">
+    Browse your collection !
+  </a>
+  <div>Or</div>
+  <a [routerLink]="['/library']">
+    Keep filling it !
   </a>
 </div>
