@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { MarvelService } from '../shared';
+import { Observable } from 'rxjs';
+import { MarvelService, MRSService, ComicDataWrapper } from '../shared';
 
 import { ComicsListComponent } from '../comics/list';
 @Component({
@@ -11,12 +12,26 @@ import { ComicsListComponent } from '../comics/list';
 export class LibraryComponent implements OnInit {
   elements: any[] = [];
 
-  constructor(public marvelService: MarvelService) {}
+  constructor(
+    private _marvelService: MarvelService,
+    private _mrsService: MRSService
+  ) {}
 
   ngOnInit(): void {
-    this.marvelService.getComics()
-      .subscribe((res: any) => {
-        this.elements = res.results;
+    this._marvelService.getComics()
+      .subscribe((res: ComicDataWrapper) => {
+        this.elements = res.data.results;
       });
+
+    this._mrsService.userData
+      .subscribe(data => console.log(data));
+  }
+
+  addComicToCollection(comic) {
+    console.log(comic);
+  }
+
+  removeComicFromCollection(comic) {
+    console.log(comic);
   }
 }
