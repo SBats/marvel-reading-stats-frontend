@@ -1,11 +1,12 @@
+<h2 class="home-title">Collect and share stats about your readings of the marvelous Marvel universe !</h2>
 <div *ngIf="!userHasCollection">
-  <h2>Welcome</h2>
+  <h3 class="greetings">Welcome</h3>
   <a href [routerLink]="['/library']">
      Start by adding comics to your collection !
   </a>
 </div>
 <div *ngIf="userHasCollection">
-  <h2>Welcome back !</h2>
+  <h3 class="greetings">Welcome back !</h3>
   <a href [routerLink]="['/collection']">
     Browse your collection !
   </a>
