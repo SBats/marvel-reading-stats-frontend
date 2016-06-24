@@ -4,10 +4,19 @@
 $main-font: "Oswald", sans-serif;
 
 // Colors
+$marvel-color: #f0141e;
 $main-color: #345345;
 $dark-grey: #333;
 $light-grey: #aaa;
 $lighter-grey: #ddd;
+
+// Utilities
+$strip-texture: 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAYAAACNbyblAAAAH0lEQVQIW2P4//+/JhAzIGMUDhRrYgigq4QbgyEAwgChmkuDn1MilAAAAABJRU5ErkJggg==';
+// get map values with map-get($skew-map, key);
+$skew-map: (
+  x: '-11deg',
+  y: '0'
+);
 
 
 // KNACSS CONFIG OVERRIDE
