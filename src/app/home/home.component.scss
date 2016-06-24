@@ -1,11 +1,66 @@
+@import '../../style/config.scss';
+@import '~knacss/sass/_include-media/_include-media.scss';
+
+:host {
+  background: url('/img/home-bg.gif') center center no-repeat;
+  background-size: cover;
+  min-height: 80vh;
+  display: block;
+  width: 100%;
+  padding: 4rem 0;
+}
+
 .home-title {
   font-family: inherit;
   text-align: center;
   width: 60vw;
   margin: auto;
   padding: 5rem 0;
+  color: white;
 }
 
 .greetings {
+  overflow: hidden;
+  text-align: center;
 
+  &-title {
+    color: white;
+    position: relative;
+    padding: 3rem;
+
+    @include media('>tablet') {
+      transform: skew(map-get($skew-map, x), map-get($skew-map, y));
+    }
+
+    h3 {
+      display: inline-block;
+      margin-bottom: 0;
+      vertical-align: middle;
+    }
+  }
+
+  &-links {
+    font-size: 2rem;
+    padding: 0 3rem;
+    line-height: 5rem;
+    text-transform: uppercase;
+    font-weight: bolder;
+    color: $marvel-color;
+
+    @include media('>tablet') {
+      transform: skew(map-get($skew-map, x), map-get($skew-map, y));
+    }
+
+    a {
+      display: block;
+      color: white;
+      text-decoration: none;
+      background: $marvel-color url($strip-texture) center center repeat;
+      padding: 2rem 4rem;
+
+      &:hover, &:focus {
+        background-color: darken($marvel-color, 10%);
+      }
+    }
+  }
 }

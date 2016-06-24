@@ -1,17 +1,25 @@
 <h2 class="home-title">Collect and share stats about your readings of the marvelous Marvel universe !</h2>
-<div *ngIf="!userHasCollection">
-  <h3 class="greetings">Welcome</h3>
-  <a href [routerLink]="['/library']">
-     Start by adding comics to your collection !
-  </a>
+<div *ngIf="!userHasCollection" class="greetings grid-2">
+  <div class="greetings-title">
+    <h3>Welcome</h3>
+  </div>
+  <div class="greetings-links">
+    <a href [routerLink]="['/library']">
+      Start by adding comics to your collection !
+    </a>
+  </div>
 </div>
-<div *ngIf="userHasCollection">
-  <h3 class="greetings">Welcome back !</h3>
-  <a href [routerLink]="['/collection']">
-    Browse your collection !
-  </a>
-  <div>Or</div>
-  <a href [routerLink]="['/library']">
-    Keep filling it !
-  </a>
+<div *ngIf="userHasCollection" class="greetings grid-2-small-1">
+  <div class="greetings-title">
+    <h3>Welcome back !</h3>
+  </div>
+  <div class="greetings-links">
+    <a href [routerLink]="['/collection']">
+      Browse your collection !
+    </a>
+    <div>Or</div>
+    <a href [routerLink]="['/library']">
+      Keep filling it !
+    </a>
+  </div>
 </div>

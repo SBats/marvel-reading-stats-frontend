@@ -14,24 +14,25 @@ header {
   .app-title {
     display: inline-block;
     background: #f0141e;
-    padding: 0.5rem 0.8rem;
-    letter-spacing: -2px;
-    text-transform: uppercase;
-    transform: scale(1.2, 2);
-    font-size: 2rem;
-    word-spacing: 6px;
-    line-height: 2rem;
-    position: relative;
-    top: 1.25rem;
-    left: 2rem;
+    padding: 1rem;
     vertical-align: middle;
-    margin-bottom: 3rem;
-    margin-right: 6rem;
+    overflow: hidden;
+
+    h1 {
+      margin: 0;
+      letter-spacing: -2px;
+      text-transform: uppercase;
+      transform: scale(1, 2);
+      font-size: 2rem;
+      word-spacing: 6px;
+      line-height: 2rem;
+
+    }
   }
 
   a {
     display:block;
-    padding: 1em;
+    padding: 1em 2em;
     color: $light-grey;
     text-transform: uppercase;
     text-decoration: none;
