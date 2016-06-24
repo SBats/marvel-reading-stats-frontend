@@ -17,6 +17,7 @@ import { ComicsListComponent } from '../comics/list';
 })
 export class LibraryComponent implements OnInit {
   elements: any[] = [];
+  userData: UserData;
 
   constructor(
     private _marvelService: MarvelService,
@@ -25,16 +26,22 @@ export class LibraryComponent implements OnInit {
 
   ngOnInit(): void {
     this._marvelService.getComics()
-      .subscribe((res: ComicDataWrapper) =>
-        this.elements = res.data.results
-      );
+      .subscribe((res: ComicDataWrapper) => {
+        this.elements = res.data.results;
+        this.checkCollectionElements(this.elements, this.userData);
+      });
 
     this._mrsService.userData
-      .subscribe((data: UserData) =>
-        this.elements.map(element =>
-          element.isInCollection = data.comics.has(element.id)
-        )
-      );
+      .subscribe((data: UserData) => {
+        this.userData = data;
+        this.checkCollectionElements(this.elements, this.userData);
+      });
+  }
+
+  checkCollectionElements(elements, collection) {
+    this.elements.map(element => {
+      element.isInCollection = collection.comics.has(element.id)
+    })
   }
 
   addComicToCollection(comic) {
