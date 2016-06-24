@@ -1,3 +1,5 @@
-<p>
-  Home Works!
-</p>
+<div *ngIf="!userHasCollection">
+  <a [routerLink]="['library']">
+    <h3>Commencez par remplir votre collection !</h3>
+  </a>
+</div>
