@@ -52,7 +52,26 @@ header {
 }
 
 main {
+  min-height: 80vh;
 }
 
 footer {
+  padding: 2rem;
+  background: black;
+  color: white;
+  font-weight: lighter;
+
+  a {
+    color: white;
+    text-decoration: none;
+
+    &:hover, &:focus {
+      text-decoration: underline;
+    }
+  }
+
+  p {
+    display: inline-block;
+    margin: 0 1rem;
+  }
 }
