@@ -1,7 +1,54 @@
 @import "../style/config";
+@import '~knacss/sass/_include-media/_include-media.scss';
 
 header {
-  background-color: $main-color;
+  background-color: black;
+  color: white;
+  padding: 2rem 6rem;
+
+  nav {
+    display: inline-block;
+    vertical-align: middle;
+  }
+
+  .app-title {
+    display: inline-block;
+    background: #f0141e;
+    padding: 0.5rem 0.8rem;
+    letter-spacing: -2px;
+    text-transform: uppercase;
+    transform: scale(1.2, 2);
+    font-size: 2rem;
+    word-spacing: 6px;
+    line-height: 1rem;
+    position: relative;
+    top: 1.25rem;
+    left: 2rem;
+    vertical-align: middle;
+    margin-bottom: 3rem;
+    margin-right: 6rem;
+  }
+
+  a {
+    display:block;
+    padding: 1em;
+    color: $light-grey;
+    text-transform: uppercase;
+    text-decoration: none;
+    transition: color 0.2s ease-out;
+
+    &:hover, &:focus {
+      color: white;
+    }
+
+    &.active {
+      color: $marvel-color;
+    }
+
+    @include media('>tablet') {
+      display: inline-block;
+    }
+  }
 }
 
 main {

@@ -9,3 +9,24 @@ html, body {
   font-family: $main-font;
   letter-spacing: 0.2rem;
 }
+
+.page-title {
+  margin-left: 10rem;
+  position: relative;
+
+  &:first-child {
+    margin-top: 2rem;
+  }
+
+  &::before {
+    content: "";
+    margin: 3px 12px 0 0;
+    height: 77%;
+    width: 12rem;
+    position: absolute;
+    top: 0;
+    right: 100%;
+    background: #000;
+    transform: skew(map-get($skew-map, x), map-get($skew-map, y));
+  }
+}
