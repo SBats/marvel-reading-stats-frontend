@@ -3,3 +3,10 @@
   <h3>Your collection is empty :(</h3>
   <a [routerLink]="['/library']">Add comics to it !</a>
 </div>
+<div *ngIf="userHasCollection">
+  <mrs-comics-list
+    [list]="collection"
+    (addAction)="addComicToCollection($event)"
+    (removeAction)="removeComicFromCollection($event)">
+  </mrs-comics-list>
+</div>
