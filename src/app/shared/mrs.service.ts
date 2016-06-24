@@ -14,7 +14,6 @@ export class MRSService {
   constructor(private _storageService: StorageService) {
     this._storageService.currentStorage
       .subscribe(this.userData);
-    this._storageService.getStorage();
   }
 
   AddComic() {
