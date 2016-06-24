@@ -16,10 +16,7 @@ export class HomeComponent implements OnInit {
   }
 
   ngOnInit() {
-    this._mrsService.userData
-      .subscribe(data => {
-        this.userHasCollection = data.comics && data.comics.size > 0
-      });
+    this.userHasCollection = this._mrsService.userHasCollection;
   }
 
 }
