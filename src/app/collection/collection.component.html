@@ -1,1 +1,5 @@
 <h2 class="page-title">My Collection</h2>
+<div *ngIf="!userHasCollection">
+  <h3>Your collection is empty :(</h3>
+  <a [routerLink]="['/library']">Add comics to it !</a>
+</div>
