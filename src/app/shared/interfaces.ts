@@ -1,5 +1,3 @@
-import { Comic } from './models';
-
 export interface ComicDataWrapper {
   code?: number;
   status?: string;
@@ -138,5 +136,5 @@ export interface EventSummary {
 }
 
 export interface UserData {
-  comics: Map<any, any>
+  comics: Map<any, any>;
 }
