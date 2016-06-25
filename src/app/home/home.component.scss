@@ -20,6 +20,7 @@
 }
 
 .greetings {
+  margin: 0;
   overflow: hidden;
   text-align: center;
 
@@ -27,6 +28,7 @@
     color: white;
     position: relative;
     padding: 3rem;
+    margin: auto;
 
     @include media('>tablet') {
       transform: skew(map-get($skew-map, x), map-get($skew-map, y));
@@ -40,6 +42,7 @@
   }
 
   &-links {
+    margin: auto;
     font-size: 2rem;
     padding: 0 3rem;
     line-height: 5rem;
