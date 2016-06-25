@@ -19,13 +19,14 @@ export class StorageService {
   }
 
   getStorage(): any {
-    let storage = JSON.parse(localStorage.getItem(this.storageKey));
+    let storage = localStorage.getItem(this.storageKey);
     if (!storage) {
       this.initStorage();
     } else {
+      let parsedStorage = JSON.parse(storage);
       // Convert localStorage Array to Map
-      storage.comics = new Map(storage.comics);
-      this.currentStorage.next(storage);
+      parsedStorage.comics = new Map(parsedStorage.comics);
+      this.currentStorage.next(parsedStorage);
     }
 
   }
