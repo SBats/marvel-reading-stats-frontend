@@ -1,3 +1,5 @@
-<div>
-  <h2>Events</h2>
-</div>
+<h2>Events</h2>
+<mrs-series-list
+  [list]="elements"
+  (serieClick)="navigateToSerie($event)">
+</mrs-series-list>
