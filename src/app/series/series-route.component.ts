@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ROUTER_DIRECTIVES, ActivatedRoute } from '@angular/router';
 import { MarvelService } from '../shared';
 
 import { SeriesListComponent } from '../series/list';
@@ -9,6 +9,7 @@ import { SeriesListComponent } from '../series/list';
   template: require('./series-route.component.html'),
   styles: [require('./series-route.component.scss')],
   directives: [
+    ROUTER_DIRECTIVES,
     SeriesListComponent
   ]
 })
