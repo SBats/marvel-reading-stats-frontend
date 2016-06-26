@@ -1,4 +1,4 @@
-import { provideRouter, RouterConfig } from '@angular/router';
+import { RouterConfig } from '@angular/router';
 
 import { LibraryComponent } from './';
 
