@@ -1,3 +1,10 @@
 <h2 class="page-title">{{ libraryType }}</h2>
+<div class="letter-filter">
+  <ul>
+    <li *ngFor="let filter of queryFiltersList">
+      <a href (click)='selectQueryFilter($event, filter)'>{{ filter }}</a>
+    </li>
+  </ul>
+</div>
 <mrs-elements-list [list]="elements">
 </mrs-elements-list>
