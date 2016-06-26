@@ -1,21 +1,21 @@
 import { Component, OnInit } from '@angular/core';
 import { ROUTER_DIRECTIVES, ActivatedRoute } from '@angular/router';
-import { MarvelService } from '../shared';
+import { MarvelService } from '../../shared';
 
-import { SeriesListComponent } from '../series/list';
+import { ElementsListComponent } from '../../elements-list';
 
 @Component({
-  selector: 'mrs-series-route',
-  template: require('./series-route.component.html'),
-  styles: [require('./series-route.component.scss')],
+  selector: 'mrs-library-list',
+  template: require('./library-list.component.html'),
+  styles: [require('./library-list.component.scss')],
   directives: [
     ROUTER_DIRECTIVES,
-    SeriesListComponent
+    ElementsListComponent
   ]
 })
-export class SeriesRouteComponent implements OnInit {
+export class LibraryListComponent implements OnInit {
   elements: any[] = [];
-  seriesType: string;
+  libraryType: string;
   params: any;
 
   constructor(
@@ -27,7 +27,7 @@ export class SeriesRouteComponent implements OnInit {
     this.params = this.route
       .params
       .subscribe(params => {
-        this.seriesType = params['type'];
+        this.libraryType = params['type'];
       });
 
     this.marvelService.getSeries()

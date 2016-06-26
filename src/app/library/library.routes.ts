@@ -2,16 +2,16 @@ import { RouterConfig } from '@angular/router';
 
 import { LibraryComponent } from './';
 import { LibraryTypesComponent } from './types';
-import { SeriesRouteComponent } from '../series';
-import { SeriesDetailComponent } from '../series/detail';
+import { LibraryListComponent } from './list';
+import { LibraryDetailComponent } from './detail';
 
 export const libraryRoutes: RouterConfig = [
   {
     path: 'library',
     component: LibraryComponent,
     children: [
-      { path: ':type', component: SeriesRouteComponent },
-      { path: ':type/:id', component: SeriesDetailComponent },
+      { path: ':type', component: LibraryListComponent },
+      { path: ':type/:id', component: LibraryDetailComponent },
       { path: '', component: LibraryTypesComponent },
     ]
   }

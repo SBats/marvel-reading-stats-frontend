@@ -9,14 +9,14 @@ import {
 import { ComicsListComponent } from '../../comics/list';
 
 @Component({
-  selector: 'mrs-series-detail',
-  template: require('./series-detail.component.html'),
-  styles: [require('./series-detail.component.scss')],
+  selector: 'mrs-library-detail',
+  template: require('./library-detail.component.html'),
+  styles: [require('./library-detail.component.scss')],
   directives: [
     ComicsListComponent
   ]
 })
-export class SeriesDetailComponent implements OnInit {
+export class LibraryDetailComponent implements OnInit {
   elements: any[] = [];
   userData: UserData;
 

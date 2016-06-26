@@ -5,11 +5,11 @@ import {
 import { ROUTER_DIRECTIVES }    from '@angular/router';
 
 @Component({
-  selector: 'mrs-series-list',
-  template: require('./series-list.component.html'),
-  styles: [require('./series-list.component.scss')],
+  selector: 'mrs-elements-list',
+  template: require('./elements-list.component.html'),
+  styles: [require('./elements-list.component.scss')],
   directives: [ROUTER_DIRECTIVES]
 })
-export class SeriesListComponent {
+export class ElementsListComponent {
   @Input() list: any[];
 }
