@@ -12,17 +12,22 @@
   padding: 0;
 
   &-item {
-    border-bottom: 1px solid $dark-grey;
-    padding: 1rem 2rem;
-    cursor: pointer;
-    background: transparent;
 
-    &:hover, &:focus {
-      background: lighten($lighter-grey, 5%);
-    }
+    a {
+      display: block;
+      border-bottom: 1px solid $dark-grey;
+      padding: 1rem 2rem;
+      cursor: pointer;
+      background: transparent;
+      text-decoration: none;
 
-    &:active{
-      background: $lighter-grey;
+      &:hover, &:focus {
+        background: lighten($lighter-grey, 5%);
+      }
+
+      &:active{
+        background: $lighter-grey;
+      }
     }
   }
 }

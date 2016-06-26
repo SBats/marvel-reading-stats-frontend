@@ -1,7 +1,7 @@
 <ul class="series-list">
-  <li class="series-list-item" tabindex="0"
-      *ngFor="let item of list"
-      (click)="serieAction(item)">
-    <span class="title">{{ item.title }}</span>
+  <li class="series-list-item" *ngFor="let item of list">
+      <a [routerLink]="[item.id]">
+        <span class="title">{{ item.title }}</span>
+      </a>
   </li>
 </ul>
