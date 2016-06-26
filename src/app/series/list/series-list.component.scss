@@ -1,0 +1,28 @@
+@import '../../../style/config.scss';
+
+:host {
+  display: block;
+  max-width: 1024px;
+  margin: auto;
+  padding: 4rem;
+}
+
+.series-list {
+  list-style: none;
+  padding: 0;
+
+  &-item {
+    border-bottom: 1px solid $dark-grey;
+    padding: 1rem 2rem;
+    cursor: pointer;
+    background: transparent;
+
+    &:hover, &:focus {
+      background: lighten($lighter-grey, 5%);
+    }
+
+    &:active{
+      background: $lighter-grey;
+    }
+  }
+}
