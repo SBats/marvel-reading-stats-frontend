@@ -12,11 +12,11 @@ import { MRSService } from '../shared';
 export class HomeComponent implements OnInit {
   userHasCollection: boolean = false;
 
-  constructor(private _mrsService: MRSService) {
+  constructor(private mrsService: MRSService) {
   }
 
   ngOnInit() {
-    this.userHasCollection = this._mrsService.userHasCollection;
+    this.userHasCollection = this.mrsService.userHasCollection;
   }
 
 }

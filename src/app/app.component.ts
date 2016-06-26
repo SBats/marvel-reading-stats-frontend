@@ -18,11 +18,11 @@ import '../style/app.scss';
 export class AppComponent implements OnInit {
   title: string = 'Marvel reading stats';
 
-  constructor(private _storageService: StorageService) {
+  constructor(private storageService: StorageService) {
 
   }
 
   ngOnInit() {
-    this._storageService.getStorage();
+    this.storageService.getStorage();
   }
 }

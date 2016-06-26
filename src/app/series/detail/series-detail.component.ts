@@ -21,18 +21,18 @@ export class SeriesDetailComponent implements OnInit {
   userData: UserData;
 
   constructor(
-    private _marvelService: MarvelService,
-    private _mrsService: MRSService
+    private marvelService: MarvelService,
+    private mrsService: MRSService
   ) {}
 
   ngOnInit(): void {
-    this._marvelService.getComics()
+    this.marvelService.getComics()
       .subscribe((res: ComicDataWrapper) => {
         this.elements = res.data.results;
         this.checkCollectionElements(this.elements, this.userData);
       });
 
-    this._mrsService.userData
+    this.mrsService.userData
       .subscribe((data: UserData) => {
         this.userData = data;
         this.checkCollectionElements(this.elements, this.userData);
@@ -46,11 +46,11 @@ export class SeriesDetailComponent implements OnInit {
   }
 
   addComicToCollection(comic) {
-    this._mrsService.addComic(comic);
+    this.mrsService.addComic(comic);
   }
 
   removeComicFromCollection(comic) {
-    this._mrsService.removeComic(comic);
+    this.mrsService.removeComic(comic);
   }
 
 }

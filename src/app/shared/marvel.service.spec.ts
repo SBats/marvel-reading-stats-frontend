@@ -96,8 +96,8 @@ describe('Marvel Service', () => {
         });
         c.mockRespond(new Response(response));
       });
-      MarvelService.getComics().subscribe(_res => {
-        res = _res;
+      MarvelService.getComics().subscribe(response => {
+        res = response;
       });
       tick();
       expect(res).toEqual({comics: true});
@@ -116,8 +116,8 @@ describe('Marvel Service', () => {
         });
         c.mockRespond(new Response(response));
       });
-      MarvelService.getSeries().subscribe(_res => {
-        res = _res;
+      MarvelService.getSeries().subscribe(response => {
+        res = response;
       });
       tick();
       expect(res).toEqual({comics: true});

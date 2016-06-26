@@ -18,7 +18,7 @@ export class SeriesRouteComponent implements OnInit {
   params: any;
 
   constructor(
-    private _marvelService: MarvelService,
+    private marvelService: MarvelService,
     private route: ActivatedRoute
   ) {}
 
@@ -29,7 +29,7 @@ export class SeriesRouteComponent implements OnInit {
         this.seriesType = params['type'];
       });
 
-    this._marvelService.getSeries()
+    this.marvelService.getSeries()
       .subscribe((res) => {
         this.elements = res.data.results;
       });
