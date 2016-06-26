@@ -16,16 +16,23 @@ import { ComicsListComponent } from '../comics/list';
 export class CollectionComponent implements OnInit {
   userHasCollection: boolean = false;
   collection: any[] = [];
+  private subscribers: any[] = [];
 
   constructor(private mrsService: MRSService) {
   }
 
   ngOnInit() {
-    this.mrsService.userData.subscribe((data: any) => {
-      this.collection = Array.from(data.comics.values());
-      this.collection.map(element => element.isInCollection = true);
-    });
+    this.subscribers.push(
+      this.mrsService.userData.subscribe((data: any) => {
+        this.collection = Array.from(data.comics.values());
+        this.collection.map(element => element.isInCollection = true);
+      })
+    );
     this.userHasCollection = this.mrsService.userHasCollection;
+  }
+
+  ngOnDestroy() {
+    this.subscribers.map(sb => sb.unsubscribe());
   }
 
   addComicToCollection(comic) {

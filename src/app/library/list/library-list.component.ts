@@ -16,7 +16,7 @@ import { ElementsListComponent } from '../../elements-list';
 export class LibraryListComponent implements OnInit {
   elements: any[] = [];
   libraryType: string;
-  params: any;
+  private subscribers: any[] = [];
 
   constructor(
     private marvelService: MarvelService,
@@ -24,15 +24,23 @@ export class LibraryListComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.params = this.route
-      .params
-      .subscribe(params => {
-        this.libraryType = params['type'];
-      });
+    this.subscribers.push(
+      this.route
+        .params
+        .subscribe(params => {
+          this.libraryType = params['type'];
+        })
+    );
 
-    this.marvelService.getSeries()
-      .subscribe((res) => {
-        this.elements = res.data.results;
-      });
+    this.subscribers.push(
+      this.marvelService.getSeries()
+        .subscribe((res) => {
+          this.elements = res.data.results;
+        })
+      );
+  }
+
+  ngOnDestroy() {
+    this.subscribers.map(sb => sb.unsubscribe());
   }
 }
