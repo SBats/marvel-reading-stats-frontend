@@ -24,8 +24,4 @@ export class SeriesRouteComponent implements OnInit {
         this.elements = res.data.results;
       });
   }
-
-  navigateToSerie(serie) {
-    console.log(serie);
-  }
 }
