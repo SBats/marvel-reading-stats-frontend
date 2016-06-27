@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import {
   MarvelService,
   MRSService,
@@ -16,7 +16,7 @@ import { ComicsListComponent } from '../../comics/list';
     ComicsListComponent
   ]
 })
-export class LibraryDetailComponent implements OnInit {
+export class LibraryDetailComponent implements OnInit, OnDestroy {
   elements: any[] = [];
   userData: UserData;
   private subscribers: any[] = [];

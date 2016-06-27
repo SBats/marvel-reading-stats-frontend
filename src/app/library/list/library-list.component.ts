@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ROUTER_DIRECTIVES, ActivatedRoute, Router } from '@angular/router';
 import { MarvelService } from '../../shared';
 
@@ -13,10 +13,13 @@ import { ElementsListComponent } from '../../elements-list';
     ElementsListComponent
   ]
 })
-export class LibraryListComponent implements OnInit {
+export class LibraryListComponent implements OnInit, OnDestroy {
   elements: any[] = [];
   libraryType: string;
-  queryFiltersList: string[] = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i' , 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'];
+  queryFiltersList: string[] = [
+    'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm',
+    'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'
+  ];
   startWithQuery: string = this.queryFiltersList[0];
   private subscribers: any[] = [];
 

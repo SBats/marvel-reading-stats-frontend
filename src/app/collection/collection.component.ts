@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ROUTER_DIRECTIVES } from '@angular/router';
 
 import { MRSService } from '../shared';
@@ -13,7 +13,7 @@ import { ComicsListComponent } from '../comics/list';
     ComicsListComponent
   ]
 })
-export class CollectionComponent implements OnInit {
+export class CollectionComponent implements OnInit, OnDestroy {
   userHasCollection: boolean = false;
   collection: any[] = [];
   private subscribers: any[] = [];
