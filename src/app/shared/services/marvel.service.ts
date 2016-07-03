@@ -24,13 +24,6 @@ export class MarvelService {
     return response.json();
   }
 
-  getComics(): Observable<any> {
-    this.loading = true;
-    return this.http.request('/data/comics.mock.json')
-      .map(this.checkStatus)
-      .map(this.parseJSON);
-  }
-
   getTypeList(type: string): Observable<any> {
     let parameters = [
       'apikey=' + CONFIG.apiKey
@@ -49,7 +42,7 @@ export class MarvelService {
       .map(this.parseJSON);
   }
 
-  getComicsFromType(type:string, seriesId: number): Observable<any> {
+  getComicsFromType(type: string, seriesId: number): Observable<any> {
     let parameters = [
       'apikey=' + CONFIG.apiKey
     ];
