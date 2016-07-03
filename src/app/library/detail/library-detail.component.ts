@@ -1,4 +1,5 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import {
   MarvelService,
   MRSService,
@@ -19,21 +20,34 @@ import { ComicsListComponent } from '../../comics/list';
 export class LibraryDetailComponent implements OnInit, OnDestroy {
   elements: any[] = [];
   userData: UserData;
+  libraryId: number;
+  libraryType: string;
   private subscribers: any[] = [];
 
   constructor(
     private marvelService: MarvelService,
+    private route: ActivatedRoute,
     private mrsService: MRSService
   ) {}
 
   ngOnInit(): void {
     this.subscribers.push(
-      this.marvelService.getComics()
-        .subscribe((res: ComicDataWrapper) => {
-          this.elements = res.data.results;
-          this.checkCollectionElements(this.elements, this.userData);
+      this.route
+        .params
+        .subscribe(params => {
+          this.libraryId = params['id'];
+          this.libraryType = params['type'];
+
+          this.subscribers.push(
+            this.marvelService.getComicsFromType(this.libraryType, this.libraryId)
+            .subscribe((res: ComicDataWrapper) => {
+              this.elements = res.data.results;
+              this.checkCollectionElements(this.elements, this.userData);
+            })
+          );
         })
     );
+
 
     this.subscribers.push(
       this.mrsService.userData

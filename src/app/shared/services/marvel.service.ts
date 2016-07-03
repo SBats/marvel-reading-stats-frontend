@@ -48,4 +48,22 @@ export class MarvelService {
       .map(this.checkStatus)
       .map(this.parseJSON);
   }
+
+  getComicsFromType(type:string, seriesId: number): Observable<any> {
+    let parameters = [
+      'apikey=' + CONFIG.apiKey
+    ];
+    let url = this.apiUrl + type + '/' + seriesId + '/comics';
+
+    url = url + '?' + parameters.join('&');
+
+    if (CONFIG.commonsParameters && CONFIG.commonsParameters.length > 0) {
+      url = url + '&' + CONFIG.commonsParameters.join('&');
+    }
+
+    this.loading = true;
+    return this.http.request(url)
+      .map(this.checkStatus)
+      .map(this.parseJSON);
+  }
 }
