@@ -1,6 +1,4 @@
-export * from './marvel.service';
-export * from './mrs.service';
-export * from './storage.service';
+export * from './services/';
 export * from './interfaces';
 export * from './models';
 export * from './providers';

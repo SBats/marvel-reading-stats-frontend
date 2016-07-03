@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 
 import { StorageService } from './storage.service';
-import { UserData } from './interfaces';
+import { UserData } from '../interfaces';
 
 @Injectable()
 export class MRSService {

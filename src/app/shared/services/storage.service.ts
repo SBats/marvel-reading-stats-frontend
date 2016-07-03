@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Subject, BehaviorSubject } from 'rxjs';
 
-import { UserData } from './interfaces';
+import { UserData } from '../interfaces';
 
 @Injectable()
 export class StorageService {
