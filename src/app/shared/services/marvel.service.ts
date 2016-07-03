@@ -2,6 +2,8 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import { Http, Response } from '@angular/http';
 
+import { CONFIG } from '../../app.config.ts';
+
 @Injectable()
 export class MarvelService {
   apiUrl: string = 'http://gateway.marvel.com:80/v1/public/';
@@ -30,8 +32,19 @@ export class MarvelService {
   }
 
   getSeries(): Observable<any> {
+    let parameters = [
+      'apikey=' + CONFIG.apiKey
+    ];
+    let url = this.apiUrl + 'series';
+
+    url = url + '?' + parameters.join('&');
+
+    if (CONFIG.commonsParameters && CONFIG.commonsParameters.length > 0) {
+      url = url + '&' + CONFIG.commonsParameters.join('&');
+    }
+
     this.loading = true;
-    return this.http.request('/data/series.mock.json')
+    return this.http.request(url)
       .map(this.checkStatus)
       .map(this.parseJSON);
   }

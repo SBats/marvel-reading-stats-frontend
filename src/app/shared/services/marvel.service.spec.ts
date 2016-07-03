@@ -105,11 +105,11 @@ describe('Marvel Service', () => {
   });
 
   describe('getSeries', () => {
-    it('should call the mocked data',
+    it('should call the series endpoint',
     inject([MarvelService, MockBackend], fakeAsync((MarvelService, MockBackend) => {
       let res;
       MockBackend.connections.subscribe(c => {
-        expect(c.request.url).toBe('/data/series.mock.json');
+        expect(c.request.url).toContain('series');
         let response = new ResponseOptions({
           status : 200,
           body: '{"comics": true}'
