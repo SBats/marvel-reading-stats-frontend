@@ -35,6 +35,13 @@ export class LibraryListComponent implements OnInit, OnDestroy {
         .params
         .subscribe(params => {
           this.libraryType = params['type'];
+
+          this.subscribers.push(
+            this.marvelService.getTypeList(this.libraryType)
+            .subscribe((res) => {
+              this.elements = res.data.results;
+            })
+          );
         })
     );
 
@@ -47,12 +54,6 @@ export class LibraryListComponent implements OnInit, OnDestroy {
         })
     );
 
-    this.subscribers.push(
-      this.marvelService.getSeries()
-        .subscribe((res) => {
-          this.elements = res.data.results;
-        })
-      );
   }
 
   ngOnDestroy() {

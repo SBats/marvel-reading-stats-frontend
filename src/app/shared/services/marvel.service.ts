@@ -31,11 +31,11 @@ export class MarvelService {
       .map(this.parseJSON);
   }
 
-  getSeries(): Observable<any> {
+  getTypeList(type: string): Observable<any> {
     let parameters = [
       'apikey=' + CONFIG.apiKey
     ];
-    let url = this.apiUrl + 'series';
+    let url = this.apiUrl + type;
 
     url = url + '?' + parameters.join('&');
 
