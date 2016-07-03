@@ -84,19 +84,21 @@ describe('Marvel Service', () => {
     }));
   });
 
-  describe('getComics', () => {
-    it('should call the mocked data',
+  describe('getComicsFromType', () => {
+    it('should call the comic endpoint for type parameter with id parameter',
     inject([MarvelService, MockBackend], fakeAsync((MarvelService, MockBackend) => {
       let res;
+      let type = 'test';
+      let id = 123456;
       MockBackend.connections.subscribe(c => {
-        expect(c.request.url).toBe('/data/comics.mock.json');
+        expect(c.request.url).toContain(type + '/' + id + '/comics');
         let response = new ResponseOptions({
           status : 200,
           body: '{"comics": true}'
         });
         c.mockRespond(new Response(response));
       });
-      MarvelService.getComics().subscribe(response => {
+      MarvelService.getComicsFromType(type, id).subscribe(response => {
         res = response;
       });
       tick();
@@ -104,19 +106,20 @@ describe('Marvel Service', () => {
     })));
   });
 
-  describe('getSeries', () => {
-    it('should call the series endpoint',
+  describe('getTypeList', () => {
+    it('should call the type parameter endpoint',
     inject([MarvelService, MockBackend], fakeAsync((MarvelService, MockBackend) => {
       let res;
+      let type = 'test';
       MockBackend.connections.subscribe(c => {
-        expect(c.request.url).toContain('series');
+        expect(c.request.url).toContain(type);
         let response = new ResponseOptions({
           status : 200,
           body: '{"comics": true}'
         });
         c.mockRespond(new Response(response));
       });
-      MarvelService.getSeries().subscribe(response => {
+      MarvelService.getTypeList(type).subscribe(response => {
         res = response;
       });
       tick();
