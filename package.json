@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "license": "MIT",
   "scripts": {
+    "init-config": "cp src/app/app.config.ts.example src/app/app.config.ts",
     "clean": "rimraf node_modules doc dist && npm cache clean",
     "clean-install": "npm run clean && npm install",
     "clean-start": "npm run clean-install && npm start",
@@ -20,7 +21,7 @@
     "ci": "npm run e2e && npm run test",
     "docs": "typedoc --options typedoc.json src/app/app.component.ts",
     "start": "npm run server",
-    "postinstall": "npm run webdriver-update && typings install"
+    "postinstall": "npm run webdriver-update && typings install && npm run init-config"
   },
   "dependencies": {
     "@angular/common": "2.0.0-rc.3",

@@ -40,6 +40,9 @@ Thumbs.db
 /typings/
 /tsd_typings/
 
+# Config #
+/src/app/app.config.ts
+
 # Dist #
 /dist
 /public/__build__/

@@ -1,0 +1,7 @@
+export const CONFIG = {
+  apiKey: null,
+  yearsLimit: {
+    after: null,
+    before: null
+  }
+};
