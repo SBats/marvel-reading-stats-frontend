@@ -30,3 +30,11 @@ html, body {
     transform: skew(map-get($skew-map, x), map-get($skew-map, y));
   }
 }
+
+.mrs-loader {
+  display: block;
+  margin: auto;
+  font-weight: 700;
+  text-align: center;
+  padding: 6rem;
+}
