@@ -125,6 +125,46 @@ describe('Marvel Service', () => {
       tick();
       expect(res).toEqual({comics: true});
     })));
+
+    it('should add titleStartsWith query parameter if startWithQuery exist and type is series',
+    inject([MarvelService, MockBackend], fakeAsync((MarvelService, MockBackend) => {
+      let res;
+      let type = 'series';
+      let query = 'a';
+      MockBackend.connections.subscribe(c => {
+        expect(c.request.url).toContain('titleStartsWith=' + query);
+        let response = new ResponseOptions({
+          status : 200,
+          body: '{"comics": true}'
+        });
+        c.mockRespond(new Response(response));
+      });
+      MarvelService.getTypeList(type, query).subscribe(response => {
+        res = response;
+      });
+      tick();
+      expect(res).toEqual({comics: true});
+    })));
+
+    it('should add nameStartsWith query parameter if startWithQuery exist and type is series',
+    inject([MarvelService, MockBackend], fakeAsync((MarvelService, MockBackend) => {
+      let res;
+      let type = 'events';
+      let query = 'a';
+      MockBackend.connections.subscribe(c => {
+        expect(c.request.url).toContain('nameStartsWith=' + query);
+        let response = new ResponseOptions({
+          status : 200,
+          body: '{"comics": true}'
+        });
+        c.mockRespond(new Response(response));
+      });
+      MarvelService.getTypeList(type, query).subscribe(response => {
+        res = response;
+      });
+      tick();
+      expect(res).toEqual({comics: true});
+    })));
   });
 
 });

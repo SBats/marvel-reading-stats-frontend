@@ -24,17 +24,32 @@ export class MarvelService {
     return response.json();
   }
 
-  getTypeList(type: string): Observable<any> {
+  getTypeList(type: string, startWithQuery?: string): Observable<any> {
     let parameters = [
       'apikey=' + CONFIG.apiKey
     ];
     let url = this.apiUrl + type;
 
-    url = url + '?' + parameters.join('&');
+    if (typeof startWithQuery !== 'undefined') {
+      let newParam = '';
+
+      if (type === 'series') {
+        newParam += 'titleStartsWith';
+      } else {
+        newParam += 'nameStartsWith';
+      }
+
+      newParam += '=' + startWithQuery;
+
+      parameters.push(newParam);
+    }
 
     if (CONFIG.commonsParameters && CONFIG.commonsParameters.length > 0) {
-      url = url + '&' + CONFIG.commonsParameters.join('&');
+      parameters = parameters.concat(CONFIG.commonsParameters);
     }
+
+    url = url + '?' + parameters.join('&');
+
 
     this.loading = true;
     return this.http.request(url)
