@@ -22,7 +22,6 @@ bootstrap(AppComponent, [
     ...HTTP_PROVIDERS,
     ...APP_ROUTER_PROVIDERS,
     ...MRS_APP_PROVIDER,
-    ...ENV_PROVIDERS,
-    { provide: LocationStrategy, useClass: HashLocationStrategy } // use #/ routes, remove this for HTML5 mode
+    ...ENV_PROVIDERS
   ])
   .catch(err => console.error(err));
