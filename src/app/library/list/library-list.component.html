@@ -2,7 +2,8 @@
 <div class="letter-filter">
   <ul>
     <li *ngFor="let filter of queryFiltersList">
-      <a href (click)='selectQueryFilter($event, filter)'>{{ filter }}</a>
+      <a *ngIf="startWithQuery !== filter" href (click)="selectQueryFilter($event, filter)">{{ filter }}</a>
+      <span class="active" *ngIf="startWithQuery === filter">{{ filter }}</span>
     </li>
   </ul>
 </div>

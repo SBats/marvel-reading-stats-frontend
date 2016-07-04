@@ -15,13 +15,14 @@ import { ElementsListComponent } from '../../elements-list';
 })
 export class LibraryListComponent implements OnInit, OnDestroy {
   elements: any[] = [];
+  loading: boolean = true;
   libraryType: string;
   queryFiltersList: string[] = [
     'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm',
     'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'
   ];
   startWithQuery: string = this.queryFiltersList[0];
-  private subscribers: any[] = [];
+  private subscribers: any[] = [false];
 
   constructor(
     private marvelService: MarvelService,
@@ -35,13 +36,7 @@ export class LibraryListComponent implements OnInit, OnDestroy {
         .params
         .subscribe(params => {
           this.libraryType = params['type'];
-
-          this.subscribers.push(
-            this.marvelService.getTypeList(this.libraryType)
-            .subscribe((res) => {
-              this.elements = res.data.results;
-            })
-          );
+          this.loadList();
         })
     );
 
@@ -51,6 +46,9 @@ export class LibraryListComponent implements OnInit, OnDestroy {
         .queryParams
         .subscribe(params => {
           this.startWithQuery = params['startwith'] || this.queryFiltersList[0];
+          if (this.libraryType) {
+            this.loadList();
+          }
         })
     );
 
@@ -63,5 +61,19 @@ export class LibraryListComponent implements OnInit, OnDestroy {
   selectQueryFilter(ev, filter) {
     ev.preventDefault();
     this.router.navigate(['.'], {queryParams: { startwith: filter}});
+  }
+
+  loadList() {
+    this.loading = true;
+
+    if (this.subscribers[0] && this.subscribers[0].unsubscribe) {
+      this.subscribers[0].unsubscribe();
+    }
+
+    this.subscribers[0] = this.marvelService.getTypeList(this.libraryType, this.startWithQuery)
+      .subscribe((res) => {
+        this.elements = res.data.results;
+        this.loading = false;
+      });
   }
 }
