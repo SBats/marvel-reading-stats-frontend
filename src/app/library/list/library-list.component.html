@@ -7,5 +7,6 @@
     </li>
   </ul>
 </div>
-<mrs-elements-list [list]="elements">
+<div *ngIf="loading" class="mrs-loader">Loading...</div>
+<mrs-elements-list  *ngIf="!loading" [list]="elements">
 </mrs-elements-list>
