@@ -1,7 +1,7 @@
 import { Pipe, PipeTransform } from '@angular/core';
 
 @Pipe({
-  name: 'timeSpentPipe'
+  name: 'mrsTimeSpentPipe'
 })
 export class TimeSpentPipe implements PipeTransform {
   timePerComic: number = 20; // in minutes
