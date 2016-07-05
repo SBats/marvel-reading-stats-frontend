@@ -1,0 +1,106 @@
+@import "../../style/config.scss";
+
+// Donut Chart Mixin
+.donut-chart {
+  position: relative;
+  border-radius: 50%;
+  overflow: hidden;
+
+  .slice {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+
+  .chart-center {
+    position: absolute;
+    border-radius: 50%;
+
+    span {
+      display: inline-block;
+      text-align: center;
+      width: 100%;
+    }
+  }
+}
+
+@mixin donut-chart($name, $perc, $size, $width, $base, $center, $color, $textColor: $color, $textSize: 40px) {
+
+  $color2: $color;
+  $base2: $base;
+	$deg: ($perc/100*360)+deg;
+	$deg1: 90deg;
+	$deg2: $deg;
+
+	// If percentage is less than 50%
+	@if $perc < 50 {
+		$base: $color;
+    $color: $base2;
+    $color2: $base2;
+    $deg1: ($perc/100*360+90)+deg;
+		$deg2: 0deg;
+	}
+
+  .donut-chart {
+    &#{$name} {
+      width: $size;
+      height: $size;
+      background: $base;
+
+      .slice {
+        &.one {
+          clip: rect(0 $size $size/2 0);
+          -webkit-transform: rotate($deg1);
+          transform: rotate($deg1);
+          background: $color;
+        }
+
+        &.two {
+          clip: rect(0 $size/2 $size 0);
+          -webkit-transform: rotate($deg2);
+          transform: rotate($deg2);
+          background: $color2;
+        }
+      }
+
+      .chart-center {
+        top: $width;
+        left: $width;
+        width: $size - ($width * 2);
+        height: $size - ($width * 2);
+        background: $center;
+        line-height: $size - ($width * 2) - 14px;
+
+        span {
+          font-size: $textSize;
+          color: $textColor;
+          line-height: 4rem;
+          vertical-align: middle;
+        }
+      }
+    }
+  }
+} // mixin
+
+.stats-grid {
+  max-width: 1024px;
+  margin: auto;
+}
+
+.stats-widget {
+  // color: white;
+  font-weight: 1.5rem;
+  padding: 4rem;
+  display: inline-block;
+
+  h3 {
+    margin-bottom: 0;
+    text-align: center;
+  }
+}
+
+@include donut-chart('.read-donut', 57, 150px, 10px, transparent, white, $marvel-color, black);
+
+@include donut-chart('.time-donut', 70, 150px, 10px, transparent, white, $marvel-color, black);
