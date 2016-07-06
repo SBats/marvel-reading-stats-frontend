@@ -35,36 +35,119 @@ li {
   }
 
   &-actions {
+    position: relative;
 
     button {
       cursor: pointer;
       border: none;
       font-size: 1.4rem;
       padding: 0.6rem;
-      background: transparentize($marvel-color, 0.2);
       color: white;
       width: 100%;
+      background: transparent;
       transition: background 0.15s ease-out;
 
-      &:hover, &:focus {
-        background: $marvel-color;
+      @include media('<tablet') {
+        background: lighten($marvel-color, 10%);
       }
 
-      span {
+      &:hover, &:focus {
+
+        @include media('<tablet') {
+          background: $marvel-color;
+          .icon {
+            background: $marvel-color;
+          }
+        }
+
+        @include media('>tablet') {
+          .label {
+            left: 100%;
+            opacity: 1;
+            pointer-events: normal;
+            transition: left 0.2s ease-out 0.4s,
+                        opacity 0.2s ease-out 0.5s;
+          }
+
+          .icon::before {
+            border-top-color: darken($marvel-color, 5%);
+          }
+        }
+      }
+
+      .label {
         font-size: 1.6rem;
         display: block;
         padding: 1rem;
         text-align: center;
         width: 100%;
         text-transform: uppercase;
+
+        @include media('>tablet') {
+          position: absolute;
+          width: 14rem;
+          left: -8rem;
+          top: 0;
+          background: darken($marvel-color, 10%);
+          z-index: 3;
+          opacity: 0;
+          pointer-events: none;
+          transition: left 0.2s ease-in;
+        }
+      }
+
+      .icon {
+        height: 5rem;
+        width: 5rem;
+        padding: 1rem;
+        position: relative;
+
+        @include media('<tablet') {
+          position: absolute;
+          top: 0;
+          left: 50%;
+          background: lighten($marvel-color, 10%);
+          transition: background 0.15s ease-out;
+          transform: translate(-50%, -60%);
+          border-radius: 50%;
+        }
+
+        @include media('>tablet') {
+          z-index: 1;
+          text-align: right;
+          height: 4rem;
+          width: auto;
+          padding: 0.6rem;
+          margin: -0.6rem;
+
+          &::before {
+            content: "";
+            display: block;
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 0;
+            height: 0;
+            border-top: 6rem solid $marvel-color;
+            border-left: 7rem solid transparent;
+            z-index: -1;
+            transition: border 0.2s ease-out;
+          }
+        }
+
+        img {
+          max-height: 100%;
+          max-width: 100%;
+        }
       }
     }
 
     @include media('>tablet') {
       position: absolute;
-      bottom: 0;
-      left: 0;
-      width: 100%;
+      top: 0;
+      right: 0;
+      width: 6rem;
+      height: 6rem;
     }
   }
 

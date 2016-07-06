@@ -1,5 +1,5 @@
 <ul class="grid-4">
-  <li *ngFor="let item of list" class="comic">
+  <li *ngFor="let item of list" class="comic" [ngClass]="{'read': item.isInCollection}">
     <div class="comic-cover-container">
       <div class="comic-cover">
         <img [src]="item.thumbnail.path + '/portrait_uncanny.' + item.thumbnail.extension" [alt]="item.title + ' cover'"/>
@@ -9,13 +9,15 @@
         (click)="add(item)"
         *ngIf="!item.isInCollection"
         class="comic-actions-item">
-          <span class="label">Add to your collection</span>
+          <div class="icon"><img src="img/plus.svg" alt="plus icon"/></div>
+          <div class="label">Add to your collection</div>
         </button>
         <button
         (click)="remove(item)"
         *ngIf="item.isInCollection"
         class="comic-actions-item">
-          <span class="label">Remove from your collection</span>
+          <div class="icon"><img src="img/minus.svg" alt="minus icon"/></div>
+          <div class="label">Remove from your collection</div>
         </button>
       </div>
     </div>
