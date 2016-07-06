@@ -11,7 +11,10 @@ $light-grey: #aaa;
 $lighter-grey: #ddd;
 
 // Utilities
-$strip-texture: 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAYAAACNbyblAAAAH0lEQVQIW2P4//+/JhAzIGMUDhRrYgigq4QbgyEAwgChmkuDn1MilAAAAABJRU5ErkJggg==';
+$light-strip-texture: 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAYAAACNbyblAAAAH0lEQVQIW2P4//+/JhAzIGMUDhRrYgigq4QbgyEAwgChmkuDn1MilAAAAABJRU5ErkJggg==';
+$dark-strip-texture: "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAMAAAADCAYAAABWKLW/AAAAE0lEQVQIW2NgYGD4z4AFwAXBDAA18QL+OAjF0QAAAABJRU5ErkJggg==";
+$red-strip-texture: "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAMAAAADCAYAAABWKLW/AAAAE0lEQVQImWP4ICL3nwEdwAVhDAB8XwZkFSWTIAAAAABJRU5ErkJggg==";
+
 // get map values with map-get($skew-map, key);
 $skew-map: (
   x: -11deg,
