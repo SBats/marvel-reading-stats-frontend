@@ -17,9 +17,47 @@ li {
 .comic {
   margin-bottom: 4rem;
 
+  &.read {
+
+    .comic-cover-container {
+
+      &::before {
+        opacity: 0;
+      }
+    }
+
+    .comic-actions {
+      opacity: 0.8;
+      z-index: 1;
+    }
+  }
+
   &-cover-container {
     position: relative;
     margin-bottom: 1rem;
+
+    &::before {
+      content: "";
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      background: black;
+      opacity: 0.2;
+      transition: opacity 0.2s ease-out;
+
+    }
+
+    @include media('>tablet') {
+      &::before {
+        opacity: 0.4;
+      }
+
+      &:hover::before {
+        opacity: 0.2;
+      }
+    }
   }
 
   &-cover {
@@ -48,15 +86,15 @@ li {
       transition: background 0.15s ease-out;
 
       @include media('<tablet') {
-        background: lighten($marvel-color, 10%);
+        background: $marvel-color;
       }
 
       &:hover, &:focus {
 
         @include media('<tablet') {
-          background: $marvel-color;
+          background: darken($marvel-color, 10%);
           .icon {
-            background: $marvel-color;
+            background: darken($marvel-color, 10%);
           }
         }
 
@@ -106,7 +144,7 @@ li {
           position: absolute;
           top: 0;
           left: 50%;
-          background: lighten($marvel-color, 10%);
+          background: $marvel-color;
           transition: background 0.15s ease-out;
           transform: translate(-50%, -60%);
           border-radius: 50%;
