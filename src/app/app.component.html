@@ -2,7 +2,13 @@
   <div class="app-title">
     <h1>{{ title }}</h1>
   </div>
-  <nav>
+  <div [ngClass]="{'opened': showNav}" class="nav-toggle" attr.aria-expanded="{{ showNav }}" (click)="toggleNav()">
+    <span class="sr-only">Toogle navigation</span>
+    <div class="icon-bar"></div>
+    <div class="icon-bar"></div>
+    <div class="icon-bar"></div>
+  </div>
+  <nav [ngClass]="{'opened': showNav}" attr.aria-expanded="{{ showNav }}">
     <a [routerLink]="['']">Home</a>
     <a [routerLink]="['library']">Library</a>
     <a [routerLink]="['collection']">My collection</a>

@@ -17,12 +17,16 @@ import '../style/app.scss';
 })
 export class AppComponent implements OnInit {
   title: string = 'Marvel reading stats';
+  showNav: boolean = false;
 
   constructor(private storageService: StorageService) {
-
   }
 
   ngOnInit() {
     this.storageService.getStorage();
+  }
+
+  toggleNav() {
+    this.showNav = !this.showNav;
   }
 }

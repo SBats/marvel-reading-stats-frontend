@@ -9,24 +9,19 @@ header {
   nav {
     display: inline-block;
     vertical-align: middle;
-  }
 
-  .app-title {
-    display: inline-block;
-    background: #f0141e;
-    padding: 1rem;
-    vertical-align: middle;
-    overflow: hidden;
-
-    h1 {
+    @include media('<desktop') {
+      display: block;
+      overflow: hidden;
+      max-height: 0;
       margin: 0;
-      letter-spacing: -2px;
-      text-transform: uppercase;
-      transform: scale(1, 2);
-      font-size: 2rem;
-      word-spacing: 6px;
-      line-height: 2rem;
+      transition: max-height 0.3s ease-out,
+                  margin 0.3s ease-out;
 
+      &.opened {
+        margin-top: 2rem;
+        max-height: 50vh;
+      }
     }
   }
 
@@ -49,6 +44,65 @@ header {
     @include media('>tablet') {
       display: inline-block;
     }
+  }
+}
+
+.nav-toggle {
+  display: inline-block;
+  padding: 1rem;
+  vertical-align: middle;
+  cursor: pointer;
+  float: right;
+
+  @include media('>=desktop') {
+    display: none;
+  }
+
+  &.opened {
+    .icon-bar {
+      &:nth-child(2) {
+        transform: rotateZ(-45deg) translate(-5px, 5px);
+      }
+      &:nth-child(3) {
+        transform: rotateZ(45deg);
+      }
+      &:nth-child(4) {
+        opacity: 0;
+        transform: translateY(2rem);
+      }
+    }
+  }
+}
+
+.icon-bar {
+  width: 2rem;
+  height: 2px;
+  background: white;
+  border-radius: 1px;
+  transition: transform 0.2s ease-out,
+              opacity 0.2s ease-out;
+
+  & + .icon-bar {
+    margin-top: 0.5rem;
+  }
+}
+
+.app-title {
+  display: inline-block;
+  background: #f0141e;
+  padding: 1rem;
+  vertical-align: middle;
+  overflow: hidden;
+
+  h1 {
+    margin: 0;
+    letter-spacing: -2px;
+    text-transform: uppercase;
+    transform: scale(1, 2);
+    font-size: 2rem;
+    word-spacing: 6px;
+    line-height: 2rem;
+
   }
 }
 
