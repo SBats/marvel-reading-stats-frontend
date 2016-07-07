@@ -2,11 +2,23 @@
 <div class="letter-filter">
   <ul>
     <li *ngFor="let filter of queryFiltersList">
-      <a *ngIf="startWithQuery !== filter" href (click)="selectQueryFilter($event, filter)">{{ filter }}</a>
+      <a *ngIf="startWithQuery !== filter" href (click)="selectLetter($event, filter)">{{ filter }}</a>
       <span class="active" *ngIf="startWithQuery === filter">{{ filter }}</span>
     </li>
   </ul>
 </div>
 <div *ngIf="loading" class="mrs-loader">Loading...</div>
-<mrs-elements-list  *ngIf="!loading" [list]="elements">
-</mrs-elements-list>
+<div *ngIf="!loading">
+  <mrs-elements-list [list]="elements">
+  </mrs-elements-list>
+  <ul class="paginator">
+    <li class="paginator-item" *ngFor="let element of pageList; let index = index">
+      <a *ngIf="(index + 1) != page" href (click)="selectPage($event, index+1)">
+        {{ index + 1 }}
+      </a>
+      <span *ngIf="(index + 1) == page" class="active">
+        {{ index + 1 }}
+      </span>
+    </li>
+  </ul>
+</div>

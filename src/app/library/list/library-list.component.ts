@@ -16,6 +16,8 @@ import { ElementsListComponent } from '../../elements-list';
 export class LibraryListComponent implements OnInit, OnDestroy {
   elements: any[] = [];
   loading: boolean = true;
+  page: number = null;
+  pageList: number[] = null;
   libraryType: string;
   queryFiltersList: string[] = [
     'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm',
@@ -60,9 +62,33 @@ export class LibraryListComponent implements OnInit, OnDestroy {
     this.subscribers.map(sb => sb.unsubscribe());
   }
 
-  selectQueryFilter(ev, filter) {
+  setPageList(limit: number, total: number): void {
+    let pagesCount = Math.ceil(total / limit);
+    let newList = new Array(pagesCount);
+    this.pageList = newList;
+  }
+
+  selectLetter(ev, filter) {
     ev.preventDefault();
-    this.router.navigate(['.'], {queryParams: { startwith: filter}});
+    this.startWithQuery = filter;
+    this.updateQueries();
+  }
+
+  selectPage(ev, page) {
+    ev.preventDefault();
+    this.page = page;
+    this.updateQueries();
+  }
+
+  updateQueries() {
+    let params: any = {};
+    if (this.startWithQuery) {
+      params.startwith = this.startWithQuery;
+    }
+    if (this.page) {
+      params.page = this.page;
+    }
+    this.router.navigate(['.'], {queryParams: params});
   }
 
   loadList() {
@@ -72,10 +98,14 @@ export class LibraryListComponent implements OnInit, OnDestroy {
       this.subscribers[0].unsubscribe();
     }
 
-    this.subscribers[0] = this.marvelService.getTypeList(this.libraryType, this.startWithQuery)
-      .subscribe((res) => {
-        this.elements = res.data.results;
-        this.loading = false;
-      });
+    this.subscribers[0] = this.marvelService.getTypeList(
+      this.libraryType,
+      this.startWithQuery,
+      this.page
+    ).subscribe((res) => {
+      this.elements = res.data.results;
+      this.setPageList(res.data.limit, res.data.total);
+      this.loading = false;
+    });
   }
 }

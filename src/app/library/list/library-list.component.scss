@@ -38,3 +38,41 @@ h2 {
     }
   }
 }
+
+.paginator {
+  list-style: none;
+  max-width: 1024px;
+  overflow-x: auto;
+  overflow-y: hidden;
+  white-space: nowrap;
+  margin: -2rem auto 2rem;
+  padding: 1rem;
+
+  &-item {
+    display: inline-block;
+
+    a, span {
+      display: inline-block;
+      padding: 0.6rem;
+      text-align: center;
+    }
+
+    a {
+      text-decoration: none;
+
+      &:hover, &:focus {
+        text-decoration: underline;
+      }
+    }
+
+    .active {
+      color: $marvel-color;
+    }
+
+    &:not(:last-child)::after {
+      content: "-";
+      display: inline-block;
+      margin: 0 0.4rem;
+    }
+  }
+}
