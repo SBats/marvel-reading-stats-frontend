@@ -21,7 +21,7 @@ export class LibraryListComponent implements OnInit, OnDestroy {
     'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm',
     'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'
   ];
-  startWithQuery: string = this.queryFiltersList[0];
+  startWithQuery: string = null;
   private subscribers: any[] = [false];
 
   constructor(
@@ -45,7 +45,9 @@ export class LibraryListComponent implements OnInit, OnDestroy {
         .routerState
         .queryParams
         .subscribe(params => {
-          this.startWithQuery = params['startwith'] || this.queryFiltersList[0];
+          this.startWithQuery = params['startwith'] || null;
+          this.page = params['page'] || null;
+
           if (this.libraryType) {
             this.loadList();
           }

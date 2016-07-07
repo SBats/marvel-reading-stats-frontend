@@ -1,7 +1,6 @@
 export const CONFIG = {
   apiKey: 'myAPIKey',
-  commonsParameters: [
-    'limit=40',
-    'contains=infinite%20comic'
-  ]
+  commonsParameters: {
+    limit: 40
+  }
 };
