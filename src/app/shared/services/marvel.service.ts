@@ -81,7 +81,7 @@ export class MarvelService {
     if (typeof page !== 'undefined' && page !== null) {
       parameters.push(this.getPagination(page));
     }
-
+    parameters = parameters.filter(Boolean);
     url += '?' + parameters.join('&');
 
 
@@ -102,7 +102,7 @@ export class MarvelService {
     if (typeof page !== 'undefined' && page !== null) {
       parameters.push(this.getPagination(page));
     }
-
+    parameters = parameters.filter(Boolean);
     url += '?' + parameters.join('&');
 
     this.loading = true;
