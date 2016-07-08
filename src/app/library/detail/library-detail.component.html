@@ -1,8 +1,11 @@
 <h2 class="page-title">Series name</h2>
-<mrs-comics-list
-  [list]="elements"
-  (addAction)="addComicToCollection($event)"
-  (removeAction)="removeComicFromCollection($event)">
-</mrs-comics-list>
-<mrs-paginator *ngIf="pageQuantity > 1" [pageQuantity]="pageQuantity" [currentPage]="currentPage" (selectPage)="selectPage($event)">
-</mrs-paginator>
+<div *ngIf="loading" class="mrs-loader">Loading...</div>
+<div *ngIf="!loading">
+  <mrs-comics-list
+    [list]="elements"
+    (addAction)="addComicToCollection($event)"
+    (removeAction)="removeComicFromCollection($event)">
+  </mrs-comics-list>
+  <mrs-paginator *ngIf="pageQuantity > 1" [pageQuantity]="pageQuantity" [currentPage]="currentPage" (selectPage)="selectPage($event)">
+  </mrs-paginator>
+</div>
