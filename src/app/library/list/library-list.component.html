@@ -11,6 +11,6 @@
 <div *ngIf="!loading">
   <mrs-elements-list [list]="elements">
   </mrs-elements-list>
-  <mrs-paginator [pageQuantity]="pageQuantity" [currentPage]="currentPage" (selectPage)="selectPage($event)">
+  <mrs-paginator *ngIf="pageQuantity > 1" [pageQuantity]="pageQuantity" [currentPage]="currentPage" (selectPage)="selectPage($event)">
   </mrs-paginator>
 </div>
