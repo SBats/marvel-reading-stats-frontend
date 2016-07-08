@@ -4,7 +4,8 @@ import {
   expect,
   inject,
   fakeAsync,
-  beforeEachProviders,
+  beforeEach,
+  addProviders,
   tick
 } from '@angular/core/testing';
 
@@ -23,20 +24,22 @@ import { MarvelService } from './marvel.service';
 
 describe('Marvel Service', () => {
 
-  beforeEachProviders(() => [
-    BaseRequestOptions,
-    MockBackend,
-    MarvelService,
-    provide(
-      Http,
-      {
-        useFactory: (backend: ConnectionBackend, defaultOptions: BaseRequestOptions) => {
-          return new Http(backend, defaultOptions);
-        },
-        deps: [MockBackend, BaseRequestOptions]
-      }
-    ),
-  ]);
+  beforeEach(() => {
+    addProviders([
+      BaseRequestOptions,
+      MockBackend,
+      MarvelService,
+      provide(
+        Http,
+        {
+          useFactory: (backend: ConnectionBackend, defaultOptions: BaseRequestOptions) => {
+            return new Http(backend, defaultOptions);
+          },
+          deps: [MockBackend, BaseRequestOptions]
+        }
+      ),
+    ]);
+  });
 
   describe('checkStatus', () => {
     it('should return response if status is between 200 and 300',

@@ -5,7 +5,7 @@ import {
   describe,
   expect,
   inject,
-  beforeEachProviders,
+  addProviders,
   beforeEach,
   fakeAsync,
   tick
@@ -16,10 +16,12 @@ import { StorageService } from './storage.service';
 
 describe('MRS Service', () => {
 
-  beforeEachProviders(() => [
-    StorageService,
-    MRSService
-  ]);
+  beforeEach(() => {
+    addProviders([
+      StorageService,
+      MRSService
+    ]);
+  });
 
   beforeEach(inject([StorageService], (storageService: StorageService) => {
     storageService.initStorage();

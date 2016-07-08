@@ -5,7 +5,7 @@ import {
   describe,
   expect,
   inject,
-  beforeEachProviders,
+  addProviders,
   beforeEach,
   fakeAsync,
   tick
@@ -34,11 +34,10 @@ if (navigator.userAgent.toLowerCase().indexOf('firefox') > -1) {
 
 describe('Storage Service', () => {
 
-  beforeEachProviders(() => [
-    StorageService
-  ]);
-
   beforeEach(() => {
+    addProviders([
+      StorageService
+    ]);
     localStorage.clear();
   });
 
