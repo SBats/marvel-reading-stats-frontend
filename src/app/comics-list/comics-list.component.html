@@ -20,6 +20,14 @@
           <div class="label">Remove from your collection</div>
         </button>
       </div>
+      <div class="comic-links">
+        <a class="comic-links-item" [href]="item.urls[0].url" target="_blank">
+          <div class="icon">
+            <img src="img/link.svg" alt="link icon"/>
+          </div>
+          <div class="label">This comic on marvel.com</div>
+        </a>
+      </div>
     </div>
     <div class="comic-title">{{ item.title }}</div>
   </li>
