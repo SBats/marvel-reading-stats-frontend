@@ -1,6 +1,6 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ROUTER_DIRECTIVES, ActivatedRoute, Router } from '@angular/router';
-import { MarvelService } from '../../shared';
+import { MarvelService, ComicDataWrapper } from '../../shared';
 
 import { ElementsListComponent } from '../../elements-list';
 import { PaginatorComponent } from '../../paginator';
@@ -101,7 +101,7 @@ export class LibraryListComponent implements OnInit, OnDestroy {
       this.libraryType,
       this.startWithQuery,
       this.currentPage
-    ).subscribe((res) => {
+    ).subscribe((res: ComicDataWrapper) => {
       this.elements = res.data.results;
       this.setPageQuantity(res.data.limit, res.data.total);
       this.loading = false;
