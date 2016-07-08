@@ -87,9 +87,54 @@ describe('Marvel Service', () => {
     }));
   });
 
+  describe('getCommonParams', () => {
+    it('should return an empty array if there\s no commonsParameters in CONFIG', inject([MarvelService], (marvelService: MarvelService) => {
+      let result;
+      marvelService.config = {};
+      result = marvelService.getCommonParams();
+      expect(result.length).toBe(0);
+    }));
+
+    it('should return an array containing formated commonsParameters from CONFIG', inject([MarvelService], (marvelService: MarvelService) => {
+      let result;
+      marvelService.config = {
+        commonsParameters: {
+          test: 42
+        }
+      };
+      result = marvelService.getCommonParams();
+      expect(result[0]).toBe('test=42');
+    }));
+  });
+
+  describe('getPagination', () => {
+    it('should return an empty string if pageNumber is not > 1', inject([MarvelService], (marvelService: MarvelService) => {
+      let result;
+      marvelService.config = {};
+      result = marvelService.getPagination(1);
+      expect(result).toBe('');
+    }));
+
+    it('should return a string that contains offset= and (pageNumber - 1) * 20 if there\s no limit parameter in CONFIG', inject([MarvelService], (marvelService: MarvelService) => {
+      let result;
+      marvelService.config = {};
+      result = marvelService.getPagination(2);
+      expect(result).toBe('offset=20');
+    }));
+
+    it('should return a string that contains offset= and (pageNumber - 1) * CONFIG limit if specified', inject([MarvelService], (marvelService: MarvelService) => {
+      let result;
+      marvelService.config = {
+        commonsParameters: {limit: 14}
+      };
+      result = marvelService.getPagination(4);
+      expect(result).toBe('offset=42');
+    }));
+  });
+
   describe('getComicsFromType', () => {
     it('should call the comic endpoint for type parameter with id parameter',
-    inject([MarvelService, MockBackend], fakeAsync((MarvelService, MockBackend) => {
+    inject([MarvelService, MockBackend], fakeAsync((marvelService: MarvelService, MockBackend) => {
       let res;
       let type = 'test';
       let id = 123456;
@@ -101,17 +146,38 @@ describe('Marvel Service', () => {
         });
         c.mockRespond(new Response(response));
       });
-      MarvelService.getComicsFromType(type, id).subscribe(response => {
+      marvelService.getComicsFromType(type, id).subscribe(response => {
         res = response;
       });
       tick();
       expect(res).toEqual({comics: true});
     })));
+
+    it('should call getPagination if page exist and is not null',
+    inject([MarvelService, MockBackend], fakeAsync((marvelService: MarvelService, MockBackend) => {
+      let res;
+      let type = 'test';
+      let id = 123456;
+      let page = 2;
+      MockBackend.connections.subscribe(c => {
+        let response = new ResponseOptions({
+          status : 200,
+          body: '{"comics": true}'
+        });
+        c.mockRespond(new Response(response));
+      });
+      spyOn(marvelService, 'getPagination');
+      marvelService.getComicsFromType(type, id, page).subscribe(response => {
+        res = response;
+      });
+      tick();
+      expect(marvelService.getPagination).toHaveBeenCalled();
+    })));
   });
 
   describe('getTypeList', () => {
     it('should call the type parameter endpoint',
-    inject([MarvelService, MockBackend], fakeAsync((MarvelService, MockBackend) => {
+    inject([MarvelService, MockBackend], fakeAsync((marvelService: MarvelService, MockBackend) => {
       let res;
       let type = 'test';
       MockBackend.connections.subscribe(c => {
@@ -122,7 +188,7 @@ describe('Marvel Service', () => {
         });
         c.mockRespond(new Response(response));
       });
-      MarvelService.getTypeList(type).subscribe(response => {
+      marvelService.getTypeList(type).subscribe(response => {
         res = response;
       });
       tick();
@@ -130,7 +196,7 @@ describe('Marvel Service', () => {
     })));
 
     it('should add titleStartsWith query parameter if startWithQuery exist and type is series',
-    inject([MarvelService, MockBackend], fakeAsync((MarvelService, MockBackend) => {
+    inject([MarvelService, MockBackend], fakeAsync((marvelService: MarvelService, MockBackend) => {
       let res;
       let type = 'series';
       let query = 'a';
@@ -142,7 +208,7 @@ describe('Marvel Service', () => {
         });
         c.mockRespond(new Response(response));
       });
-      MarvelService.getTypeList(type, query).subscribe(response => {
+      marvelService.getTypeList(type, query).subscribe(response => {
         res = response;
       });
       tick();
@@ -150,7 +216,7 @@ describe('Marvel Service', () => {
     })));
 
     it('should add nameStartsWith query parameter if startWithQuery exist and type is series',
-    inject([MarvelService, MockBackend], fakeAsync((MarvelService, MockBackend) => {
+    inject([MarvelService, MockBackend], fakeAsync((marvelService: MarvelService, MockBackend) => {
       let res;
       let type = 'events';
       let query = 'a';
@@ -162,11 +228,31 @@ describe('Marvel Service', () => {
         });
         c.mockRespond(new Response(response));
       });
-      MarvelService.getTypeList(type, query).subscribe(response => {
+      marvelService.getTypeList(type, query).subscribe(response => {
         res = response;
       });
       tick();
       expect(res).toEqual({comics: true});
+    })));
+
+    it('should call getPagination if page exist and is not null',
+    inject([MarvelService, MockBackend], fakeAsync((marvelService: MarvelService, MockBackend) => {
+      let res;
+      let type = 'tests';
+      let page = 2;
+      MockBackend.connections.subscribe(c => {
+        let response = new ResponseOptions({
+          status : 200,
+          body: '{"comics": true}'
+        });
+        c.mockRespond(new Response(response));
+      });
+      spyOn(marvelService, 'getPagination');
+      marvelService.getTypeList(type, null, page).subscribe(response => {
+        res = response;
+      });
+      tick();
+      expect(marvelService.getPagination).toHaveBeenCalled();
     })));
   });
 
