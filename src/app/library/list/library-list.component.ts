@@ -87,7 +87,7 @@ export class LibraryListComponent implements OnInit, OnDestroy {
     if (this.currentPage) {
       params.page = this.currentPage;
     }
-    this.router.navigate(['.'], {queryParams: params});
+    this.router.navigate(['library', this.libraryType], {queryParams: params});
   }
 
   loadList() {

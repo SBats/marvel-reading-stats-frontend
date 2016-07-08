@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import { Http, Response } from '@angular/http';
 
-import { CONFIG } from '../../app.config.ts';
+import { CONFIG } from '../../app.config';
 
 @Injectable()
 export class MarvelService {
