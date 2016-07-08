@@ -1,5 +1,5 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import {
   MarvelService,
   MRSService,
@@ -8,18 +8,23 @@ import {
 } from '../../shared';
 
 import { ComicsListComponent } from '../../comics/list';
+import { PaginatorComponent } from '../../paginator';
 
 @Component({
   selector: 'mrs-library-detail',
   template: require('./library-detail.component.html'),
   styles: [require('./library-detail.component.scss')],
   directives: [
-    ComicsListComponent
+    ComicsListComponent,
+    PaginatorComponent
   ]
 })
 export class LibraryDetailComponent implements OnInit, OnDestroy {
   elements: any[] = [];
+  loading: boolean= true;
   userData: UserData;
+  currentPage: number = 1;
+  pageQuantity: number = null;
   libraryId: number;
   libraryType: string;
   private subscribers: any[] = [];
@@ -27,6 +32,7 @@ export class LibraryDetailComponent implements OnInit, OnDestroy {
   constructor(
     private marvelService: MarvelService,
     private route: ActivatedRoute,
+    private router: Router,
     private mrsService: MRSService
   ) {}
 
@@ -38,16 +44,24 @@ export class LibraryDetailComponent implements OnInit, OnDestroy {
           this.libraryId = params['id'];
           this.libraryType = params['type'];
 
-          this.subscribers.push(
-            this.marvelService.getComicsFromType(this.libraryType, this.libraryId)
-            .subscribe((res: ComicDataWrapper) => {
-              this.elements = res.data.results;
-              this.checkCollectionElements(this.elements, this.userData);
-            })
-          );
+          if (this.libraryType && this.libraryId) {
+            this.loadList();
+          }
         })
     );
 
+    this.subscribers.push(
+      this.router
+        .routerState
+        .queryParams
+        .subscribe(params => {
+          this.currentPage = params['page'] || 1;
+
+          if (this.libraryType && this.libraryId) {
+            this.loadList();
+          }
+        })
+    );
 
     this.subscribers.push(
       this.mrsService.userData
@@ -60,6 +74,42 @@ export class LibraryDetailComponent implements OnInit, OnDestroy {
 
   ngOnDestroy() {
     this.subscribers.map(sb => sb.unsubscribe());
+  }
+
+  setPageQuantity(limit: number, total: number): void {
+    this.pageQuantity = Math.ceil(total / limit);
+  }
+
+  selectPage(page) {
+    this.currentPage = page;
+    this.updateQueries();
+  }
+
+  updateQueries() {
+    let params: any = {};
+    if (this.currentPage) {
+      params.page = this.currentPage;
+    }
+    this.router.navigate(['.'], {queryParams: params});
+  }
+
+  loadList() {
+    this.loading = true;
+
+    if (this.subscribers[0] && this.subscribers[0].unsubscribe) {
+      this.subscribers[0].unsubscribe();
+    }
+
+    this.subscribers[0] = this.marvelService.getComicsFromType(
+      this.libraryType,
+      this.libraryId,
+      this.currentPage
+    ).subscribe((res: ComicDataWrapper) => {
+      this.elements = res.data.results;
+      this.checkCollectionElements(this.elements, this.userData);
+      this.setPageQuantity(res.data.limit, res.data.total);
+      this.loading = false;
+    });
   }
 
   checkCollectionElements(elements, collection) {
