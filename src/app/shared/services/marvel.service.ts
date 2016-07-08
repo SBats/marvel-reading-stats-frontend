@@ -8,6 +8,7 @@ import { CONFIG } from '../../app.config';
 export class MarvelService {
   apiUrl: string = 'http://gateway.marvel.com:80/v1/public/';
   loading: boolean = false;
+  config: any = CONFIG;
 
   constructor(public http: Http) {}
 
@@ -27,10 +28,10 @@ export class MarvelService {
   getCommonParams(): string[] {
     const commonsParams = [];
 
-    if (CONFIG.commonsParameters) {
-      for (let key in CONFIG.commonsParameters) {
-        if (CONFIG.commonsParameters.hasOwnProperty(key)) {
-          commonsParams.push(key + '=' + CONFIG.commonsParameters[key]);
+    if (this.config.commonsParameters) {
+      for (let key in this.config.commonsParameters) {
+        if (this.config.commonsParameters.hasOwnProperty(key)) {
+          commonsParams.push(key + '=' + this.config.commonsParameters[key]);
         }
       }
     }
@@ -43,8 +44,8 @@ export class MarvelService {
 
     if (pageNumber > 1) {
       let offset = pageNumber - 1;
-      if (CONFIG.commonsParameters && CONFIG.commonsParameters.limit) {
-        offset *= CONFIG.commonsParameters.limit;
+      if (this.config.commonsParameters && this.config.commonsParameters.limit) {
+        offset *= this.config.commonsParameters.limit;
       } else {
         offset *= 20;
       }
@@ -57,7 +58,7 @@ export class MarvelService {
 
   getTypeList(type: string, startWithQuery?: string, page?: number): Observable<any> {
     let parameters = [
-      'apikey=' + CONFIG.apiKey
+      'apikey=' + this.config.apiKey
     ];
     let url = this.apiUrl + type;
 
@@ -92,7 +93,7 @@ export class MarvelService {
 
   getComicsFromType(type: string, seriesId: number, page?: number): Observable<any> {
     let parameters = [
-      'apikey=' + CONFIG.apiKey
+      'apikey=' + this.config.apiKey
     ];
     let url = this.apiUrl + type + '/' + seriesId + '/comics';
 
