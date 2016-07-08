@@ -107,4 +107,11 @@ export class LibraryListComponent implements OnInit, OnDestroy {
       this.loading = false;
     });
   }
+
+  navigateToDetail(element) {
+    this.router.navigate(
+      ['/library', this.libraryType , element.id],
+      {queryParams: null}
+    );
+  }
 }

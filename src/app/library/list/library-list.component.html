@@ -9,7 +9,7 @@
 </div>
 <div *ngIf="loading" class="mrs-loader">Loading...</div>
 <div *ngIf="!loading">
-  <mrs-elements-list [list]="elements">
+  <mrs-elements-list [list]="elements" (selectAction)="navigateToDetail($event)">
   </mrs-elements-list>
   <mrs-paginator *ngIf="pageQuantity > 1" [pageQuantity]="pageQuantity" [currentPage]="currentPage" (selectPage)="selectPage($event)">
   </mrs-paginator>

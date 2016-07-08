@@ -1,6 +1,8 @@
 import {
   Component,
-  Input
+  Input,
+  EventEmitter,
+  Output
 } from '@angular/core';
 import { ROUTER_DIRECTIVES }    from '@angular/router';
 
@@ -12,4 +14,14 @@ import { ROUTER_DIRECTIVES }    from '@angular/router';
 })
 export class ElementsListComponent {
   @Input() list: any[];
+  @Output() selectAction: EventEmitter<any>;
+
+  constructor() {
+    this.selectAction = new EventEmitter();
+  }
+
+  select(ev, element) {
+    ev.preventDefault();
+    this.selectAction.emit(element);
+  }
 }

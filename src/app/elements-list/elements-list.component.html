@@ -1,6 +1,6 @@
 <ul class="elements-list">
   <li class="elements-list-item" *ngFor="let item of list">
-      <a [routerLink]="[item.id]">
+      <a href (click)="select($event, item)">
         <span class="title">{{ item.title }}</span>
       </a>
   </li>
