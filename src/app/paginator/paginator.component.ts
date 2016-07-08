@@ -28,7 +28,9 @@ export class PaginatorComponent implements OnInit, OnChanges {
   }
 
   ngOnChanges(changes: {[propName: string]: SimpleChange}): void {
-    this.setPageList(changes['pageQuantity'].currentValue);
+    if (changes['pageQuantity']) {
+      this.setPageList(changes['pageQuantity'].currentValue);
+    }
   }
 
   setPageList(pageQuantity): void {
