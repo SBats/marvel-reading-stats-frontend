@@ -7,7 +7,7 @@ import {
   UserData,
 } from '../../shared';
 
-import { ComicsListComponent } from '../../comics/list';
+import { ComicsListComponent } from '../../comics-list';
 import { PaginatorComponent } from '../../paginator';
 
 @Component({

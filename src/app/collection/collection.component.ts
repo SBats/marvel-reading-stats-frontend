@@ -2,7 +2,7 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ROUTER_DIRECTIVES } from '@angular/router';
 
 import { MRSService } from '../shared';
-import { ComicsListComponent } from '../comics/list';
+import { ComicsListComponent } from '../comics-list';
 
 @Component({
   selector: 'mrs-collection',
