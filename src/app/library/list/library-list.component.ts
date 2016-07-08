@@ -3,6 +3,7 @@ import { ROUTER_DIRECTIVES, ActivatedRoute, Router } from '@angular/router';
 import { MarvelService } from '../../shared';
 
 import { ElementsListComponent } from '../../elements-list';
+import { PaginatorComponent } from '../../paginator';
 
 @Component({
   selector: 'mrs-library-list',
@@ -10,14 +11,15 @@ import { ElementsListComponent } from '../../elements-list';
   styles: [require('./library-list.component.scss')],
   directives: [
     ROUTER_DIRECTIVES,
-    ElementsListComponent
+    ElementsListComponent,
+    PaginatorComponent
   ]
 })
 export class LibraryListComponent implements OnInit, OnDestroy {
   elements: any[] = [];
   loading: boolean = true;
-  page: number = null;
-  pageList: number[] = null;
+  currentPage: number = 1;
+  pageQuantity: number = null;
   libraryType: string;
   queryFiltersList: string[] = [
     'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm',
@@ -48,7 +50,7 @@ export class LibraryListComponent implements OnInit, OnDestroy {
         .queryParams
         .subscribe(params => {
           this.startWithQuery = params['startwith'] || null;
-          this.page = params['page'] || null;
+          this.currentPage = params['page'] || 1;
 
           if (this.libraryType) {
             this.loadList();
@@ -62,10 +64,8 @@ export class LibraryListComponent implements OnInit, OnDestroy {
     this.subscribers.map(sb => sb.unsubscribe());
   }
 
-  setPageList(limit: number, total: number): void {
-    let pagesCount = Math.ceil(total / limit);
-    let newList = new Array(pagesCount);
-    this.pageList = newList;
+  setPageQuantity(limit: number, total: number): void {
+    this.pageQuantity = Math.ceil(total / limit);
   }
 
   selectLetter(ev, filter) {
@@ -74,9 +74,8 @@ export class LibraryListComponent implements OnInit, OnDestroy {
     this.updateQueries();
   }
 
-  selectPage(ev, page) {
-    ev.preventDefault();
-    this.page = page;
+  selectPage(page) {
+    this.currentPage = page;
     this.updateQueries();
   }
 
@@ -85,8 +84,8 @@ export class LibraryListComponent implements OnInit, OnDestroy {
     if (this.startWithQuery) {
       params.startwith = this.startWithQuery;
     }
-    if (this.page) {
-      params.page = this.page;
+    if (this.currentPage) {
+      params.page = this.currentPage;
     }
     this.router.navigate(['.'], {queryParams: params});
   }
@@ -101,10 +100,10 @@ export class LibraryListComponent implements OnInit, OnDestroy {
     this.subscribers[0] = this.marvelService.getTypeList(
       this.libraryType,
       this.startWithQuery,
-      this.page
+      this.currentPage
     ).subscribe((res) => {
       this.elements = res.data.results;
-      this.setPageList(res.data.limit, res.data.total);
+      this.setPageQuantity(res.data.limit, res.data.total);
       this.loading = false;
     });
   }

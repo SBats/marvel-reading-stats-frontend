@@ -11,14 +11,6 @@
 <div *ngIf="!loading">
   <mrs-elements-list [list]="elements">
   </mrs-elements-list>
-  <ul class="paginator">
-    <li class="paginator-item" *ngFor="let element of pageList; let index = index">
-      <a *ngIf="(index + 1) != page" href (click)="selectPage($event, index+1)">
-        {{ index + 1 }}
-      </a>
-      <span *ngIf="(index + 1) == page" class="active">
-        {{ index + 1 }}
-      </span>
-    </li>
-  </ul>
+  <mrs-paginator [pageQuantity]="pageQuantity" [currentPage]="currentPage" (selectPage)="selectPage($event)">
+  </mrs-paginator>
 </div>
