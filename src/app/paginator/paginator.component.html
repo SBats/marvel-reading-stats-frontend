@@ -1,0 +1,10 @@
+<ul class="paginator">
+  <li class="paginator-item" *ngFor="let element of pageList; let index = index">
+    <a *ngIf="(index + 1) != currentPage" href (click)="select($event, index+1)">
+      {{ index + 1 }}
+    </a>
+    <span *ngIf="(index + 1) == currentPage" class="active">
+      {{ index + 1 }}
+    </span>
+  </li>
+</ul>
