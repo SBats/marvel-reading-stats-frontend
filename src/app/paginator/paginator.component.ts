@@ -18,6 +18,7 @@ export class PaginatorComponent implements OnInit, OnChanges {
   @Input() currentPage: number = 0;
   @Output() selectPage: EventEmitter<any>;
   pageList: number[];
+  popupIsOpened: boolean = false;
 
   constructor() {
     this.selectPage = new EventEmitter();
@@ -33,7 +34,7 @@ export class PaginatorComponent implements OnInit, OnChanges {
     }
   }
 
-  setPageList(pageQuantity): void {
+  setPageList(pageQuantity: number): void {
     if (pageQuantity && pageQuantity > 1) {
       this.pageList = new Array(pageQuantity);
     } else {
@@ -41,8 +42,20 @@ export class PaginatorComponent implements OnInit, OnChanges {
     }
   }
 
-  select(ev, page): void {
+  select(ev: any, page: any): void {
     ev.preventDefault();
     this.selectPage.emit(page);
+  }
+
+  showPopup() {
+    this.popupIsOpened = true;
+  }
+
+  hidePopup() {
+    this.popupIsOpened = false;
+  }
+
+  togglePopup() {
+    this.popupIsOpened = !this.popupIsOpened;
   }
 }

@@ -1,10 +1,32 @@
-<ul class="paginator">
-  <li class="paginator-item" *ngFor="let element of pageList; let index = index">
-    <a *ngIf="(index + 1) != currentPage" href (click)="select($event, index+1)">
-      {{ index + 1 }}
+<div class="paginator">
+  <div *ngIf="currentPage > 1" class="previous">
+    <a href (click)="select($event, 1 * currentPage - 1)" (focus)="hidePopup()">
+      <
     </a>
-    <span *ngIf="(index + 1) == currentPage" class="active">
-      {{ index + 1 }}
+  </div>
+  <div class="current">
+    <span>Page</span>
+    <span class="current-number" tabindex="0" (keyup.enter)="togglePopup()" (mouseenter)="showPopup()" (mouseleave)="hidePopup()">
+      {{ currentPage }}
+      <div class="pages-popup" [ngClass]="{'opened': popupIsOpened}">
+        <ul class="pages-list">
+          <li class="pages-list-item" *ngFor="let element of pageList; let index = index">
+            <a *ngIf="(index + 1) != currentPage" href (click)="select($event, index + 1)">
+              {{ 1 + index }}
+            </a>
+            <span *ngIf="(index + 1) == currentPage" class="active">
+              {{ 1 + index }}
+            </span>
+          </li>
+        </ul>
+      </div>
     </span>
-  </li>
-</ul>
+    <span>of</span>
+    <span>{{ pageList.length }}</span>
+  </div>
+  <div *ngIf="currentPage < pageList.length" class="next">
+    <a href (click)="select($event, 1 * currentPage + 1)" (focus)="hidePopup()">
+      >
+    </a>
+  </div>
+</div>

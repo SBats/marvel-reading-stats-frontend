@@ -1,4 +1,5 @@
 @import "../../style/config.scss";
+
 :host {
   max-width: 1024px;
   padding: 0 4rem;
@@ -7,13 +8,76 @@
 }
 
 .paginator {
-  list-style: none;
-  overflow-x: auto;
-  overflow-y: hidden;
-  white-space: nowrap;
   margin: 0 auto;
   padding: 1rem;
   text-align: center;
+}
+
+.current, .previous, .next {
+  display: inline-block;
+
+  > span {
+    display: inline-block;
+  }
+}
+
+.previous, .next {
+  border: 1px solid $light-grey;
+
+  a {
+    display: block;
+    padding: 1rem 2rem;
+    text-decoration: none;
+    &:hover, &:focus {
+      background: lighten($lighter-grey, 5%);
+    }
+  }
+}
+
+.previous {
+  margin-right: 4rem;
+}
+
+.next {
+  margin-left: 4rem;
+}
+
+.current-number {
+  position: relative;
+  border: 1px solid $light-grey;
+  padding: 1rem;
+  text-align: center;
+  margin: 0 1rem;
+
+  &:hover, &:focus {
+    background: lighten($lighter-grey, 5%);
+  }
+}
+
+.pages-popup {
+  display: none;
+  position: absolute;
+  overflow-y: auto;
+  min-width: 25vw;
+  max-width: 75vw;
+  max-height: 30rem;
+  bottom: 100%;
+  left: 50%;
+  transform: translate(-50%, 0);
+  background: white;
+  border: 1px solid $light-grey;
+  box-shadow: 1px 1px 3px 0 transparentize($dark-grey, 0.4);
+
+  &.opened {
+    display: block;
+  }
+}
+
+.pages-list {
+  list-style: none;
+  display: block;
+  margin: 0;
+  padding: 1rem;
 
   &-item {
     display: inline-block;
