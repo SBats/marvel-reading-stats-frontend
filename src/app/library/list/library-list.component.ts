@@ -71,6 +71,7 @@ export class LibraryListComponent implements OnInit, OnDestroy {
   selectLetter(ev, filter) {
     ev.preventDefault();
     this.startWithQuery = filter;
+    this.currentPage = null;
     this.updateQueries();
   }
 
