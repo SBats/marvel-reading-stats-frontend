@@ -1,10 +1,18 @@
 @import "../style/config";
 @import '~knacss/sass/_include-media/_include-media.scss';
 
+:host {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
 header {
   background-color: black;
   color: white;
   padding: 2rem 8vw;
+  flex: none;
 
   nav {
     display: inline-block;
@@ -110,14 +118,16 @@ header {
 }
 
 main {
-  min-height: 80vh;
+  flex: 1 1 100%;
 }
 
 footer {
   padding: 2rem;
+  font-size: 1.2rem;
   background: black;
   color: white;
   font-weight: lighter;
+  flex: none;
 
   a {
     color: white;
@@ -129,7 +139,19 @@ footer {
   }
 
   p {
-    display: inline-block;
-    margin: 0 1rem;
+    text-align: center;
+
+    @include media('>=600px') {
+      display: inline-block;
+      margin: 0 1rem;
+
+      &:first-child {
+        float: left;
+      }
+
+      &:last-child {
+        float: right;
+      }
+    }
   }
 }
