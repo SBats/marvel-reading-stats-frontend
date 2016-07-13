@@ -1,4 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import {
+  Component,
+  OnInit,
+  animate,
+  trigger,
+  transition,
+  style
+} from '@angular/core';
 import { ROUTER_DIRECTIVES } from '@angular/router';
 
 import { StorageService } from './shared';
@@ -14,6 +21,32 @@ import '../style/app.scss';
   directives: [...ROUTER_DIRECTIVES],
   template: require('./app.component.html'),
   styles: [require('./app.component.scss')],
+  animations: [
+    trigger('headerState', [
+      transition('void => *', [
+        style({
+          opacity: 0
+        }),
+        animate('400ms 400ms ease-out')
+      ])
+    ]),
+    trigger('footerState', [
+      transition('void => *', [
+        style({
+          opacity: 0
+        }),
+        animate('400ms 500ms ease-out')
+      ])
+    ]),
+    trigger('contentState', [
+      transition('void => *', [
+        style({
+          opacity: 0
+        }),
+        animate('400ms 600ms ease-out')
+      ])
+    ])
+  ]
 })
 export class AppComponent implements OnInit {
   title: string = 'Marvel reading stats';

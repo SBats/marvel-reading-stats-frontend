@@ -1,4 +1,4 @@
-<header>
+<header @headerState>
   <div class="app-title">
     <h1 class="sr-only">{{ title }}</h1>
     <img class="mrs-logo" src="img/mrs-logo.svg"/>
@@ -16,10 +16,10 @@
     <a [routerLink]="['stats']" routerLinkActive="active">My stats</a>
   </nav>
 </header>
-<main>
+<main @contentState>
   <router-outlet></router-outlet>
 </main>
-<footer>
+<footer @footerState>
   <p>
     <a href="http://developer.marvel.com/" title="Marvel developer website">Data provided by Marvel</a>. © 2016 <a href="http://marvel.com/" title="Marvel website">Marvel</a>
   </p>
