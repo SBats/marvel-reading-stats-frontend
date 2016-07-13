@@ -7,7 +7,7 @@
   <div class="current">
     <span>Page</span>
     <span class="current-number" tabindex="0" (keyup.enter)="togglePopup()" (mouseenter)="showPopup()" (mouseleave)="hidePopup()">
-      {{ currentPage }}
+      <span class="currentpage-value">{{ currentPage }}</span>
       <div class="pages-popup" [ngClass]="{'opened': popupIsOpened}">
         <ul class="pages-list">
           <li class="pages-list-item" *ngFor="let element of pageList; let index = index">

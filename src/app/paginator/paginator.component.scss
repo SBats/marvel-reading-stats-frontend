@@ -1,4 +1,5 @@
 @import "../../style/config.scss";
+@import '~knacss/sass/_include-media/_include-media.scss';
 
 :host {
   max-width: 1024px;
@@ -11,6 +12,11 @@
   margin: 0 auto;
   padding: 1rem;
   text-align: center;
+  position: relative;
+
+  @include media('<tablet') {
+    margin-top: 9rem;
+  }
 }
 
 .current, .previous, .next {
@@ -36,10 +42,29 @@
 
 .previous {
   margin-right: 4rem;
+
+  @include media('<tablet') {
+    margin-right: 2rem;
+  }
 }
 
 .next {
   margin-left: 4rem;
+
+  @include media('<tablet') {
+    margin-left: 2rem;
+  }
+}
+
+.current {
+
+  @include media('<tablet') {
+    position: absolute;
+    top: -7rem;
+    left: 50%;
+    width: 100%;
+    transform: translate(-50%, 0);
+  }
 }
 
 .current-number {
@@ -54,12 +79,15 @@
   }
 }
 
+.currentpage-value {
+  color: $marvel-color;
+}
+
 .pages-popup {
   display: none;
   position: absolute;
   overflow-y: auto;
-  min-width: 25vw;
-  max-width: 75vw;
+  width: 70vw;
   max-height: 30rem;
   bottom: 100%;
   left: 50%;
