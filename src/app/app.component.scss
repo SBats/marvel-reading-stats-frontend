@@ -37,11 +37,11 @@ header {
     transition: color 0.2s ease-out;
 
     &:hover, &:focus {
-      color: white;
+      color: $lighter-grey;
     }
 
     &.active {
-      color: $marvel-color;
+      color: white;
     }
 
     @include media('>tablet') {

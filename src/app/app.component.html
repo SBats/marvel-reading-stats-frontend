@@ -10,10 +10,10 @@
     <div class="icon-bar"></div>
   </div>
   <nav [ngClass]="{'opened': showNav}" attr.aria-expanded="{{ showNav }}">
-    <a [routerLink]="['']">Home</a>
-    <a [routerLink]="['library']">Library</a>
-    <a [routerLink]="['collection']">My collection</a>
-    <a [routerLink]="['stats']">My stats</a>
+    <a [routerLink]="['']" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Home</a>
+    <a [routerLink]="['library']" routerLinkActive="active">Library</a>
+    <a [routerLink]="['collection']" routerLinkActive="active">My collection</a>
+    <a [routerLink]="['stats']" routerLinkActive="active">My stats</a>
   </nav>
 </header>
 <main>
