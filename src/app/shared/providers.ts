@@ -1,5 +1,3 @@
-import { provide } from '@angular/core';
-
 import { StorageService } from './services/storage.service';
 import { MRSService } from './services/mrs.service';
 import { MarvelService } from './services/marvel.service';
