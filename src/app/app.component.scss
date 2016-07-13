@@ -8,9 +8,12 @@ header {
 
   nav {
     display: inline-block;
-    vertical-align: middle;
 
-    @include media('<desktop') {
+    @include media('>tablet') {
+      float: right;
+    }
+
+    @include media('<=tablet') {
       display: block;
       overflow: hidden;
       max-height: 0;
@@ -50,11 +53,11 @@ header {
 .nav-toggle {
   display: inline-block;
   padding: 1rem;
-  vertical-align: middle;
   cursor: pointer;
   float: right;
+  margin: 6px 0;
 
-  @include media('>=desktop') {
+  @include media('>tablet') {
     display: none;
   }
 
@@ -89,21 +92,20 @@ header {
 
 .app-title {
   display: inline-block;
-  background: #f0141e;
-  padding: 1rem;
   vertical-align: middle;
   overflow: hidden;
 
   h1 {
     margin: 0;
-    letter-spacing: -2px;
     text-transform: uppercase;
-    transform: scale(1, 2);
     font-size: 2rem;
-    word-spacing: 6px;
     line-height: 2rem;
-
   }
+}
+
+.mrs-logo {
+  max-height: 50px;
+  max-width: 100%;
 }
 
 main {
