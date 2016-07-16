@@ -91,14 +91,23 @@
 
 .stats-widget {
   // color: white;
-  font-weight: 1.5rem;
+  font-size: 1.5rem;
   padding: 4rem;
   display: inline-block;
+  max-width: 25%;
+  text-align: center;
 
   h3 {
     margin-bottom: 0;
     text-align: center;
   }
+}
+
+.stats-value {
+  font-size: 4rem;
+  color: $marvel-color;
+  line-height: 4rem;
+  vertical-align: middle;
 }
 
 @include donut-chart('.read-donut', 57, 150px, 10px, transparent, white, $marvel-color, black);
