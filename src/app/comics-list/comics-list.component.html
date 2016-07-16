@@ -1,5 +1,5 @@
 <ul class="grid-4">
-  <li *ngFor="let item of list" class="comic" [ngClass]="{'read': item.isInCollection}" @comicState>
+  <li *ngFor="let item of list" class="comic" [ngClass]="{'read': item.isInCollection}">
     <div class="comic-cover-container">
       <div class="comic-cover">
         <img [src]="item.thumbnail.path + '/portrait_uncanny.' + item.thumbnail.extension" [alt]="item.title + ' cover'"/>
