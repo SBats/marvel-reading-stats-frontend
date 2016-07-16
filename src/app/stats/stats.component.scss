@@ -48,6 +48,7 @@
       width: $size;
       height: $size;
       background: $base;
+      margin: 0 auto;
 
       .slice {
         &.one {
@@ -94,7 +95,6 @@
   font-size: 1.5rem;
   padding: 4rem;
   display: inline-block;
-  max-width: 25%;
   text-align: center;
 
   h3 {
