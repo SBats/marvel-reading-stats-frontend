@@ -9,6 +9,7 @@ import {
 
 import { ComicsListComponent } from '../../comics-list';
 import { PaginatorComponent } from '../../paginator';
+import { LoaderComponent } from '../../loader';
 
 @Component({
   selector: 'mrs-library-detail',
@@ -16,7 +17,8 @@ import { PaginatorComponent } from '../../paginator';
   styles: [require('./library-detail.component.scss')],
   directives: [
     ComicsListComponent,
-    PaginatorComponent
+    PaginatorComponent,
+    LoaderComponent
   ]
 })
 export class LibraryDetailComponent implements OnInit, OnDestroy {

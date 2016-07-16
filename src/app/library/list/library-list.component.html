@@ -7,7 +7,7 @@
     </li>
   </ul>
 </div>
-<div *ngIf="loading" class="mrs-loader">Loading...</div>
+<mrs-loader *ngIf="loading"></mrs-loader>
 <div *ngIf="!loading">
   <mrs-elements-list [list]="elements" (selectAction)="navigateToDetail($event)">
   </mrs-elements-list>

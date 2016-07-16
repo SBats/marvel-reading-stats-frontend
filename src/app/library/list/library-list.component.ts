@@ -4,6 +4,7 @@ import { MarvelService, ComicDataWrapper } from '../../shared';
 
 import { ElementsListComponent } from '../../elements-list';
 import { PaginatorComponent } from '../../paginator';
+import { LoaderComponent } from '../../loader';
 
 @Component({
   selector: 'mrs-library-list',
@@ -12,7 +13,8 @@ import { PaginatorComponent } from '../../paginator';
   directives: [
     ROUTER_DIRECTIVES,
     ElementsListComponent,
-    PaginatorComponent
+    PaginatorComponent,
+    LoaderComponent
   ]
 })
 export class LibraryListComponent implements OnInit, OnDestroy {

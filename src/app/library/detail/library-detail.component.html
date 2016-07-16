@@ -1,5 +1,5 @@
 <h2 class="page-title">Series name</h2>
-<div *ngIf="loading" class="mrs-loader">Loading...</div>
+<mrs-loader *ngIf="loading"></mrs-loader>
 <div *ngIf="!loading">
   <mrs-comics-list
     [list]="elements"
