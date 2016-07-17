@@ -1,20 +1,22 @@
 <h2 class="page-title">Library</h2>
 <ul class="types-menu">
   <li class="types-menu-item series">
-    <div class="types-menu-image">
-      <img src="/img/series-thanos.jpg" alt="series-illustration"/>
-    </div>
-    <div class="types-menu-container">
-      <div class="types-menu-text">
-        <div>Browse</div>
-        <div>comics</div>
-        <div>by</div>
+    <a  class="types-menu-link" [routerLink]="['series']">
+      <div class="types-menu-image">
+        <img src="/img/series-thanos.jpg" alt="series-illustration"/>
       </div>
-      <h3 class="types-menu-title">Series</h3>
-      <a class="types-menu-link" [routerLink]="['series']">
-        <div>Let's go !</div>
-      </a>
-    </div>
+      <div class="types-menu-container">
+        <div class="types-menu-text">
+          <div>Browse</div>
+          <div>comics</div>
+          <div>by</div>
+        </div>
+        <h3 class="types-menu-title">Series</h3>
+        <div class="types-menu-cta">
+          <div>Let's go !</div>
+        </div>
+      </div>
+    </a>
   </li>
   <!-- <li class="types-menu-item">
     <a [routerLink]="['creators']">
@@ -22,19 +24,21 @@
     </a>
   </li> -->
   <li class="types-menu-item events">
-    <div class="types-menu-image">
-      <img src="/img/events-civil_war.jpg" alt="event-illustration"/>
-    </div>
-    <div class="types-menu-container">
-      <div class="types-menu-text">
-        <div>Browse</div>
-        <div>comics</div>
-        <div>by</div>
+    <a  class="types-menu-link" [routerLink]="['events']">
+      <div class="types-menu-image">
+        <img src="/img/events-civil_war.jpg" alt="event-illustration"/>
       </div>
-      <h3 class="types-menu-title">Events</h3>
-      <a class="types-menu-link" [routerLink]="['events']">
-        <div>Let's go !</div>
-      </a>
-    </div>
+      <div class="types-menu-container">
+        <div class="types-menu-text">
+          <div>Browse</div>
+          <div>comics</div>
+          <div>by</div>
+        </div>
+        <h3 class="types-menu-title">Events</h3>
+        <div class="types-menu-cta">
+          <div>Let's go !</div>
+        </div>
+      </div>
+    </a>
   </li>
 </ul>

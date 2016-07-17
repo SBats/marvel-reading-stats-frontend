@@ -55,6 +55,18 @@ $skewY: map-get($skew-map, y);
     }
   }
 
+  &-link {
+    &:hover, &:focus {
+      .types-menu-image img {
+        transform: scale(1.005);
+      }
+
+      .types-menu-cta {
+        background: darken($marvel-color, 10%);
+      }
+    }
+  }
+
   &-image {
     position: relative;
     width: 50%;
@@ -69,6 +81,7 @@ $skewY: map-get($skew-map, y);
       top: 50%;
       left: 50%;
       transform: skew(-$skewX, -$skewY) translate(-50%, -50%);
+      transition: transform 60s ease-in-out;
     }
   }
 
@@ -104,7 +117,7 @@ $skewY: map-get($skew-map, y);
     }
   }
 
-  &-link {
+  &-cta {
     display: inline-block;
     background: $marvel-color;
     padding: 1rem;
