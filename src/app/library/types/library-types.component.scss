@@ -22,7 +22,8 @@ $skewY: map-get($skew-map, y);
     display: block;
     flex: 1 1 auto;
     margin: 4rem auto;
-    background: black;
+    background: black url($light-strip-texture);
+    background-size: 7px 7px;
     transform: skew($skewX, $skewY);
   }
 
