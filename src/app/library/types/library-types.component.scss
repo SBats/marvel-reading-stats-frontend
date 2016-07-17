@@ -1,4 +1,8 @@
 @import '../../../style/config.scss';
+@import '~knacss/sass/_include-media/_include-media.scss';
+
+$skewX: map-get($skew-map, x);
+$skewY: map-get($skew-map, y);
 
 .chose {
   text-align: center;
@@ -6,37 +10,111 @@
 }
 
 .types-menu {
-  max-width: 1024px;
   list-style: none;
   padding: 0;
   margin: auto;
   text-align: center;
+  display: flex;
+  flex-wrap: wrap;
+
+  &::before, &::after {
+    content: "";
+    display: block;
+    flex: 1 1 auto;
+    margin: 4rem auto;
+    background: black;
+    transform: skew($skewX, $skewY);
+  }
+
+  &::before {
+    margin-left: -4rem;
+  }
+
+  &::after {
+    margin-right: -4rem;
+  }
 
   &-item {
-    display: inline-block;
-    margin: auto 2rem;
+    position: relative;
+    padding: 0;
+    flex: 1 1 auto;
+    width: 80%;
+    margin: 4rem auto;
+    background: white;
+    transform: skew($skewX, $skewY);
+    text-align: left;
 
-    a {
-      display: block;
-      margin: 2rem auto;
-      width: 20rem;
-      height: 14rem;
-      line-height: 11rem;
-      padding: 1rem;
-      background: $dark-grey;
-      text-decoration: none;
-      color: white;
-      font-size: 2rem;
-
-      &:hover, &:focus {
-        background: lighten($dark-grey, 5%);
-      }
+    @include media('>tablet') {
+      display: inline-block;
+      width: 40%;
     }
 
-    span {
-      display: inline-block;
-      line-height: normal;
-      vertical-align: bottom;
+    @include media('>=desktop') {
+      width: 30%;
+    }
+  }
+
+  &-image {
+    position: relative;
+    width: 50%;
+    height: 100%;
+    float: left;
+    margin-left: 2rem;
+    overflow: hidden;
+
+    img {
+      max-width: none;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: skew(-$skewX, -$skewY) translate(-50%, -50%);
+    }
+  }
+
+  &-container {
+    display: inline-block;
+    background: white;
+    height: 100%;
+    width: 40%;
+    padding: 2rem;
+    width: calc(50% - 2rem);
+
+    @include media('>phone') {
+      padding: 4rem;
+    }
+  }
+
+  &-title {
+    transform: skew(-$skewX, -$skewY);
+    text-transform: uppercase;
+    margin: 0;
+    margin-bottom: 3rem;
+    color: $marvel-color;
+  }
+
+  &-text {
+    text-transform: uppercase;
+    font-size: 2.4rem;
+    font-weight: 700;
+    text-align: left;
+
+    > * {
+      transform: skew(-$skewX, -$skewY);
+    }
+  }
+
+  &-link {
+    display: inline-block;
+    background: $marvel-color;
+    padding: 1rem;
+    color: white;
+    text-decoration: none;
+    text-align: center;
+
+    div {
+      transform: skew(-$skewX, -$skewY);
+      text-transform: uppercase;
+      font-weight: 700;
     }
   }
 }
