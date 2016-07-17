@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy, HostBinding } from '@angular/core';
 import { ROUTER_DIRECTIVES } from '@angular/router';
 
 import { MRSService, MarvelComic } from '../shared';
@@ -16,6 +16,7 @@ import { TimeSpentPipe } from './stats.pipes';
   ]
 })
 export class StatsComponent implements OnInit, OnDestroy {
+  @HostBinding('class') class = 'fullpage';
   userHasCollection: boolean = false;
   collection: any[] = [];
   private subscribers: any[] = [];
