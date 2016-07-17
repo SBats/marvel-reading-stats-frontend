@@ -34,26 +34,26 @@ header {
         max-height: 50vh;
       }
     }
-  }
 
-  a {
-    display:block;
-    padding: 1em 2em;
-    color: $light-grey;
-    text-transform: uppercase;
-    text-decoration: none;
-    transition: color 0.2s ease-out;
+    a {
+      display:block;
+      padding: 1em 2em;
+      color: $light-grey;
+      text-transform: uppercase;
+      text-decoration: none;
+      transition: color 0.2s ease-out;
 
-    &:hover, &:focus {
-      color: $lighter-grey;
-    }
+      &:hover, &:focus {
+        color: $lighter-grey;
+      }
 
-    &.active {
-      color: white;
-    }
+      &.active {
+        color: white;
+      }
 
-    @include media('>tablet') {
-      display: inline-block;
+      @include media('>tablet') {
+        display: inline-block;
+      }
     }
   }
 }

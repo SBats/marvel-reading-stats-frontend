@@ -1,7 +1,9 @@
 <header @headerState>
   <div class="app-title">
-    <h1 class="sr-only">{{ title }}</h1>
-    <img class="mrs-logo" src="img/mrs-logo.svg"/>
+    <a [routerLink]="['']">
+      <h1 class="sr-only">{{ title }}</h1>
+      <img class="mrs-logo" src="img/mrs-logo.svg"/>
+    </a>
   </div>
   <div [ngClass]="{'opened': showNav}" class="nav-toggle" attr.aria-expanded="{{ showNav }}" (click)="toggleNav()" (keyup.enter)="toggleNav()" tabindex="0">
     <span class="sr-only">Toogle navigation</span>
