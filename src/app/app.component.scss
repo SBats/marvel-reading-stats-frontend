@@ -2,7 +2,7 @@
 @import '~knacss/sass/_include-media/_include-media.scss';
 
 :host {
-  height: 100%;
+  min-height: 100%;
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -118,7 +118,9 @@ header {
 }
 
 main {
-  flex: 1 1 100%;
+  flex: 1 1 auto;
+  display: flex;
+  flex-direction: column;
   background: white;
   color: black;
 }
