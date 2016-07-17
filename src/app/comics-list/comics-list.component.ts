@@ -2,11 +2,7 @@ import {
   Component,
   Input,
   Output,
-  EventEmitter,
-  animate,
-  trigger,
-  transition,
-  style
+  EventEmitter
 } from '@angular/core';
 
 @Component({

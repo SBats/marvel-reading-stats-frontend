@@ -11,7 +11,6 @@ import {
   tick
 } from '@angular/core/testing';
 
-import { MockBackend } from '@angular/http/testing';
 import { StorageService } from './storage.service';
 
 if (navigator.userAgent.toLowerCase().indexOf('firefox') > -1) {

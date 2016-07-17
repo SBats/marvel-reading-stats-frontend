@@ -16,7 +16,7 @@ describe('App Component', () => {
     addProviders([
       AppComponent,
       StorageService
-    ])
+    ]);
   });
 
   it('should have a title', inject([AppComponent, StorageService], (app: AppComponent, StorageService) => {

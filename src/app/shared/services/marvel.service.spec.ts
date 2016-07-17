@@ -88,14 +88,16 @@ describe('Marvel Service', () => {
   });
 
   describe('getCommonParams', () => {
-    it('should return an empty array if there\s no commonsParameters in CONFIG', inject([MarvelService], (marvelService: MarvelService) => {
+    it('should return an empty array if there\s no commonsParameters in CONFIG',
+    inject([MarvelService], (marvelService: MarvelService) => {
       let result;
       marvelService.config = {};
       result = marvelService.getCommonParams();
       expect(result.length).toBe(0);
     }));
 
-    it('should return an array containing formated commonsParameters from CONFIG', inject([MarvelService], (marvelService: MarvelService) => {
+    it('should return an array containing formated commonsParameters from CONFIG',
+    inject([MarvelService], (marvelService: MarvelService) => {
       let result;
       marvelService.config = {
         commonsParameters: {
@@ -108,21 +110,24 @@ describe('Marvel Service', () => {
   });
 
   describe('getPagination', () => {
-    it('should return an empty string if pageNumber is not > 1', inject([MarvelService], (marvelService: MarvelService) => {
+    it('should return an empty string if pageNumber is not > 1',
+    inject([MarvelService], (marvelService: MarvelService) => {
       let result;
       marvelService.config = {};
       result = marvelService.getPagination(1);
       expect(result).toBe('');
     }));
 
-    it('should return a string that contains offset= and (pageNumber - 1) * 20 if there\s no limit parameter in CONFIG', inject([MarvelService], (marvelService: MarvelService) => {
+    it('should return a string that contains offset= and (pageNumber - 1) * 20 if there\s no limit parameter in CONFIG',
+    inject([MarvelService], (marvelService: MarvelService) => {
       let result;
       marvelService.config = {};
       result = marvelService.getPagination(2);
       expect(result).toBe('offset=20');
     }));
 
-    it('should return a string that contains offset= and (pageNumber - 1) * CONFIG limit if specified', inject([MarvelService], (marvelService: MarvelService) => {
+    it('should return a string that contains offset= and (pageNumber - 1) * CONFIG limit if specified',
+    inject([MarvelService], (marvelService: MarvelService) => {
       let result;
       marvelService.config = {
         commonsParameters: {limit: 14}

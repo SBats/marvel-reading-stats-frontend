@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, HostBinding } from '@angular/core';
 import { ROUTER_DIRECTIVES } from '@angular/router';
 
 import { MRSService } from '../shared';
@@ -7,10 +7,10 @@ import { MRSService } from '../shared';
   selector: 'mrs-home',
   template: require('./home.component.html'),
   styles: [require('./home.component.scss')],
-  directives: [...ROUTER_DIRECTIVES],
-  host: {'class': 'fullpage'}
+  directives: [...ROUTER_DIRECTIVES]
 })
 export class HomeComponent implements OnInit {
+  @HostBinding('class') class = 'fullpage';
   userHasCollection: boolean = false;
 
   constructor(private mrsService: MRSService) {
