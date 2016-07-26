@@ -7,6 +7,11 @@ $skewY: map-get($skew-map, y);
 :host {
   background: url("img/stats-bg-2.jpg") center center no-repeat;
   background-size: cover;
+  color: white;
+}
+
+.page-title::before {
+  background: white;
 }
 
 // Donut Chart Mixin
@@ -104,6 +109,7 @@ $skewY: map-get($skew-map, y);
   display: inline-block;
   text-align: center;
   background: white;
+  color: black;
   flex: 1 1 auto;
   min-width: 30%;
   margin: 2rem;
