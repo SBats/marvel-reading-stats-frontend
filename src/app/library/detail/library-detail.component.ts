@@ -7,19 +7,10 @@ import {
   UserData,
 } from '../../shared';
 
-import { ComicsListComponent } from '../../comics-list';
-import { PaginatorComponent } from '../../paginator';
-import { LoaderComponent } from '../../loader';
-
 @Component({
   selector: 'mrs-library-detail',
   template: require('./library-detail.component.html'),
-  styles: [require('./library-detail.component.scss')],
-  directives: [
-    ComicsListComponent,
-    PaginatorComponent,
-    LoaderComponent
-  ]
+  styles: [require('./library-detail.component.scss')]
 })
 export class LibraryDetailComponent implements OnInit, OnDestroy {
   elements: any[] = [];

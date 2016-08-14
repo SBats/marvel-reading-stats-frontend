@@ -1,17 +1,11 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { ROUTER_DIRECTIVES } from '@angular/router';
 
 import { MRSService } from '../shared';
-import { ComicsListComponent } from '../comics-list';
 
 @Component({
   selector: 'mrs-collection',
   template: require('./collection.component.html'),
   styles: [require('./collection.component.scss')],
-  directives: [
-    ...ROUTER_DIRECTIVES,
-    ComicsListComponent
-  ]
 })
 export class CollectionComponent implements OnInit, OnDestroy {
   userHasCollection: boolean = false;

@@ -1,7 +1,7 @@
-import { RouterConfig } from '@angular/router';
+import { Routes } from '@angular/router';
 
 import { StatsComponent } from './';
 
-export const statsRoutes: RouterConfig = [
+export const statsRoutes: Routes = [
   { path: 'stats', component: StatsComponent }
 ];

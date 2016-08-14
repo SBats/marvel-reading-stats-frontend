@@ -1,4 +1,3 @@
-export * from './services/';
+export * from './services';
 export * from './interfaces';
 export * from './models';
-export * from './providers';

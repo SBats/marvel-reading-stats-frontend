@@ -4,13 +4,11 @@ import {
   EventEmitter,
   Output
 } from '@angular/core';
-import { ROUTER_DIRECTIVES }    from '@angular/router';
 
 @Component({
   selector: 'mrs-elements-list',
   template: require('./elements-list.component.html'),
-  styles: [require('./elements-list.component.scss')],
-  directives: [ROUTER_DIRECTIVES]
+  styles: [require('./elements-list.component.scss')]
 })
 export class ElementsListComponent {
   @Input() list: any[];

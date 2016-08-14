@@ -1,12 +1,8 @@
 'use strict';
 
 import {
-  it,
-  describe,
-  expect,
   inject,
   addProviders,
-  beforeEach,
   fakeAsync,
   tick
 } from '@angular/core/testing';

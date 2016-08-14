@@ -1,13 +1,11 @@
 import { Component, OnInit, HostBinding } from '@angular/core';
-import { ROUTER_DIRECTIVES } from '@angular/router';
 
 import { MRSService } from '../shared';
 
 @Component({
   selector: 'mrs-home',
   template: require('./home.component.html'),
-  styles: [require('./home.component.scss')],
-  directives: [...ROUTER_DIRECTIVES]
+  styles: [require('./home.component.scss')]
 })
 export class HomeComponent implements OnInit {
   @HostBinding('class') class = 'fullpage';

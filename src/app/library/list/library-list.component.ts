@@ -1,21 +1,11 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { ROUTER_DIRECTIVES, ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { MarvelService, ComicDataWrapper } from '../../shared';
-
-import { ElementsListComponent } from '../../elements-list';
-import { PaginatorComponent } from '../../paginator';
-import { LoaderComponent } from '../../loader';
 
 @Component({
   selector: 'mrs-library-list',
   template: require('./library-list.component.html'),
-  styles: [require('./library-list.component.scss')],
-  directives: [
-    ROUTER_DIRECTIVES,
-    ElementsListComponent,
-    PaginatorComponent,
-    LoaderComponent
-  ]
+  styles: [require('./library-list.component.scss')]
 })
 export class LibraryListComponent implements OnInit, OnDestroy {
   elements: any[] = [];

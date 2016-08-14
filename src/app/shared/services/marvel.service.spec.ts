@@ -1,10 +1,6 @@
 import {
-  it,
-  describe,
-  expect,
   inject,
   fakeAsync,
-  beforeEach,
   addProviders,
   tick
 } from '@angular/core/testing';
