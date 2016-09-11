@@ -2,7 +2,7 @@
 
 import {
   inject,
-  addProviders,
+  TestBed,
   fakeAsync,
   tick
 } from '@angular/core/testing';
@@ -13,10 +13,12 @@ import { StorageService } from './storage.service';
 describe('MRS Service', () => {
 
   beforeEach(() => {
-    addProviders([
-      StorageService,
-      MRSService
-    ]);
+    TestBed.configureTestingModule({
+      providers: [
+        StorageService,
+        MRSService
+      ]
+    });
   });
 
   beforeEach(inject([StorageService], (storageService: StorageService) => {

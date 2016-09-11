@@ -2,7 +2,7 @@
 
 import {
   inject,
-  addProviders,
+  TestBed,
   fakeAsync,
   tick
 } from '@angular/core/testing';
@@ -30,9 +30,9 @@ if (navigator.userAgent.toLowerCase().indexOf('firefox') > -1) {
 describe('Storage Service', () => {
 
   beforeEach(() => {
-    addProviders([
-      StorageService
-    ]);
+    TestBed.configureTestingModule({
+      providers: [StorageService]
+    });
     localStorage.clear();
   });
 

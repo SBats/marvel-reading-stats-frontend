@@ -7,8 +7,8 @@ import {
 
 @Component({
   selector: 'mrs-elements-list',
-  template: require('./elements-list.component.html'),
-  styles: [require('./elements-list.component.scss')]
+  templateUrl: './elements-list.component.html',
+  styleUrls: ['./elements-list.component.scss']
 })
 export class ElementsListComponent {
   @Input() list: any[];

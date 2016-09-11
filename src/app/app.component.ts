@@ -17,8 +17,8 @@ import '../style/app.scss';
  */
 @Component({
   selector: 'mrs-app',
-  template: require('./app.component.html'),
-  styles: [require('./app.component.scss')],
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.scss'],
   animations: [
     trigger('headerState', [
       transition('void => *', [

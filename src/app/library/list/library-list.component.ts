@@ -4,8 +4,8 @@ import { MarvelService, ComicDataWrapper } from '../../shared';
 
 @Component({
   selector: 'mrs-library-list',
-  template: require('./library-list.component.html'),
-  styles: [require('./library-list.component.scss')]
+  templateUrl: './library-list.component.html',
+  styleUrls: ['./library-list.component.scss']
 })
 export class LibraryListComponent implements OnInit, OnDestroy {
   elements: any[] = [];
@@ -37,8 +37,7 @@ export class LibraryListComponent implements OnInit, OnDestroy {
     );
 
     this.subscribers.push(
-      this.router
-        .routerState
+      this.route
         .queryParams
         .subscribe(params => {
           this.startWithQuery = params['startwith'] || null;

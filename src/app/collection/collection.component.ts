@@ -4,8 +4,8 @@ import { MRSService } from '../shared';
 
 @Component({
   selector: 'mrs-collection',
-  template: require('./collection.component.html'),
-  styles: [require('./collection.component.scss')],
+  templateUrl: './collection.component.html',
+  styleUrls: ['./collection.component.scss']
 })
 export class CollectionComponent implements OnInit, OnDestroy {
   userHasCollection: boolean = false;

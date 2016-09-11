@@ -10,8 +10,8 @@ import {
 
 @Component({
   selector: 'mrs-paginator',
-  template: require('./paginator.component.html'),
-  styles: [require('./paginator.component.scss')]
+  templateUrl: './paginator.component.html',
+  styleUrls: ['./paginator.component.scss']
 })
 export class PaginatorComponent implements OnInit, OnChanges {
   @Input() pageQuantity: number = 0;

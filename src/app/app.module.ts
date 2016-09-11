@@ -1,8 +1,9 @@
-import { NgModule } from '@angular/core';
+import { NgModule, ApplicationRef } from '@angular/core';
 // Modules imports
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpModule } from '@angular/http';
 import { routing } from './app.routing';
+import { removeNgStyles, createNewHosts } from '@angularclass/hmr';
 
 // Components imports
 import { AppComponent } from './app.component';
@@ -57,4 +58,21 @@ import { MarvelService } from './shared';
   ],
   bootstrap: [AppComponent]
 })
-export class AppModule {}
+export class AppModule {
+  constructor(public appRef: ApplicationRef) {}
+    hmrOnInit(store) {
+      console.log('HMR store', store);
+    }
+    hmrOnDestroy(store) {
+      let cmpLocation = this.appRef.components.map(cmp => cmp.location.nativeElement);
+      // recreate elements
+      store.disposeOldHosts = createNewHosts(cmpLocation);
+      // remove styles
+      removeNgStyles();
+    }
+    hmrAfterDestroy(store) {
+      // display new elements
+      store.disposeOldHosts();
+      delete store.disposeOldHosts;
+    }
+}

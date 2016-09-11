@@ -1,12 +1,11 @@
 import {
   inject,
   fakeAsync,
-  addProviders,
+  TestBed,
   tick
 } from '@angular/core/testing';
 
 import { MockBackend } from '@angular/http/testing';
-import { provide } from '@angular/core';
 
 import {
   Http,
@@ -21,20 +20,20 @@ import { MarvelService } from './marvel.service';
 describe('Marvel Service', () => {
 
   beforeEach(() => {
-    addProviders([
-      BaseRequestOptions,
-      MockBackend,
-      MarvelService,
-      provide(
-        Http,
+    TestBed.configureTestingModule({
+      providers: [
+        BaseRequestOptions,
+        MockBackend,
+        MarvelService,
         {
+          provide: Http,
           useFactory: (backend: ConnectionBackend, defaultOptions: BaseRequestOptions) => {
             return new Http(backend, defaultOptions);
           },
           deps: [MockBackend, BaseRequestOptions]
         }
-      ),
-    ]);
+      ]
+    });
   });
 
   describe('checkStatus', () => {

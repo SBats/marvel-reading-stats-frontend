@@ -2,8 +2,8 @@ import { Component } from '@angular/core';
 
 @Component({
   selector: 'mrs-library',
-  template: require('./library.component.html'),
-  styles: [require('./library.component.scss')]
+  templateUrl: './library.component.html',
+  styleUrls: ['./library.component.scss']
 })
 export class LibraryComponent {
 }

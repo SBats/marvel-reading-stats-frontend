@@ -11,3 +11,13 @@ if (process.env.ENV === 'build') {
 
 platformBrowserDynamic().bootstrapModule(AppModule)
   .catch(err => console.error(err));
+
+export function main() {
+  return platformBrowserDynamic().bootstrapModule(AppModule);
+}
+
+if (document.readyState === 'complete') {
+  main();
+} else {
+  document.addEventListener('DOMContentLoaded', main);
+}

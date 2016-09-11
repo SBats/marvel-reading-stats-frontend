@@ -4,8 +4,8 @@ import { MRSService, MarvelComic } from '../shared';
 
 @Component({
   selector: 'mrs-stats',
-  template: require('./stats.component.html'),
-  styles: [require('./stats.component.scss')]
+  templateUrl: './stats.component.html',
+  styleUrls: ['./stats.component.scss']
 })
 export class StatsComponent implements OnInit, OnDestroy {
   @HostBinding('class') class = 'fullpage';

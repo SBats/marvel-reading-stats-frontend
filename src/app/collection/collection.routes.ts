@@ -1,7 +1,7 @@
-import { RouterConfig } from '@angular/router';
+import { Routes } from '@angular/router';
 
 import { CollectionComponent } from './';
 
-export const collectionRoutes: RouterConfig = [
+export const collectionRoutes: Routes = [
   { path: 'collection', component: CollectionComponent }
 ];

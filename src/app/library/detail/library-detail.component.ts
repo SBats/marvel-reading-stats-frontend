@@ -9,8 +9,8 @@ import {
 
 @Component({
   selector: 'mrs-library-detail',
-  template: require('./library-detail.component.html'),
-  styles: [require('./library-detail.component.scss')]
+  templateUrl: './library-detail.component.html',
+  styleUrls: ['./library-detail.component.scss']
 })
 export class LibraryDetailComponent implements OnInit, OnDestroy {
   elements: any[] = [];
@@ -44,8 +44,7 @@ export class LibraryDetailComponent implements OnInit, OnDestroy {
     );
 
     this.subscribers.push(
-      this.router
-        .routerState
+      this.route
         .queryParams
         .subscribe(params => {
           this.currentPage = params['page'] || 1;

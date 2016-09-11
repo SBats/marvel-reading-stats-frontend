@@ -4,8 +4,8 @@ import { MRSService } from '../shared';
 
 @Component({
   selector: 'mrs-home',
-  template: require('./home.component.html'),
-  styles: [require('./home.component.scss')]
+  templateUrl: './home.component.html',
+  styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
   @HostBinding('class') class = 'fullpage';
