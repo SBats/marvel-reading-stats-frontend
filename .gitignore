@@ -56,3 +56,4 @@ __build__/**
 # IDE #
 .idea/
 *.swp
+.vscode
