@@ -4,10 +4,14 @@ import { BehaviorSubject } from 'rxjs';
 import { StorageService } from './storage.service';
 import { UserData } from '../interfaces';
 
+import { CONFIG } from '../../app.config';
+
 @Injectable()
 export class MRSService {
   userData: BehaviorSubject<UserData> = new BehaviorSubject<UserData>(null);
   userHasCollection: boolean = false;
+  config: any = CONFIG;
+  loading: boolean = false;
 
   constructor(private storageService: StorageService) {
     this.storageService.currentStorage
@@ -19,13 +23,13 @@ export class MRSService {
 
   addComic(comic) {
     let newValue = this.userData.getValue();
-    newValue.comics.set(comic.id, comic);
+    newValue.comics.set(comic.marvelId, comic);
     this.storageService.updateStorage(newValue);
   }
 
   removeComic(comic) {
     let newValue = this.userData.getValue();
-    newValue.comics.delete(comic.id);
+    newValue.comics.delete(comic.marvelId);
     this.storageService.updateStorage(newValue);
   }
 

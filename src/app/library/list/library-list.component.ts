@@ -1,6 +1,6 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { MarvelService, ComicDataWrapper } from '../../shared';
+import { ApiService } from '../../shared';
 
 @Component({
   selector: 'mrs-library-list',
@@ -14,14 +14,14 @@ export class LibraryListComponent implements OnInit, OnDestroy {
   pageQuantity: number = null;
   libraryType: string;
   queryFiltersList: string[] = [
-    'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm',
+    '#', 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm',
     'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'
   ];
   startWithQuery: string = null;
   private subscribers: any[] = [false];
 
   constructor(
-    private marvelService: MarvelService,
+    private apiService: ApiService,
     private route: ActivatedRoute,
     private router: Router
   ) {}
@@ -40,7 +40,7 @@ export class LibraryListComponent implements OnInit, OnDestroy {
       this.route
         .queryParams
         .subscribe(params => {
-          this.startWithQuery = params['startwith'] || null;
+          this.startWithQuery = params['startwith'] || this.queryFiltersList[0];
           this.currentPage = params['page'] || 1;
 
           if (this.libraryType) {
@@ -89,20 +89,19 @@ export class LibraryListComponent implements OnInit, OnDestroy {
       this.subscribers[0].unsubscribe();
     }
 
-    this.subscribers[0] = this.marvelService.getTypeList(
+    this.subscribers[0] = this.apiService.getTypeList(
       this.libraryType,
-      this.startWithQuery,
-      this.currentPage
-    ).subscribe((res: ComicDataWrapper) => {
-      this.elements = res.data.results;
-      this.setPageQuantity(res.data.limit, res.data.total);
+      this.startWithQuery
+    ).subscribe((res: any[]) => {
+      this.elements = res;
+      this.setPageQuantity(0, 0);
       this.loading = false;
     });
   }
 
   navigateToDetail(element) {
     this.router.navigate(
-      ['/library', this.libraryType , element.id],
+      ['/library', this.libraryType , element.marvelId],
       {queryParams: {}}
     );
   }

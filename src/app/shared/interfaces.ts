@@ -136,5 +136,5 @@ export interface EventSummary {
 }
 
 export interface UserData {
-  comics: Map<any, any>;
+  comics: any;
 }

@@ -66,7 +66,7 @@ describe('Storage Service', () => {
     inject([StorageService], (storageService: StorageService) => {
       let storage;
       let storageModel = Object.assign({}, storageService.defaultModel);
-      storageModel.comics = new Map(storageModel.comics);
+      storageModel.comics = Array.from(storageModel.comics);
 
       storageService.initStorage();
       storage = localStorage.getItem(storageService.storageKey);

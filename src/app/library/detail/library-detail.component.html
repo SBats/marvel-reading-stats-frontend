@@ -1,8 +1,9 @@
-<h2 class="page-title">Series name</h2>
+<h2 class="page-title">{{ element ? element.title : null }}</h2>
 <mrs-loader *ngIf="loading"></mrs-loader>
 <div *ngIf="!loading">
+  <p class="description">{{ element.description }}</p>
   <mrs-comics-list
-    [list]="elements"
+    [list]="element.comics"
     (addAction)="addComicToCollection($event)"
     (removeAction)="removeComicFromCollection($event)">
   </mrs-comics-list>

@@ -1,9 +1,8 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import {
-  MarvelService,
+  ApiService,
   MRSService,
-  ComicDataWrapper,
   UserData,
 } from '../../shared';
 
@@ -13,7 +12,7 @@ import {
   styleUrls: ['./library-detail.component.scss']
 })
 export class LibraryDetailComponent implements OnInit, OnDestroy {
-  elements: any[] = [];
+  element: any = {};
   loading: boolean= true;
   userData: UserData;
   currentPage: number = 1;
@@ -23,10 +22,10 @@ export class LibraryDetailComponent implements OnInit, OnDestroy {
   private subscribers: any[] = [];
 
   constructor(
-    private marvelService: MarvelService,
     private route: ActivatedRoute,
     private router: Router,
-    private mrsService: MRSService
+    private mrsService: MRSService,
+    private apiService: ApiService
   ) {}
 
   ngOnInit(): void {
@@ -59,7 +58,7 @@ export class LibraryDetailComponent implements OnInit, OnDestroy {
       this.mrsService.userData
         .subscribe((data: UserData) => {
           this.userData = data;
-          this.checkCollectionElements(this.elements, this.userData);
+          this.checkCollectionElements(this.element.comics, this.userData);
         })
       );
   }
@@ -92,22 +91,23 @@ export class LibraryDetailComponent implements OnInit, OnDestroy {
       this.subscribers[0].unsubscribe();
     }
 
-    this.subscribers[0] = this.marvelService.getComicsFromType(
+    this.subscribers[0] = this.apiService.getElementDetail(
       this.libraryType,
-      this.libraryId,
-      this.currentPage
-    ).subscribe((res: ComicDataWrapper) => {
-      this.elements = res.data.results;
-      this.checkCollectionElements(this.elements, this.userData);
-      this.setPageQuantity(res.data.limit, res.data.total);
+      this.libraryId
+    ).subscribe((res: any[]) => {
+      this.element = res;
+      this.checkCollectionElements(this.element.comics, this.userData);
+      this.setPageQuantity(0, 0);
       this.loading = false;
     });
   }
 
   checkCollectionElements(elements, collection) {
-    this.elements.map(element =>
-      element.isInCollection = collection.comics.has(element.id)
-    );
+    if (elements) {
+      elements.map(element =>
+        element.isInCollection = collection.comics.has(element.marvelId)
+      );
+    }
   }
 
   addComicToCollection(comic) {

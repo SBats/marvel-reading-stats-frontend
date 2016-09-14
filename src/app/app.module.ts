@@ -25,7 +25,7 @@ import { TimeSpentPipe } from './stats';
 // Services imports
 import { StorageService } from './shared';
 import { MRSService } from './shared';
-import { MarvelService } from './shared';
+import { ApiService } from './shared';
 
 @NgModule({
   imports: [
@@ -54,7 +54,7 @@ import { MarvelService } from './shared';
   providers: [
     StorageService,
     MRSService,
-    MarvelService
+    ApiService
   ],
   bootstrap: [AppComponent]
 })
