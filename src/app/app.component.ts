@@ -54,6 +54,7 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit() {
+    console.log('poney');
     this.storageService.getStorage();
   }
 

@@ -7,13 +7,10 @@
     "sourceMap": true,
     "noEmitHelpers": true
   },
-  "include": [
-    "src/**/*"
-  ],
-  "exclude": [
-    "node_modules",
-    "dist"
-  ],
   "compileOnSave": false,
-  "buildOnSave": false
+  "buildOnSave": false,
+  "awesomeTypescriptLoaderOptions": {
+    "forkChecker": true,
+    "useWebpackText": true
+  }
 }
