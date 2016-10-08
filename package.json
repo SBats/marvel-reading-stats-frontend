@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "license": "MIT",
   "scripts": {
-    "init-config": "cp src/app/app.config.ts.example src/app/app.config.ts",
+    "init-config": "cp -i src/app/app.config.ts.example src/app/app.config.ts",
     "clean": "rimraf node_modules doc dist && npm cache clean",
     "clean-install": "npm run clean && npm install",
     "clean-start": "npm run clean-install && npm start",
