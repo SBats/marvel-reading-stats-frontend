@@ -5,17 +5,14 @@
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
     "sourceMap": true,
-    "noEmitHelpers": true,
-    "types": [
-      "core-js",
-      "jasmine",
-      "node",
-      "protractor",
-      "selenium-webdriver"
-    ]
+    "noEmitHelpers": true
   },
+  "include": [
+    "src/**/*"
+  ],
   "exclude": [
-    "node_modules"
+    "node_modules",
+    "dist"
   ],
   "compileOnSave": false,
   "buildOnSave": false
