@@ -1,0 +1,69 @@
+@import '../../config/config.scss';
+
+:host {
+  background: url('img/landing-bg.gif') center center no-repeat;
+  background-size: cover;
+  height: 100%;
+  display: block;
+  width: 100%;
+  padding: 4rem 0;
+}
+
+.landing-title {
+  font-family: inherit;
+  text-align: center;
+  width: 60vw;
+  margin: auto;
+  padding: 5rem 0;
+  color: white;
+}
+
+.greetings {
+  margin: 0 auto;
+  overflow: hidden;
+  text-align: center;
+  max-width: 1024px;
+
+  &-title {
+    color: white;
+    position: relative;
+    padding: 3rem;
+    margin: auto;
+
+    @media (min-width: $small-screen + 1) {
+      transform: skew(map-get($skew-map, x), map-get($skew-map, y));
+    }
+
+    h3 {
+      display: inline-block;
+      margin-bottom: 0;
+      vertical-align: middle;
+    }
+  }
+
+  &-links {
+    margin: auto;
+    font-size: 2rem;
+    padding: 0 3rem;
+    line-height: 5rem;
+    text-transform: uppercase;
+    font-weight: bolder;
+    color: $marvel-color;
+
+    @media (min-width: $small-screen + 1) {
+      transform: skew(map-get($skew-map, x), map-get($skew-map, y));
+    }
+
+    a {
+      display: block;
+      color: white;
+      text-decoration: none;
+      background: $marvel-color center center repeat;
+      padding: 2rem 4rem;
+
+      &:hover, &:focus {
+        background-color: darken($marvel-color, 10%);
+      }
+    }
+  }
+}

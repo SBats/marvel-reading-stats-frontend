@@ -1,0 +1,22 @@
+// APP CONFIG
+
+// Fonts
+$main-font: "Oswald", sans-serif;
+
+// Colors
+$marvel-color: #f0141e;
+$main-color: #345345;
+$dark-grey: #333;
+$light-grey: #aaa;
+$lighter-grey: #ddd;
+
+// get map values with map-get($skew-map, key);
+$skew-map: (
+  x: -11deg,
+  y: 0
+);
+
+$tiny-screen: 544px;
+$small-screen: 768px;
+$medium-screen: 1024px;
+$large-screen: 1280px;

@@ -1,3 +1,46 @@
-<h1>
-  {{title}}
-</h1>
+<header @headerState>
+  <div class="app-title">
+    <a [routerLink]="['']">
+      <h1 class="sr-only">{{ title }}</h1>
+      <img class="mrs-logo" src="img/mrs-logo.svg"/>
+    </a>
+  </div>
+  <div
+    class="nav-toggle"
+    [ngClass]="{'opened': showNav}"
+    attr.aria-expanded="{{ showNav }}"
+    (click)="toggleNav()"
+    (keyup.enter)="toggleNav()"
+    tabindex="0">
+    <span class="sr-only">Toogle navigation</span>
+    <div class="icon-bar"></div>
+    <div class="icon-bar"></div>
+    <div class="icon-bar"></div>
+  </div>
+  <nav [ngClass]="{'opened': showNav}" attr.aria-expanded="{{ showNav }}">
+    <a
+      [routerLink]="['']"
+      routerLinkActive="active"
+      [routerLinkActiveOptions]="{exact: true}">
+      Home
+    </a>
+  </nav>
+</header>
+<main @contentState>
+  <router-outlet></router-outlet>
+</main>
+<footer @footerState>
+  <p>
+    <a
+      href="http://developer.marvel.com/"
+      title="Marvel developer website">
+      Data provided by Marvel
+    </a>.
+    © 2016
+    <a
+      href="http://marvel.com/"
+      title="Marvel website">
+      Marvel
+    </a>
+  </p>
+</footer>
