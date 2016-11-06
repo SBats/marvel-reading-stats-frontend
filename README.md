@@ -1,20 +1,30 @@
-# Marvel Unlimited Stats - frontend
+# Marvel Reading Stats - frontend
 Frontend for stats about your marvel ultimate readings !
 
 **This project is currently under heavy developments**
 
-## Roadmap
-* Allow filtering in library & Merge library and collection ???
-* Use [marvel-unlimited-stats-backend](https://github.com/SBats/marvel-reading-stats-backend) instead of marvel API. (This will quickly be needed as the 3000 call/day limit of the API will be an issue regarding the amount of content)
-
 ## Prerequisite
-You will need node >= 5 and npm >= 3 in order to make this project work.
+In order to make this project work, you will need:
+* node >= 5
+* npm >= 3
+* [angular-cli](https://github.com/angular/angular-cli)
+* A [marvel-reading-stats-backend](https://github.com/SBats/marvel-reading-stats-backend) instance
 
 ## Installation
 * `npm install`
 
-## Development
-* `npm run start` - launch dev server and files watch
+## Development server
+Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
 
-## Building
-* `npm run build` - build app for distribution
+## Build
+
+Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `-prod` flag for a production build.
+
+## Running unit tests
+
+Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+
+## Running end-to-end tests
+
+Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+Before running the tests make sure you are serving the app via `ng serve`.
