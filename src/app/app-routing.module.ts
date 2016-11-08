@@ -6,6 +6,10 @@ export const routes: Routes = [
     redirectTo: 'landing',
     pathMatch: 'full'
   },
+  {
+    path: 'library',
+    loadChildren: 'app/library/library.module#LibraryModule'
+  },
 ];
 
 @NgModule({
