@@ -19,6 +19,7 @@
       "prefix": "mrs",
       "mobile": false,
       "styles": [
+        "../node_modules/normalize.css/normalize.css",
         "styles.scss"
       ],
       "scripts": [
