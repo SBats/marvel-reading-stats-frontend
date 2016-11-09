@@ -1,0 +1,121 @@
+@import '../../../config/config.scss';
+
+:host {
+  display: block;
+  height: calc(100vh - 94px);
+  width: 100%;
+}
+
+.types {
+
+  &-grid {
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+    display: flex;
+    background: black;
+  }
+
+  &-item {
+    flex: 0 1 auto;
+    height: 60vh;
+    width: 100%;
+    margin: 1rem;
+    position: relative;
+    color: white;
+    text-decoration: none;
+    transition: transform 0.2s ease-in-out;
+
+    @media (min-width: $small-screen + 1) {
+      width: 35%;
+      margin: 0 10px;
+      transform: skew(
+        map-get($skew-map, x),
+        map-get($skew-map, y)
+      );
+      
+      &:first-child {
+        margin-left: -4%;
+      }
+
+      &:last-child {
+        margin-right: -4%;
+      }
+    }
+
+    &:hover, &:focus {
+      z-index: 1;
+      transform: translate(-5px, 2rem) skew(-11deg, 0);
+      .types-img img {
+        filter: sepia(0) hue-rotate(0deg) saturate(1) brightness(1);
+      }
+
+      .types-title {
+        bottom: -3rem;
+        right: -10px;
+        box-shadow: 0px 0px 0rem 10px black;
+      }
+    }
+
+  }
+
+  &-img {
+    height: 100%;
+    width: 100%;
+    position: relative;
+    overflow: hidden;
+
+    img {
+      position: absolute;
+      min-height: 120%;
+      min-width: 120%;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      filter: sepia(1) hue-rotate(-40deg) saturate(1.5) brightness(.5);
+      transition: filter 0.2s ease-in-out;
+
+      @media (min-width: $small-screen + 1) {
+        transform: 
+          skew(
+            -(map-get($skew-map, x)),
+            -(map-get($skew-map, y))
+          )
+          translate(-50%, -50%);
+      }
+    }
+    
+  }
+
+  &-title {
+    position: absolute;
+    bottom: -2rem;
+    right: 0;
+    max-width: 20rem;
+    line-height: 3rem;
+    font-size: 1rem;
+    display: block;
+    text-transform: uppercase;
+    background: $marvel-color;
+    padding: 0.5rem 4rem;
+    transition: 
+      background 0.2s ease-in-out,
+      bottom 0.2s ease-in-out,
+      right 0.2s ease-in-out,
+      box-shadow 0.2s ease-in-out;
+
+    div {
+      @media (min-width: $small-screen + 1) {
+        transform: skew(
+          -(map-get($skew-map, x)),
+          -(map-get($skew-map, y))
+        );
+      }
+    }
+
+    &:hover, &:focus {
+      background-color: darken($marvel-color, 10%);
+    }
+
+  }
+}
