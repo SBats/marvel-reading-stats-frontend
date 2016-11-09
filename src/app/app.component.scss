@@ -1,7 +1,7 @@
 @import "../config/config.scss";
 
 :host {
-  min-height: 100%;
+  height: 100%;
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -11,6 +11,7 @@ header {
   background-color: black;
   color: white;
   padding: 1rem 3rem;
+  width: 100%;
   flex: none;
 
   nav {
@@ -113,19 +114,19 @@ header {
 }
 
 main {
-  flex: 1 1 auto;
-  display: flex;
-  flex-direction: column;
+  width: 100%;
+  flex: 1 0 auto;
   background: white;
   color: black;
 }
 
 footer {
+  position: absolute;
+  bottom: 0;
   padding: 1rem;
   font-size: 0.8rem;
   color: white;
   font-weight: 300;
-  flex: none;
 
   a {
     color: white;

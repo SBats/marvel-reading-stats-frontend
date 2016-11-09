@@ -1,7 +1,13 @@
 @import '../../config/config.scss';
 
+:host {
+  display: block;
+  height: calc(100vh - 94px);
+  width: 100%;
+}
+
 .landing-part {
-  min-height: 100vh;
+  height: 100%;
   width: 100%;
   overflow: hidden;
   position: relative;
