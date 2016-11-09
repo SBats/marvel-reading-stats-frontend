@@ -12,6 +12,7 @@ header {
   color: white;
   padding: 1rem 3rem;
   width: 100%;
+  z-index: 2;
   flex: none;
 
   nav {
@@ -116,8 +117,9 @@ header {
 main {
   width: 100%;
   flex: 1 0 auto;
-  background: white;
-  color: black;
+  z-index: 1;
+  background: black;
+  color: white;
 }
 
 footer {

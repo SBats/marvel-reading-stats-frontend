@@ -43,7 +43,9 @@
       }
     }
 
-    &:hover, &:focus {
+    &:hover,
+    &:focus,
+    &:active {
       z-index: 1;
       transform: translate(-5px, 2rem) skew(-11deg, 0);
       .types-img img {
