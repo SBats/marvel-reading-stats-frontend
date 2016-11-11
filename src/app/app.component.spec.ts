@@ -23,28 +23,4 @@ describe('App: Mrs', () => {
     let app = fixture.debugElement.componentInstance;
     expect(app.title).toEqual('Marvel reading stats');
   }));
-
-  it('should render title in a h1 tag', async(() => {
-    let fixture = TestBed.createComponent(AppComponent);
-    fixture.detectChanges();
-    let compiled = fixture.debugElement.nativeElement;
-    expect(compiled.querySelector('h1').textContent).toContain('Marvel reading stats');
-  }));
-
-  it('should have a showNav property to false', () => {
-    let fixture = TestBed.createComponent(AppComponent);
-    let app = fixture.debugElement.componentInstance;
-    expect(app.showNav).toEqual(false);
-  });
-
-  describe('toggleNav', () => {
-    it('should reverse showNav value', () => {
-      let fixture = TestBed.createComponent(AppComponent);
-      let app = fixture.debugElement.componentInstance;
-      fixture.detectChanges();
-      expect(app.showNav).toEqual(false);
-      app.toggleNav();
-      expect(app.showNav).toEqual(true);
-    });
-  });
 });

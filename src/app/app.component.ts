@@ -11,14 +11,6 @@ import {
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
   animations: [
-    trigger('headerState', [
-      transition('void => *', [
-        style({
-          opacity: 0
-        }),
-        animate('400ms 400ms ease-out')
-      ])
-    ]),
     trigger('footerState', [
       transition('void => *', [
         style({
@@ -39,9 +31,4 @@ import {
 })
 export class AppComponent {
   title: string = 'Marvel reading stats';
-  showNav: boolean = false;
-
-  toggleNav() {
-    this.showNav = !this.showNav;
-  }
 }
