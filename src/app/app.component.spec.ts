@@ -1,26 +1,53 @@
 /* tslint:disable:no-unused-variable */
+import { async, inject, ComponentFixture, TestBed } from '@angular/core/testing';
+import { By } from '@angular/platform-browser';
+import { Component, DebugElement } from '@angular/core';
+import { Location } from '@angular/common';
+import { Router } from '@angular/router';
+import { RouterTestingModule } from '@angular/router/testing';
 
-import { TestBed, async } from '@angular/core/testing';
+import { SharedModule } from './shared';
+import { CoreModule } from './core';
 import { AppComponent } from './app.component';
 
-describe('App: Mrs', () => {
-  beforeEach(() => {
+@Component({
+  template: ''
+})
+class DummyComponent {
+}
+
+describe('AppComponent', () => {
+  let component: AppComponent;
+  let fixture: ComponentFixture<AppComponent>;
+
+  beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [
-        AppComponent
+      imports: [
+        CoreModule,
+        SharedModule,
+        RouterTestingModule.withRoutes([
+         { path: ':collection/:App/comics', component: DummyComponent }
+        ])
       ],
-    });
+      declarations: [ AppComponent, DummyComponent ]
+    })
+    .compileComponents();
+  }));
+
+  beforeEach(async(() => {
+    inject(
+      [Router, Location],
+      (Router: Router, location: Location) => {
+
+      fixture = TestBed.createComponent(AppComponent);
+      component = fixture.componentInstance;
+      fixture.detectChanges();
+    })
+  }));
+
+  it('should create', () => {
+    async(() => {
+      expect(component).toBeTruthy();
+    })
   });
-
-  it('should create the app', async(() => {
-    let fixture = TestBed.createComponent(AppComponent);
-    let app = fixture.debugElement.componentInstance;
-    expect(app).toBeTruthy();
-  }));
-
-  it(`should have as title 'Marvel reading stats'`, async(() => {
-    let fixture = TestBed.createComponent(AppComponent);
-    let app = fixture.debugElement.componentInstance;
-    expect(app.title).toEqual('Marvel reading stats');
-  }));
 });

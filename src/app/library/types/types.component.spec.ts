@@ -1,9 +1,19 @@
 /* tslint:disable:no-unused-variable */
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { async, inject, ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
-import { DebugElement } from '@angular/core';
+import { Component, DebugElement } from '@angular/core';
+import { Location } from '@angular/common';
+import { Router } from '@angular/router';
+import { RouterTestingModule } from '@angular/router/testing';
 
+import { SharedModule } from '../../shared';
 import { TypesComponent } from './types.component';
+
+@Component({
+  template: ''
+})
+class DummyComponent {
+}
 
 describe('TypesComponent', () => {
   let component: TypesComponent;
@@ -11,18 +21,31 @@ describe('TypesComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ TypesComponent ]
+      imports: [
+        SharedModule,
+        RouterTestingModule.withRoutes([
+         { path: ':collection/list', component: DummyComponent }
+        ])
+      ],
+      declarations: [ TypesComponent, DummyComponent ]
     })
     .compileComponents();
   }));
 
-  beforeEach(() => {
-    fixture = TestBed.createComponent(TypesComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
-  });
+  beforeEach(async(() => {
+    inject(
+      [Router, Location],
+      (Router: Router, location: Location) => {
+
+      fixture = TestBed.createComponent(TypesComponent);
+      component = fixture.componentInstance;
+      fixture.detectChanges();
+    })
+  }));
 
   it('should create', () => {
-    expect(component).toBeTruthy();
+    async(() => {
+      expect(component).toBeTruthy();
+    })
   });
 });

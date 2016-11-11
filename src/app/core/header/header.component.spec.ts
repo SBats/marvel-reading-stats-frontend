@@ -1,9 +1,19 @@
 /* tslint:disable:no-unused-variable */
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { async, inject, ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
-import { DebugElement } from '@angular/core';
+import { Component, DebugElement } from '@angular/core';
+import { Location } from '@angular/common';
+import { Router } from '@angular/router';
+import { RouterTestingModule } from '@angular/router/testing';
 
+import { SharedModule } from '../../shared';
 import { HeaderComponent } from './header.component';
+
+@Component({
+  template: ''
+})
+class DummyComponent {
+}
 
 describe('HeaderComponent', () => {
   let component: HeaderComponent;
@@ -11,25 +21,39 @@ describe('HeaderComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ HeaderComponent ]
+      imports: [
+        SharedModule,
+        RouterTestingModule.withRoutes([
+         { path: '/library', component: DummyComponent }
+        ])
+      ],
+      declarations: [ HeaderComponent, DummyComponent ]
     })
     .compileComponents();
   }));
 
-  beforeEach(() => {
-    fixture = TestBed.createComponent(HeaderComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
-  });
+  beforeEach(async(() => {
+    inject(
+      [Router, Location],
+      (Router: Router, location: Location) => {
+
+      fixture = TestBed.createComponent(HeaderComponent);
+      component = fixture.componentInstance;
+      component.title = 'test';
+      fixture.detectChanges();
+    })
+  }));
 
   it('should create', () => {
-    expect(component).toBeTruthy();
+    async(() => {
+      expect(component).toBeTruthy();
+    })
   });
-
-  it('should render title in a h1 tag', async(() => {
-    let fixture = TestBed.createComponent(HeaderComponent);
-    fixture.detectChanges();
-    let compiled = fixture.debugElement.nativeElement;
-    expect(compiled.querySelector('h1').textContent).toContain('Marvel reading stats');
-  }));
+  
+  it('should create', () => {
+    async(() => {
+      let title  = fixture.debugElement.query(By.css('h1'));
+      expect(title.nativeElement.textContent).toContain('test');
+    })
+  });
 });
