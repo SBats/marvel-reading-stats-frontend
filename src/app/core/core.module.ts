@@ -10,6 +10,7 @@ import { SharedModule } from '../shared';
 import { HeaderComponent } from './header';
 
 import { MarvelService, UserService } from './services';
+import { ConnectionModalComponent } from './connection-modal';
 
 @NgModule({
   imports: [
@@ -17,7 +18,8 @@ import { MarvelService, UserService } from './services';
     RouterModule.forChild([])
   ],
   declarations: [
-    HeaderComponent
+    HeaderComponent,
+    ConnectionModalComponent
   ],
   exports: [
     HeaderComponent
