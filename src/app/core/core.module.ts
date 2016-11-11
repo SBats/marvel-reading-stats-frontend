@@ -1,4 +1,5 @@
 import {
+  ModuleWithProviders,
   NgModule,
   Optional,
   SkipSelf,
@@ -6,7 +7,10 @@ import {
 import { CommonModule } from '@angular/common';
 
 import { HeaderComponent } from './header';
-import { MarvelService } from './marvel.service';
+import {
+  MarvelService,
+  MarvelServiceConfig
+} from './services/marvel.service';
 
 @NgModule({
   imports: [
@@ -30,5 +34,14 @@ export class CoreModule {
         Import it in the AppModule only
       `);
     }
+  }
+
+  static forRoot(config: MarvelServiceConfig): ModuleWithProviders {
+    return {
+      ngModule: CoreModule,
+      providers: [
+        {provide: MarvelService, useValue: config }
+      ]
+    };
   }
 }
