@@ -15,8 +15,8 @@ mrs-header {
 
 main {
   width: 100%;
-  flex: 1 0 auto;
   z-index: 1;
   background: black;
   color: white;
+  overflow-y: auto;
 }
