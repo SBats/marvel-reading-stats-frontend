@@ -12,17 +12,6 @@
   overflow: hidden;
   position: relative;
   background: black;
-
-  &::before {
-    content: '';
-    width: 0;
-    border-top: 70vh solid transparentize($marvel-color, 0.74);
-    border-right: 70vh solid transparent;
-    height: 0;
-    position: absolute;
-    top: 0;
-    left: 0;
-  }
 }
 
 .greetings {
@@ -44,14 +33,30 @@
     inset 0 0 20rem #000000,
     inset 0 0 20rem #000000;
 
-  &-shape {
+  &-shapes {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+  }
+
+  &-triangle {
+    width: 0;
+    border-top: 70vh solid transparentize($marvel-color, 0.74);
+    border-right: 70vh solid transparent;
+    height: 0;
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+
+  &-line {
     background: transparentize($marvel-color, 0.74);
-    width: 100vw;
+    width: 100vh;
     height: 7rem;
     position: absolute;
-    top: 15%;
-    left: -35%;
-    transform: rotate(-45deg);
+    transform: rotate(-45deg) translate(-30%, -30%);
   }
 
   &-content {
@@ -97,15 +102,13 @@
       text-transform: uppercase;
       background: $marvel-color;
       padding: 0.5rem 5rem;
+      box-shadow: 0 0 10rem transparentize($marvel-color, 0.6);
+      transition: background 0.2s ease-in-out;
+      
       @media (min-width: $small-screen + 1) {
         transform: skew(map-get($skew-map, x), map-get($skew-map, y));
-      }
-      animation: glow linear 3s;
-      animation-iteration-count: infinite;
-      transition: background 0.2s ease-in-out;
-
-      div {
-        @media (min-width: $small-screen + 1) {
+        
+        div {
           transform: skew(-(map-get($skew-map, x)), -(map-get($skew-map, y)));
         }
       }
@@ -114,19 +117,5 @@
         background-color: darken($marvel-color, 10%);
       }
     }
-  }
-}
-
-@keyframes glow {
-  0% {
-    box-shadow: 0 0 10rem transparentize($marvel-color, 0.6);
-  }
-
-  50% {
-    box-shadow: 0 0 6rem transparentize($marvel-color, 0.6);
-  }
-
-  100% {
-    box-shadow: 0 0 10rem transparentize($marvel-color, 0.6);
   }
 }
