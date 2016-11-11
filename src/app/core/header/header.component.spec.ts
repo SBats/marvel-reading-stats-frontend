@@ -32,21 +32,4 @@ describe('HeaderComponent', () => {
     let compiled = fixture.debugElement.nativeElement;
     expect(compiled.querySelector('h1').textContent).toContain('Marvel reading stats');
   }));
-
-  it('should have a showNav property to false', () => {
-    let fixture = TestBed.createComponent(HeaderComponent);
-    let header = fixture.debugElement.componentInstance;
-    expect(header.showNav).toEqual(false);
-  });
-
-  describe('toggleNav', () => {
-    it('should reverse showNav value', () => {
-      let fixture = TestBed.createComponent(HeaderComponent);
-      let header = fixture.debugElement.componentInstance;
-      fixture.detectChanges();
-      expect(header.showNav).toEqual(false);
-      header.toggleNav();
-      expect(header.showNav).toEqual(true);
-    });
-  });
 });

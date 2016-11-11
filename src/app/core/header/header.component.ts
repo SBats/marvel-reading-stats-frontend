@@ -31,12 +31,4 @@ import {
 })
 export class HeaderComponent {
   @Input() title: string;
-  showNav: boolean = false;
-
-  toggleNav() {
-    this.showNav = !this.showNav;
-  }
-
-  constructor() { }
-
 }
