@@ -15,18 +15,6 @@ footer {
 
   p {
     text-align: center;
-
-    @media (min-width: 600px) {
-      display: inline-block;
-      margin: 0 1rem;
-
-      &:first-child {
-        float: left;
-      }
-
-      &:last-child {
-        float: right;
-      }
-    }
+    margin: 0 1rem;
   }
 }
