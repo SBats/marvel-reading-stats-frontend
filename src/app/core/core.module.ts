@@ -4,6 +4,7 @@ import {
 import { CommonModule } from '@angular/common';
 
 import { HeaderComponent } from './header';
+import { MarvelService } from './marvel.service';
 
 @NgModule({
   imports: [
@@ -14,6 +15,9 @@ import { HeaderComponent } from './header';
   ],
   exports: [
     HeaderComponent
+  ],
+  providers: [
+    MarvelService
   ]
 })
 export class CoreModule { }
