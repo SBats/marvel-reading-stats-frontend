@@ -1,0 +1,33 @@
+<header @headerState>
+  <div class="app-title">
+    <a routerLink="''">
+      <h1 class="sr-only">{{ title }}</h1>
+      <img class="mrs-logo" src="assets/mrs-logo.svg"/>
+    </a>
+  </div>
+  <div
+    class="nav-toggle"
+    [ngClass]="{'opened': showNav}"
+    attr.aria-expanded="{{ showNav }}"
+    (click)="toggleNav()"
+    (keyup.enter)="toggleNav()"
+    tabindex="0">
+    <span class="sr-only">Toogle navigation</span>
+    <div class="icon-bar"></div>
+    <div class="icon-bar"></div>
+    <div class="icon-bar"></div>
+  </div>
+  <nav [ngClass]="{'opened': showNav}" attr.aria-expanded="{{ showNav }}">
+    <a
+      routerLink="''"
+      routerLinkActive="active"
+      routerLinkActiveOptions="{exact: true}">
+      Home
+    </a>
+    <a
+      routerLink="'library'"
+      routerLinkActive="active">
+      Library
+    </a>
+  </nav>
+</header>

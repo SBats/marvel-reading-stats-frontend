@@ -1,0 +1,105 @@
+@import '../../../config/config.scss';
+
+header {
+  background-color: black;
+  color: white;
+  padding: 1rem 3rem;
+
+  nav {
+    display: inline-block;
+
+    @media (max-width: $small-screen) {
+      display: block;
+      overflow: hidden;
+      max-height: 0;
+      margin: 0;
+      transition: max-height 0.3s ease-out,
+                  margin 0.3s ease-out;
+
+      &.opened {
+        margin-top: 2rem;
+        max-height: 50vh;
+      }
+    }
+
+    a {
+      display:block;
+      padding: 1em 2em;
+      color: $light-grey;
+      text-transform: uppercase;
+      text-decoration: none;
+      transition: color 0.2s ease-out;
+
+      &:hover, &:focus {
+        color: $lighter-grey;
+      }
+
+      &.active {
+        color: $marvel-color;
+      }
+
+      @media (min-width: $small-screen + 1) {
+        display: inline-block;
+      }
+    }
+  }
+}
+
+.nav-toggle {
+  display: inline-block;
+  overflow: hidden;
+  padding: 1rem;
+  cursor: pointer;
+  float: right;
+  margin: 6px 0;
+
+  @media (min-width: $small-screen + 1) {
+    display: none;
+  }
+
+  &.opened {
+    .icon-bar {
+      &:nth-child(2) {
+        transform: rotateZ(-45deg) translate(-5px, 5px);
+      }
+      &:nth-child(3) {
+        transform: rotateZ(45deg);
+      }
+      &:nth-child(4) {
+        opacity: 0;
+        transform: translateY(2rem);
+      }
+    }
+  }
+}
+
+.icon-bar {
+  width: 2rem;
+  height: 2px;
+  background: white;
+  border-radius: 1px;
+  transition: transform 0.2s ease-out,
+              opacity 0.2s ease-out;
+
+  & + .icon-bar {
+    margin-top: 0.5rem;
+  }
+}
+
+.app-title {
+  display: inline-block;
+  vertical-align: middle;
+  overflow: hidden;
+
+  h1 {
+    margin: 0;
+    text-transform: uppercase;
+    font-size: 2rem;
+    line-height: 2rem;
+  }
+}
+
+.mrs-logo {
+  height: 60px;
+  width: auto;
+}
