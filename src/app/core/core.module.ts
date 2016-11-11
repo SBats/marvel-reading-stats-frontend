@@ -4,11 +4,10 @@ import {
   Optional,
   SkipSelf,
 } from '@angular/core';
-import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
+import { SharedModule } from '../shared';
 
 import { HeaderComponent } from './header';
-import { FooterComponent } from './footer';
 
 import {
   MarvelService,
@@ -17,16 +16,14 @@ import {
 
 @NgModule({
   imports: [
-    CommonModule,
+    SharedModule,
     RouterModule.forChild([])
   ],
   declarations: [
-    HeaderComponent,
-    FooterComponent
+    HeaderComponent
   ],
   exports: [
-    HeaderComponent,
-    FooterComponent
+    HeaderComponent
   ],
   providers: [
     MarvelService

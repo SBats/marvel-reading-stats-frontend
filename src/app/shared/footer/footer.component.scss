@@ -1,11 +1,10 @@
 footer {
   padding: 1rem;
   font-size: 0.8rem;
-  color: white;
   font-weight: 300;
 
   a {
-    color: white;
+    color: currentColor;
     text-decoration: none;
 
     &:hover, &:focus {

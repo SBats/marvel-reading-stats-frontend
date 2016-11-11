@@ -1,7 +1,9 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+
 import { ComicComponent } from './comic/comic.component';
 import { ComicsListComponent } from './comics-list/comics-list.component';
+import { FooterComponent } from './footer';
 
 @NgModule({
   imports: [
@@ -9,12 +11,14 @@ import { ComicsListComponent } from './comics-list/comics-list.component';
   ],
   declarations: [
     ComicComponent,
-    ComicsListComponent
+    ComicsListComponent,
+    FooterComponent
   ],
   exports: [
     CommonModule,
     ComicComponent,
-    ComicsListComponent
+    ComicsListComponent,
+    FooterComponent
   ]
 })
 export class SharedModule { }

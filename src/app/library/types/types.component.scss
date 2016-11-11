@@ -9,24 +9,31 @@
 .types {
 
   &-grid {
-    height: 100%;
     width: 100%;
-    overflow: hidden;
-    display: flex;
     background: black;
+    display: flex;
+    flex-wrap: wrap;
+
+    @media (min-width: $small-screen + 1) {
+      overflow: hidden;
+      height: 100%;
+      flex-wrap: nowrap;
+    }
   }
 
   &-item {
-    flex: 0 1 auto;
-    height: 60vh;
+    flex: none;
+    height: 30vh;
     width: 100%;
-    margin: 1rem;
+    margin-bottom: 4rem;
     position: relative;
     color: white;
     text-decoration: none;
     transition: transform 0.2s ease-in-out;
 
     @media (min-width: $small-screen + 1) {
+      flex: 0 1 auto;
+      height: 60vh;
       width: 35%;
       margin: 0 10px;
       transform: skew(
@@ -47,7 +54,7 @@
     &:focus,
     &:active {
       z-index: 1;
-      transform: translate(-5px, 2rem) skew(-11deg, 0);
+
       .types-img img {
         filter: sepia(0) hue-rotate(0deg) saturate(1) brightness(1);
       }
@@ -57,8 +64,16 @@
         right: -10px;
         box-shadow: 0px 0px 0rem 10px black;
       }
-    }
 
+      @media (min-width: $small-screen + 1) {
+        transform: translate(-5px, 2rem) skew(-11deg, 0);
+
+        .types-title {
+          right: -10px;
+        }
+      }
+
+    }
   }
 
   &-img {
@@ -69,8 +84,8 @@
 
     img {
       position: absolute;
-      min-height: 120%;
-      min-width: 120%;
+      min-height: 100%;
+      min-width: 100%;
       top: 50%;
       left: 50%;
       transform: translate(-50%, -50%);
@@ -78,6 +93,8 @@
       transition: filter 0.2s ease-in-out;
 
       @media (min-width: $small-screen + 1) {
+        min-height: 120%;
+        min-width: 120%;
         transform: 
           skew(
             -(map-get($skew-map, x)),
@@ -93,7 +110,6 @@
     position: absolute;
     bottom: -2rem;
     right: 0;
-    max-width: 20rem;
     line-height: 3rem;
     font-size: 1rem;
     display: block;
@@ -106,8 +122,10 @@
       right 0.2s ease-in-out,
       box-shadow 0.2s ease-in-out;
 
-    div {
-      @media (min-width: $small-screen + 1) {
+    @media (min-width: $small-screen + 1) {
+      max-width: 20rem;
+
+      div {
         transform: skew(
           -(map-get($skew-map, x)),
           -(map-get($skew-map, y))
@@ -119,5 +137,13 @@
       background-color: darken($marvel-color, 10%);
     }
 
+  }
+}
+
+mrs-footer {
+  @media (min-width: $small-screen + 1) {
+    position: absolute;
+    bottom: 0;
+    left: 0;
   }
 }
