@@ -9,7 +9,7 @@ import { SharedModule } from '../shared';
 
 import { HeaderComponent } from './header';
 
-import { MarvelService } from './services';
+import { MarvelService, UserService } from './services';
 
 @NgModule({
   imports: [
@@ -23,7 +23,8 @@ import { MarvelService } from './services';
     HeaderComponent
   ],
   providers: [
-    MarvelService
+    MarvelService,
+    UserService
   ]
 })
 export class CoreModule {
