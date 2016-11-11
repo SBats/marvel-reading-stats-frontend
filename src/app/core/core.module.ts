@@ -7,6 +7,8 @@ import {
 import { CommonModule } from '@angular/common';
 
 import { HeaderComponent } from './header';
+import { FooterComponent } from './footer';
+
 import {
   MarvelService,
   MarvelServiceConfig
@@ -17,10 +19,12 @@ import {
     CommonModule
   ],
   declarations: [
-    HeaderComponent
+    HeaderComponent,
+    FooterComponent
   ],
   exports: [
-    HeaderComponent
+    HeaderComponent,
+    FooterComponent
   ],
   providers: [
     MarvelService
