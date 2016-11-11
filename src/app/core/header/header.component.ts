@@ -7,11 +7,6 @@ import {
   style
 } from '@angular/core';
 
-import {
-  RouterLink,
-  RouterLinkActive
-} from '@angular/router';
-
 @Component({
   selector: 'mrs-header',
   templateUrl: './header.component.html',

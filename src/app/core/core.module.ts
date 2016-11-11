@@ -5,6 +5,7 @@ import {
   SkipSelf,
 } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { RouterModule } from '@angular/router';
 
 import { HeaderComponent } from './header';
 import { FooterComponent } from './footer';
@@ -16,7 +17,8 @@ import {
 
 @NgModule({
   imports: [
-    CommonModule
+    CommonModule,
+    RouterModule.forChild([])
   ],
   declarations: [
     HeaderComponent,
