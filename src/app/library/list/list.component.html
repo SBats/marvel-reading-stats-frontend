@@ -1,3 +1,17 @@
-<p>
-  list works!
-</p>
+<div class="toolbar">
+  <div class="breadcrumb">
+    <a routerLink="/library">< Library</a>
+  </div>
+  <div class="alpha-pagination">
+    <a href
+      *ngFor="let letter of alphabet"
+      (click)="selectFirstLetter(letter)">
+      {{ letter }}
+    </a>
+  </div>
+</div>
+<div class="results-list">
+</div>
+<div class="list-pagination">
+</div>
+<mrs-footer></mrs-footer>

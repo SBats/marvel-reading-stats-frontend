@@ -1,0 +1,15 @@
+@import '../../../config/config.scss';
+
+:host {
+    display: block;
+    min-height: calc(100vh - 94px);
+    width: 100%;
+    background: white;
+    color: $dark-grey;
+}
+
+mrs-footer {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+}
