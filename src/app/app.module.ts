@@ -14,9 +14,7 @@ import { AppRoutingModule } from './app-routing.module';
 @NgModule({
   imports: [
     BrowserModule,
-    CoreModule.forRoot({
-      checker: 'This is a custom checker'
-    }),
+    CoreModule,
     LandingModule,
     AppRoutingModule
   ],

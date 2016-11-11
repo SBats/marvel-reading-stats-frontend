@@ -9,10 +9,7 @@ import { SharedModule } from '../shared';
 
 import { HeaderComponent } from './header';
 
-import {
-  MarvelService,
-  MarvelServiceConfig
-} from './services/marvel.service';
+import { MarvelService } from './services';
 
 @NgModule({
   imports: [
@@ -37,14 +34,5 @@ export class CoreModule {
         Import it in the AppModule only
       `);
     }
-  }
-
-  static forRoot(config: MarvelServiceConfig): ModuleWithProviders {
-    return {
-      ngModule: CoreModule,
-      providers: [
-        {provide: MarvelService, useValue: config }
-      ]
-    };
   }
 }
