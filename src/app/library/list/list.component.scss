@@ -1,15 +1,59 @@
 @import '../../../config/config.scss';
 
 :host {
-    display: block;
-    min-height: calc(100vh - 94px);
-    width: 100%;
-    background: white;
-    color: $dark-grey;
+  display: block;
+  min-height: calc(100vh - 94px);
+  width: 100%;
+  background: white;
+  color: $dark-grey;
 }
 
 mrs-footer {
-    position: absolute;
-    bottom: 0;
-    left: 0;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+}
+
+a {
+  color: currentColor;
+  text-decoration: none;
+
+  &:hover, &:focus, .active {
+    color: $marvel-color;
+  }
+  &:active {
+    text-decoration: underline;
+  }
+}
+
+.toolbar {
+  padding: 0.6rem 2rem;
+  border-bottom: 1px solid $lighter-grey;
+  display: flex;
+}
+
+.breadcrumb {
+  flex: none;
+  border-right: 1px solid $lighter-grey;
+  padding: 0.4rem 1rem;
+  color: $dark-grey;
+  text-transform: uppercase;
+
+  a {
+    display: inline-block;
+    vertical-align: middle;
+  }
+}
+
+.alpha-pagination {
+  flex: 1 1 auto;
+  padding: 0 1rem;
+  color: $light-grey;
+  font-size: 1.1rem;
+
+  a {
+    display: inline-block;
+    font-weight: 300;
+    padding: 0.4rem;
+  }
 }
