@@ -1,0 +1,22 @@
+<h2>Login</h2>
+<form 
+  [formGroup]="form"
+  (onSubmit)="onSubmit(form.value)">
+  <div class="field">
+    <label for="usernameField">Username</label>
+    <input
+      type="text"
+      placeholder="username"
+      name="username"
+      [formControl]="form.controls['username']">
+  </div>
+  <div class="field">
+    <label for="passwordField">Password</label>
+    <input
+      type="text"
+      placeholder="password"
+      name="password"
+      [formControl]="form.controls['password']">
+  </div>
+  <button type="submit">Login</button>
+</form>
