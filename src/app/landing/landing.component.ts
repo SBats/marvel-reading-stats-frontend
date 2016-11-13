@@ -12,4 +12,14 @@ import {
   templateUrl: './landing.component.html',
   styleUrls: ['./landing.component.scss']
 })
-export class LandingComponent { }
+export class LandingComponent {
+  showConnectionModal: boolean = false;
+
+  showModal(): void {
+    this.showConnectionModal = true;
+  }
+
+  hideModal(): void {
+    this.showConnectionModal = false;
+  }
+}

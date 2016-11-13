@@ -7,10 +7,14 @@
     <h3 class="greetings-subtitle">Marvel comics reader</h3>
     <h2 class="greetings-title">Hero, collect your readings</h2>
     <div class="greetings-link">
-      <a class="mrs-button" href>
+      <button class="mrs-button" (click)="showModal()">
         <div>Start your collection</div>
-      </a>
+      </button>
     </div>
   </div>
 </div>
 <mrs-footer></mrs-footer>
+<mrs-connection-modal
+  *ngIf="showConnectionModal"
+  (close)="hideModal()">
+</mrs-connection-modal>
