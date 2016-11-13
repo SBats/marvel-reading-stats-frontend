@@ -92,31 +92,6 @@
   &-link {
     margin: 3rem auto;
     display: inline-block;
-
-    a {
-      line-height: 3rem;
-      font-size: 1rem;
-      display: block;
-      color: white;
-      text-decoration: none;
-      text-transform: uppercase;
-      background: $marvel-color;
-      padding: 0.5rem 5rem;
-      box-shadow: 0 0 10rem transparentize($marvel-color, 0.6);
-      transition: background 0.2s ease-in-out;
-      
-      @media (min-width: $small-screen + 1) {
-        transform: skew(map-get($skew-map, x), map-get($skew-map, y));
-        
-        div {
-          transform: skew(-(map-get($skew-map, x)), -(map-get($skew-map, y)));
-        }
-      }
-
-      &:hover, &:focus {
-        background-color: darken($marvel-color, 10%);
-      }
-    }
   }
 }
 

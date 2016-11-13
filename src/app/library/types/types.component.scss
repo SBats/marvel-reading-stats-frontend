@@ -110,12 +110,6 @@
     position: absolute;
     bottom: -2rem;
     right: 0;
-    line-height: 3rem;
-    font-size: 1rem;
-    display: block;
-    text-transform: uppercase;
-    background: $marvel-color;
-    padding: 0.5rem 4rem;
     transition: 
       background 0.2s ease-in-out,
       bottom 0.2s ease-in-out,
@@ -124,17 +118,7 @@
 
     @media (min-width: $small-screen + 1) {
       max-width: 20rem;
-
-      div {
-        transform: skew(
-          -(map-get($skew-map, x)),
-          -(map-get($skew-map, y))
-        );
-      }
-    }
-
-    &:hover, &:focus {
-      background-color: darken($marvel-color, 10%);
+      transform: none;
     }
 
   }
