@@ -7,6 +7,7 @@ import { ComicsListComponent } from './comics-list/comics-list.component';
 import { FooterComponent } from './footer';
 import { LoginFormComponent } from './login-form';
 import { SubscribeFormComponent } from './subscribe-form';
+import { ConnectionModalComponent } from './connection-modal';
 
 @NgModule({
   imports: [
@@ -18,7 +19,8 @@ import { SubscribeFormComponent } from './subscribe-form';
     ComicsListComponent,
     FooterComponent,
     LoginFormComponent,
-    SubscribeFormComponent
+    SubscribeFormComponent,
+    ConnectionModalComponent
   ],
   exports: [
     CommonModule,
@@ -26,7 +28,8 @@ import { SubscribeFormComponent } from './subscribe-form';
     ComicsListComponent,
     FooterComponent,
     LoginFormComponent,
-    SubscribeFormComponent
+    SubscribeFormComponent,
+    ConnectionModalComponent
   ]
 })
 export class SharedModule { }
