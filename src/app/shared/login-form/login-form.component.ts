@@ -6,6 +6,8 @@ import {
   AbstractControl
 } from '@angular/forms';
 
+import { UserService } from '../../core/services';
+
 @Component({
   selector: 'mrs-login-form',
   templateUrl: './login-form.component.html',
@@ -20,7 +22,10 @@ export class LoginFormComponent {
     password: null
   }
 
-  constructor(formBuilder: FormBuilder) {
+  constructor(
+    private formBuilder: FormBuilder,
+    private userService: UserService
+  ) {
     this.form = formBuilder.group({
       username: ['', Validators.required],
       password: ['', Validators.required],
@@ -37,6 +42,7 @@ export class LoginFormComponent {
       this.validateFormControl('password');
     } else {
       this.resetErrors();
+      this.userService.login(this.form.value);
     }
   }
 
