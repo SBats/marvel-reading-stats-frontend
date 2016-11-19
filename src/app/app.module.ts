@@ -5,7 +5,7 @@ import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
 
 /* Feature Modules */
-import { CoreModule }       from './core';
+import { CoreModule } from './core';
 import { LandingModule } from './landing';
 
 /* Routing Module */
