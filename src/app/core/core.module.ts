@@ -4,6 +4,7 @@ import {
   Optional,
   SkipSelf,
 } from '@angular/core';
+import { HttpModule } from '@angular/http';
 import { RouterModule } from '@angular/router';
 import { SharedModule } from '../shared';
 
@@ -14,6 +15,7 @@ import { MarvelService, UserService } from './services';
 @NgModule({
   imports: [
     SharedModule,
+    HttpModule,
     RouterModule.forChild([])
   ],
   declarations: [
