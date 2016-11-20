@@ -16,11 +16,14 @@
   </ul>
 </div>
 <mrs-loader *ngIf="loading"></mrs-loader>
-<div *ngIf="!loading" class="results-list">
+<div *ngIf="!loading && results.length > 0">
   <mrs-type-list
     [list]="results">
   </mrs-type-list>
   <div class="list-pagination">
   </div>
+</div>
+<div *ngIf="!loading && results.length === 0" class="no-results">
+  <p>No {{libraryType}} starting by '{{startWithQuery}}'</p>
 </div>
 <mrs-footer></mrs-footer>
