@@ -9,6 +9,7 @@ import { LoginFormComponent } from './login-form';
 import { SubscribeFormComponent } from './subscribe-form';
 import { ConnectionModalComponent } from './connection-modal';
 import { LoaderComponent } from './loader';
+import { TypeListComponent } from './type-list';
 
 @NgModule({
   imports: [
@@ -22,7 +23,8 @@ import { LoaderComponent } from './loader';
     LoginFormComponent,
     SubscribeFormComponent,
     ConnectionModalComponent,
-    LoaderComponent
+    LoaderComponent,
+    TypeListComponent
   ],
   exports: [
     CommonModule,
@@ -32,7 +34,8 @@ import { LoaderComponent } from './loader';
     LoginFormComponent,
     SubscribeFormComponent,
     ConnectionModalComponent,
-    LoaderComponent
+    LoaderComponent,
+    TypeListComponent
   ]
 })
 export class SharedModule { }
