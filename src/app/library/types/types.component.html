@@ -2,7 +2,7 @@
   <a href
     class="types-item"
     *ngFor="let type of types"
-    [routerLink]="['/library', type.url, 'list']"
+    [routerLink]="['/library', type.url]"
     @typeItemAnimation>
     <div class="types-img">
       <img [src]="type.img" [alt]="type.title + '-illustration'"/>
