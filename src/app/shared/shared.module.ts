@@ -8,6 +8,7 @@ import { FooterComponent } from './footer';
 import { LoginFormComponent } from './login-form';
 import { SubscribeFormComponent } from './subscribe-form';
 import { ConnectionModalComponent } from './connection-modal';
+import { LoaderComponent } from './loader';
 
 @NgModule({
   imports: [
@@ -20,7 +21,8 @@ import { ConnectionModalComponent } from './connection-modal';
     FooterComponent,
     LoginFormComponent,
     SubscribeFormComponent,
-    ConnectionModalComponent
+    ConnectionModalComponent,
+    LoaderComponent
   ],
   exports: [
     CommonModule,
@@ -29,7 +31,8 @@ import { ConnectionModalComponent } from './connection-modal';
     FooterComponent,
     LoginFormComponent,
     SubscribeFormComponent,
-    ConnectionModalComponent
+    ConnectionModalComponent,
+    LoaderComponent
   ]
 })
 export class SharedModule { }
