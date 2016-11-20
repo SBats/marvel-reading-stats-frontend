@@ -2,16 +2,25 @@
   <div class="breadcrumb">
     <a routerLink="/library">< Library</a>
   </div>
-  <div class="alpha-pagination">
-    <a href
-      *ngFor="let letter of alphabet"
-      (click)="selectFirstLetter(letter)">
-      {{ letter }}
-    </a>
+  <ul class="alpha-pagination">
+    <li *ngFor="let filter of queryFiltersList">
+      <a href
+        *ngIf="startWithQuery !== filter"
+        (click)="selectQueryFilter($event, filter)">
+        {{ filter }}
+      </a>
+      <span class="active" *ngIf="startWithQuery === filter">
+        {{ filter }}
+      </span>
+    </li>
+  </ul>
+</div>
+<mrs-loader *ngIf="loading"></mrs-loader>
+<div *ngIf="!loading" class="results-list">
+  <mrs-type-list
+    [list]="results">
+  </mrs-type-list>
+  <div class="list-pagination">
   </div>
-</div>
-<div class="results-list">
-</div>
-<div class="list-pagination">
 </div>
 <mrs-footer></mrs-footer>
