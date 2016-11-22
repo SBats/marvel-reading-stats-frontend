@@ -16,7 +16,7 @@
   </ul>
 </div>
 <mrs-loader *ngIf="loading"></mrs-loader>
-<div *ngIf="!loading && results.length > 0">
+<div class="results" *ngIf="!loading && results.length > 0">
   <mrs-type-list
     [list]="results">
   </mrs-type-list>

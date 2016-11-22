@@ -2,7 +2,7 @@
 
 :host {
   display: block;
-  min-height: calc(100vh - 94px);
+  height: calc(100vh - 94px);
   width: 100%;
   background: white;
   color: $dark-grey;
@@ -43,6 +43,11 @@ a {
     display: inline-block;
     vertical-align: middle;
   }
+}
+
+.results {
+  height: calc(100% - 6rem);
+  overflow: auto;
 }
 
 .alpha-pagination {
