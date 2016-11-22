@@ -1,5 +1,9 @@
 @import './config/config.scss';
 
+* {
+  box-sizing: border-box;
+}
+
 // styles in src/style directory are applied to the whole page
 html, body {
   width: 100%;
