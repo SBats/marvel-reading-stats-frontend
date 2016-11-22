@@ -20,37 +20,12 @@
   <mrs-type-list
     [list]="results">
   </mrs-type-list>
-  <div *ngIf="pageTotal && pageTotal > 1" class="list-pagination">
-    <a
-      href
-      [ngClass]="{'disabled': currentPage === 1}"
-      (click)="selectPage($event, 1)"
-      class="first">
-      <span>First</span><span class="number">/1</span>
-    </a>
-    <div class="step">
-      <a
-        href
-        [ngClass]="{'disabled': currentPage === 1}"
-        (click)="selectPage($event, currentPage-1)"
-        class="prev"><span><</span></a>
-
-      <span class="current">{{ currentPage }}</span>
-
-      <a
-        href
-        [ngClass]="{'disabled': currentPage === pageTotal}"
-        (click)="selectPage($event, currentPage+1)"
-        class="next"><span>></span></a>
-    </div>
-    <a
-      href
-      (click)="selectPage($event, pageTotal)"
-      [ngClass]="{'disabled': currentPage === pageTotal}"
-      class="last">
-      <span>Last</span><span class="number">/{{ pageTotal }}</span>
-    </a>
-  </div>
+  <mrs-pagination
+    *ngIf="pageTotal && pageTotal > 1"
+    [total]="pageTotal"
+    [current]="currentPage"
+    (select)="selectPage($event)">
+  </mrs-pagination>
 </div>
 <div *ngIf="!loading && results.length === 0" class="no-results">
   <p>No {{libraryType}} starting by '{{ startWithQuery }}'</p>

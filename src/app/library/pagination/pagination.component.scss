@@ -1,0 +1,41 @@
+@import '../../../config/config.scss';
+
+:host {
+  display: block;
+  padding: 4rem 2rem;
+  text-transform: uppercase;
+  color: $dark-grey;
+}
+
+.step, .first, .last {
+  display: inline-block;
+}
+
+.step {
+  margin: 0 1rem;
+}
+
+a, .current {
+  padding: 0.5rem 1rem;
+  line-height: 1.5rem;
+}
+
+a {
+  background: $lighter-grey;
+  color: currentColor;
+  text-decoration: none;
+
+  &:hover, &:focus {
+    color: $marvel-color;
+  }
+}
+
+.current {
+  background: $marvel-color;
+  color: white;
+}
+
+.number {
+  color: $light-grey;
+  margin: 0 0.5rem;
+}

@@ -73,8 +73,7 @@ export class ListComponent implements OnInit {
     this.updateQueries();
   }
 
-  selectPage(ev, page) {
-    ev.preventDefault();
+  selectPage(page) {
     if (page > 0 && page <= this.pageTotal) {
       this.currentPage = page;
       this.updateQueries();

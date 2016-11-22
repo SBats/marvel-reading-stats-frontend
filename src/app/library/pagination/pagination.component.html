@@ -1,0 +1,29 @@
+<a
+  href
+  [ngClass]="{'disabled': current === 1}"
+  (click)="selectPage($event, 1)"
+  class="first">
+  <span>First</span><span class="number">/1</span>
+</a>
+<div class="step">
+  <a
+    href
+    [ngClass]="{'disabled': current === 1}"
+    (click)="selectPage($event, current-1)"
+    class="prev"><span><</span></a>
+
+  <span class="current">{{ current }}</span>
+
+  <a
+    href
+    [ngClass]="{'disabled': current === total}"
+    (click)="selectPage($event, current+1)"
+    class="next"><span>></span></a>
+</div>
+<a
+  href
+  (click)="selectPage($event, total)"
+  [ngClass]="{'disabled': current === total}"
+  class="last">
+  <span>Last</span><span class="number">/{{ total }}</span>
+</a>

@@ -4,6 +4,7 @@ import { DetailComponent } from './detail/detail.component';
 import { ListComponent } from './list/list.component';
 import { TypesComponent } from './types/types.component';
 import { LibraryRoutingModule } from './library-routing.module';
+import { PaginationComponent } from './pagination';
 
 @NgModule({
   imports: [
@@ -13,7 +14,8 @@ import { LibraryRoutingModule } from './library-routing.module';
   declarations: [
     DetailComponent,
     ListComponent,
-    TypesComponent
+    TypesComponent,
+    PaginationComponent
   ]
 })
 export class LibraryModule { }
