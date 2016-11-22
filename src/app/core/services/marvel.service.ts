@@ -23,13 +23,17 @@ export class MarvelService {
     return response.json();
   }
 
-  getTypeList(type: string, startWithQuery?: string): Observable<any> {
+  getTypeList(type: string, startWithQuery?: string, page?: number): Observable<any> {
     let parameters = [];
     let url = `${this.apiURL}${type}/`;
 
     if (typeof startWithQuery !== 'undefined' && startWithQuery !== null) {
       let query = startWithQuery === '#' ? '[0-9]' : startWithQuery;
       parameters.push(`startWith=${query}`);
+    }
+
+    if (typeof page !== 'undefined' && page !== null) {
+      parameters.push(`page=${page}`);
     }
     parameters = parameters.filter(Boolean);
     url += '?' + parameters.join('&');
