@@ -29,6 +29,8 @@ export class ListComponent implements OnInit {
     'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'
   ];
   startWithQuery: string = null;
+  currentPage: number = 1;
+  pageTotal: number = 1;
   private subscribers: any[] = [false];
 
   constructor(
@@ -52,7 +54,7 @@ export class ListComponent implements OnInit {
         .queryParams
         .subscribe(params => {
           this.startWithQuery = params['startwith'] || this.queryFiltersList[0];
-
+          this.currentPage = parseInt(params['page']) || 1;
           if (this.libraryType) {
             this.loadList();
           }
@@ -67,13 +69,25 @@ export class ListComponent implements OnInit {
   selectQueryFilter(ev, filter) {
     ev.preventDefault();
     this.startWithQuery = filter;
+    this.currentPage = 1;
     this.updateQueries();
+  }
+
+  selectPage(ev, page) {
+    ev.preventDefault();
+    if (page > 0 && page <= this.pageTotal) {
+      this.currentPage = page;
+      this.updateQueries();
+    }
   }
 
   updateQueries() {
     let params: any = {};
     if (this.startWithQuery) {
       params.startwith = this.startWithQuery;
+    }
+    if (this.currentPage) {
+      params.page = this.currentPage;
     }
     this.router.navigate(['library', this.libraryType], {queryParams: params});
   }
@@ -87,9 +101,11 @@ export class ListComponent implements OnInit {
 
     this.subscribers[0] = this.marvelService.getTypeList(
       this.libraryType,
-      this.startWithQuery
+      this.startWithQuery,
+      this.currentPage
     ).subscribe((res: any[]) => {
       this.results = res['results'];
+      this.pageTotal = Math.ceil(res['count'] / 20);
       this.loading = false;
     });
   }

@@ -11,7 +11,7 @@
 mrs-footer {
   position: absolute;
   bottom: 0;
-  left: 0;
+  right: 0;
 }
 
 a {
@@ -73,4 +73,37 @@ a {
   margin: 5rem auto;
   text-align: center;
   font-size: 2rem;
+}
+
+.list-pagination {
+  display: block;
+  padding: 4rem 2rem;
+  text-transform: uppercase;
+
+  .step, .first, .last {
+    display: inline-block;
+  }
+
+  .step {
+    margin: 0 1rem;
+  }
+
+  a, .current {
+    padding: 0.5rem 1rem;
+    line-height: 1.5rem;
+  }
+
+  a {
+    background: $lighter-grey;
+  }
+
+  .current {
+    background: $marvel-color;
+    color: white;
+  }
+
+  .number {
+    color: $light-grey;
+    margin: 0 0.5rem;
+  }
 }
