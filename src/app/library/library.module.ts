@@ -5,6 +5,7 @@ import { ListComponent } from './list/list.component';
 import { TypesComponent } from './types/types.component';
 import { LibraryRoutingModule } from './library-routing.module';
 import { PaginationComponent } from './pagination';
+import { AlphaPaginationComponent } from './alpha-pagination';
 
 @NgModule({
   imports: [
@@ -15,7 +16,8 @@ import { PaginationComponent } from './pagination';
     DetailComponent,
     ListComponent,
     TypesComponent,
-    PaginationComponent
+    PaginationComponent,
+    AlphaPaginationComponent
   ]
 })
 export class LibraryModule { }

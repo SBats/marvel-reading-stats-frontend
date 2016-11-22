@@ -23,11 +23,6 @@ export class ListComponent implements OnInit {
   results: any[] = [];
   loading: boolean = true;
   libraryType: string;
-  queryFiltersList: string[] = [
-    '#', 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h',
-    'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q',
-    'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'
-  ];
   startWithQuery: string = null;
   currentPage: number = 1;
   pageTotal: number = 1;
@@ -53,7 +48,7 @@ export class ListComponent implements OnInit {
       this.route
         .queryParams
         .subscribe(params => {
-          this.startWithQuery = params['startwith'] || this.queryFiltersList[0];
+          this.startWithQuery = params['startwith'] || null;
           this.currentPage = parseInt(params['page']) || 1;
           if (this.libraryType) {
             this.loadList();
@@ -66,8 +61,7 @@ export class ListComponent implements OnInit {
     this.subscribers.map(sb => sb.unsubscribe());
   }
 
-  selectQueryFilter(ev, filter) {
-    ev.preventDefault();
+  selectQueryFilter(filter) {
     this.startWithQuery = filter;
     this.currentPage = 1;
     this.updateQueries();

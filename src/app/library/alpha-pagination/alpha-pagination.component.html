@@ -1,0 +1,12 @@
+<ul>
+  <li *ngFor="let filter of queryFiltersList">
+    <a href
+      *ngIf="current !== filter"
+      (click)="selectLetter($event, filter)">
+      {{ filter }}
+    </a>
+    <span class="active" *ngIf="current === filter">
+      {{ filter }}
+    </span>
+  </li>
+</ul>

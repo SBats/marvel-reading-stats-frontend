@@ -2,18 +2,10 @@
   <div class="breadcrumb">
     <a routerLink="/library">< Library</a>
   </div>
-  <ul class="alpha-pagination">
-    <li *ngFor="let filter of queryFiltersList">
-      <a href
-        *ngIf="startWithQuery !== filter"
-        (click)="selectQueryFilter($event, filter)">
-        {{ filter }}
-      </a>
-      <span class="active" *ngIf="startWithQuery === filter">
-        {{ filter }}
-      </span>
-    </li>
-  </ul>
+  <mrs-alpha-pagination
+    [current]="startWithQuery"
+    (select)="selectQueryFilter($event)">
+  </mrs-alpha-pagination>
 </div>
 <mrs-loader *ngIf="loading"></mrs-loader>
 <div class="results" *ngIf="!loading && results.length > 0">
