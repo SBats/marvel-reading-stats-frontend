@@ -32,7 +32,7 @@ import {
 })
 export class TypesComponent {
   types: any[] = [
-    {img: '/assets/stan-lee.png', title: 'Authors', url: 'authors'},
+    {img: '/assets/stan-lee.png', title: 'Creators', url: 'creators'},
     {img: '/assets/series-thanos.jpg', title: 'Series', url: 'series'},
     {img: '/assets/events-civil_war.jpg', title: 'Events', url: 'events'},
     {img: '/assets/image1-36d32.gif', title: 'Heroes', url: 'heroes'}
