@@ -1,7 +1,11 @@
 @import '../../../config/config.scss';
 
+:host {
+  display: flex;
+  align-items: center;
+}
+
 ul {
-  flex: 1 1 auto;
   padding: 0 1rem;
   margin: 0;
   color: $light-grey;
