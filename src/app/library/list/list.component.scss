@@ -14,40 +14,29 @@ mrs-footer {
   right: 0;
 }
 
-a {
-  color: currentColor;
-  text-decoration: none;
+@media (min-width: $tiny-screen + 1) {
 
-  &:hover, &:focus, .active {
-    color: $marvel-color;
+  mrs-toolbar {
+    flex-wrap: nowrap;
   }
-  &:active {
-    text-decoration: underline;
+
+  mrs-alpha-pagination {
+    flex: 1 1 auto;
   }
-}
-
-.toolbar {
-  padding: 0.6rem 2rem;
-  border-bottom: 1px solid $lighter-grey;
-  display: flex;
-}
-
-.breadcrumb {
-  flex: none;
-  border-right: 1px solid $lighter-grey;
-  padding: 0.4rem 1rem;
-  color: $dark-grey;
-  text-transform: uppercase;
-
-  a {
-    display: inline-block;
-    vertical-align: middle;
+  
+  mrs-breadcrumb {
+    flex: none;
+    border-right: 1px solid $lighter-grey;
   }
 }
 
 .results {
-  height: calc(100% - 6rem);
+  height: calc(100% - 16rem);
   overflow: auto;
+
+  @media (min-width: $tiny-screen + 1) {
+    height: calc(100% - 6rem);
+  }
 }
 
 .no-results {

@@ -26,6 +26,13 @@ export class ListComponent implements OnInit {
   startWithQuery: string = null;
   currentPage: number = 1;
   pageTotal: number = 1;
+  breadcrumbLinks: any[] = [
+    {
+      path: '/library',
+      label: 'Library',
+      current: false
+    }
+  ];
   private subscribers: any[] = [false];
 
   constructor(
@@ -40,6 +47,11 @@ export class ListComponent implements OnInit {
         .params
         .subscribe(params => {
           this.libraryType = params['type'];
+          this.breadcrumbLinks.push({
+            path: null,
+            label: params['type'],
+            current: true
+          });
           this.loadList();
         })
     );

@@ -1,12 +1,14 @@
-<div class="toolbar">
-  <div class="breadcrumb">
+<mrs-toolbar>
+  <mrs-breadcrumb [links]="breadcrumbLinks">
+  </mrs-breadcrumb>
+  <!--<div class="breadcrumb">
     <a routerLink="/library">< Library</a>
-  </div>
+  </div>-->
   <mrs-alpha-pagination
     [current]="startWithQuery"
     (select)="selectQueryFilter($event)">
   </mrs-alpha-pagination>
-</div>
+</mrs-toolbar>
 <mrs-loader *ngIf="loading"></mrs-loader>
 <div class="results" *ngIf="!loading && results.length > 0">
   <mrs-type-list
