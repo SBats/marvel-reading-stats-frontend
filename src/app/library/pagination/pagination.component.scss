@@ -1,7 +1,10 @@
 @import '../../../config/config.scss';
 
 :host {
-  display: block;
+  display: flex;
+  flex-wrap: wrap;
+  text-align: center;
+  align-items: center;
   padding: 4rem 2rem;
   text-transform: uppercase;
   color: $dark-grey;
@@ -9,10 +12,25 @@
 
 .step, .first, .last {
   display: inline-block;
+  flex: none;
+  margin: auto;
+
+  @media (min-width: $tiny-screen + 1) {
+    margin: auto 0;
+  }
 }
 
 .step {
-  margin: 0 1rem;
+  order: -1;
+  width: calc(100% - 4rem);
+  height: 4rem;
+
+  @media (min-width: $tiny-screen + 1) {
+    margin: 0 1rem;
+    order: 0;
+    width: auto;
+    height: auto;
+  }
 }
 
 a, .current {
