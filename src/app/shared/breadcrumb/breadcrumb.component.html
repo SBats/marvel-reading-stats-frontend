@@ -1,0 +1,15 @@
+<ul>
+  <li
+    *ngFor="let link of links"
+    [ngClass]="{'current': link.current}">
+    <a
+      *ngIf="!link.current && link.path"
+      [routerLink]="link.path">
+      {{ link.label }}
+    </a>
+    <span
+      *ngIf="link.current || !link.path">
+      {{ link.label }}
+    </span>
+  </li>
+</ul>

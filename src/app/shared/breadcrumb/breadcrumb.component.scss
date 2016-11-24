@@ -1,0 +1,55 @@
+@import '../../../config/config.scss';
+
+:host {
+  padding: 0 1rem;
+  color: $dark-grey;
+  text-transform: uppercase;
+  color: $light-grey;
+}
+
+ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+li {
+  display: inline-block;
+
+  &::before {
+    content: ">";
+    font-size: 1.6rem;
+    font-weight: 300;
+    height: 2.2rem;
+    margin: 0 0.7rem;
+    vertical-align: middle;
+    display: inline-block;
+  }
+
+  &:first-child::before {
+    content: none;
+  }
+}
+
+a {
+  color: currentColor;
+  text-decoration: none;
+
+  &:hover, &:focus, .active {
+    color: $marvel-color;
+  }
+
+  &:active {
+    text-decoration: underline;
+  }
+}
+
+a, span {
+  display: inline-block;
+  vertical-align: middle;
+  padding: 0.8rem 0;
+}
+
+.current {
+  color: $dark-grey;
+}
