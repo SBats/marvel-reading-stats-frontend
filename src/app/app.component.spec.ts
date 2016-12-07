@@ -31,7 +31,7 @@ describe('AppComponent', () => {
       ],
       declarations: [ AppComponent, DummyComponent ]
     })
-    .compileComponents();
+    TestBed.compileComponents();
   }));
 
   beforeEach(async(() => {
