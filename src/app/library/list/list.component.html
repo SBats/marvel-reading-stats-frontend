@@ -12,7 +12,8 @@
 <mrs-loader *ngIf="loading"></mrs-loader>
 <div class="results" *ngIf="!loading && results.length > 0">
   <mrs-type-list
-    [list]="results">
+    [list]="results"
+    (selectAction)="goToDetail($event)">
   </mrs-type-list>
   <mrs-pagination
     *ngIf="pageTotal && pageTotal > 1"
