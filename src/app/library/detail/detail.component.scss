@@ -1,0 +1,40 @@
+@import '../../../config/config.scss';
+
+:host {
+  display: block;
+  height: calc(100vh - 94px);
+  width: 100%;
+  background: white;
+  color: $dark-grey;
+}
+
+mrs-footer {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+}
+
+@media (min-width: $tiny-screen + 1) {
+
+  mrs-toolbar {
+    flex-wrap: nowrap;
+  }
+
+  mrs-toolbar .vizualisation {
+    flex: 1 1 auto;
+  }
+
+  mrs-breadcrumb {
+    flex: none;
+    border-right: 1px solid $lighter-grey;
+  }
+}
+
+.results {
+  height: calc(100% - 16rem);
+  overflow: auto;
+
+  @media (min-width: $tiny-screen + 1) {
+    height: calc(100% - 6rem);
+  }
+}

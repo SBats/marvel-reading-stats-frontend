@@ -1,3 +1,20 @@
-<p>
-  detail works!
-</p>
+<mrs-toolbar>
+  <mrs-breadcrumb [links]="breadcrumbLinks">
+  </mrs-breadcrumb>
+  <div class="visualization">
+  </div>
+</mrs-toolbar>
+<mrs-loader *ngIf="loading"></mrs-loader>
+<div class="results" *ngIf="!loading">
+  <mrs-comics-list
+    [list]="results"
+    (selectAction)="showDetailPopup($event)">
+  </mrs-comics-list>
+  <mrs-pagination
+    *ngIf="pageTotal && pageTotal > 1"
+    [total]="pageTotal"
+    [current]="currentPage"
+    (select)="selectPage($event)">
+  </mrs-pagination>
+</div>
+<mrs-footer></mrs-footer>
