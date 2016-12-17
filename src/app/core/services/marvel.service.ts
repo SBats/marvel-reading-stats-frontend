@@ -5,7 +5,7 @@ import '../../rxjs-operators';
 
 @Injectable()
 export class MarvelService {
-  apiURL: string = 'http://localhost:8000/';
+  apiURL: string = 'http://localhost:8000';
   loading: boolean = false;
 
   constructor(private http: Http) {}
@@ -25,12 +25,30 @@ export class MarvelService {
 
   getTypeList(type: string, startWithQuery?: string, page?: number): Observable<any> {
     let parameters = [];
-    let url = `${this.apiURL}${type}/`;
+    let url = `${this.apiURL}/${type}/`;
 
     if (typeof startWithQuery !== 'undefined' && startWithQuery !== null) {
       let query = startWithQuery === '#' ? '[0-9]' : startWithQuery;
       parameters.push(`startWith=${query}`);
     }
+
+    if (typeof page !== 'undefined' && page !== null) {
+      parameters.push(`page=${page}`);
+    }
+    parameters = parameters.filter(Boolean);
+    url += '?' + parameters.join('&');
+
+
+    this.loading = true;
+    return this.http.request(url)
+      .map(this.checkStatus)
+      .map(this.parseJSON);
+  }
+
+  getTypeDetail(type: string, element: string, page?: number): Observable<any> {
+    let parameters = [];
+    let url = `${this.apiURL}/comics/`;
+    parameters.push(`${type}=${element}`);
 
     if (typeof page !== 'undefined' && page !== null) {
       parameters.push(`page=${page}`);
