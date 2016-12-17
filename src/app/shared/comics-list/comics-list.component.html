@@ -1,7 +1,11 @@
 <ul class="comics-list">
   <li class="comics-list-item" *ngFor="let item of list">
-      <a href (click)="select($event, item)">
-        <span class="title">{{ item.title }}</span>
+      <a *ngIf="item.title" href (click)="select($event, item)">
+        <img *ngIf="item.image"
+          class="cover"
+          [src]="item.image.path + '/portrait_incredible.' + item.image.extension"
+          [alt]="item.title + '-cover'"/>
+        <div class="title">{{ item.title }}</div>
       </a>
   </li>
 </ul>

@@ -6,27 +6,46 @@
   padding: 3rem 4rem;
 }
 
-.elements-list {
+.comics-list {
   list-style: none;
   padding: 0;
+  color: $dark-grey;
+  display: flex;
+  flex-wrap: wrap;
 
   &-item {
+    display: inline-block;
+    flex: 1 1 25%;
+    min-width: 200px;
 
     a {
       display: block;
-      border-bottom: 1px solid $lighter-grey;
       color: currentColor;
       padding: 1rem 2rem;
       cursor: pointer;
       background: transparent;
       text-decoration: none;
 
-      &:hover, &:focus {
-        background: lighten($lighter-grey, 5%);
+      .cover {
+        display: block;
+        max-width: 100%;
+        transition: transform 0.2s ease-in-out;
       }
 
-      &:active{
-        background: $lighter-grey;
+      .title {
+        display: block;
+        text-transform: uppercase;
+        margin-top: 1rem;
+      }
+
+      &:hover, &:focus, &:active  {
+        background: transparent;
+        .title {
+          color: $marvel-color;
+        }
+        .cover {
+          transform: scale(1.05);
+        }
       }
     }
   }
