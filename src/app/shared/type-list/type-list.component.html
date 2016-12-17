@@ -1,7 +1,9 @@
 <ul class="elements-list">
   <li class="elements-list-item" *ngFor="let item of list">
       <a href (click)="select($event, item)">
-        <span class="title">{{ item.title }}</span>
+        <span *ngIf="item.name" class="name">{{ item.name }}</span>
+        <span *ngIf="item.full_name" class="fullname">{{ item.full_name }}</span>
+        <span *ngIf="item.title" class="title">{{ item.title }}</span>
       </a>
   </li>
 </ul>
