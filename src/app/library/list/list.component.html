@@ -1,9 +1,6 @@
 <mrs-toolbar>
   <mrs-breadcrumb [links]="breadcrumbLinks">
   </mrs-breadcrumb>
-  <!--<div class="breadcrumb">
-    <a routerLink="/library">< Library</a>
-  </div>-->
   <mrs-alpha-pagination
     [current]="startWithQuery"
     (select)="selectQueryFilter($event)">
