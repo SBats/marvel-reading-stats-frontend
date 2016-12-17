@@ -1,15 +1,27 @@
-import { Component, OnInit } from '@angular/core';
+import {
+  Component,
+  Input,
+  Output,
+  EventEmitter
+} from '@angular/core';
 
 @Component({
   selector: 'mrs-comics-list',
   templateUrl: './comics-list.component.html',
   styleUrls: ['./comics-list.component.scss']
 })
-export class ComicsListComponent implements OnInit {
+export class ComicsListComponent {
 
-  constructor() { }
+  @Input() list: any[];
+  @Output() selectAction: EventEmitter<any>;
 
-  ngOnInit() {
+  constructor() {
+    this.selectAction = new EventEmitter();
+  }
+
+  select(ev, element) {
+    ev.preventDefault();
+    this.selectAction.emit(element);
   }
 
 }

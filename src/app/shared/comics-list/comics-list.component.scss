@@ -1,0 +1,33 @@
+@import '../../../config/config.scss';
+
+:host {
+  display: block;
+  margin: auto;
+  padding: 3rem 4rem;
+}
+
+.elements-list {
+  list-style: none;
+  padding: 0;
+
+  &-item {
+
+    a {
+      display: block;
+      border-bottom: 1px solid $lighter-grey;
+      color: currentColor;
+      padding: 1rem 2rem;
+      cursor: pointer;
+      background: transparent;
+      text-decoration: none;
+
+      &:hover, &:focus {
+        background: lighten($lighter-grey, 5%);
+      }
+
+      &:active{
+        background: $lighter-grey;
+      }
+    }
+  }
+}
