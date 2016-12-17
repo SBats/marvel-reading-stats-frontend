@@ -86,6 +86,13 @@ export class ListComponent implements OnInit {
     }
   }
 
+  goToDetail(element) {
+    console.log(element);
+    this.router.navigate(
+      ['library', this.libraryType, element.marvel_id]
+    );
+  }
+
   updateQueries() {
     let params: any = {};
     if (this.startWithQuery) {
