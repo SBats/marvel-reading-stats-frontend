@@ -35,6 +35,6 @@ export class TypesComponent {
     {img: '/assets/stan-lee.png', title: 'Creators', url: 'creators'},
     {img: '/assets/series-thanos.jpg', title: 'Series', url: 'series'},
     {img: '/assets/events-civil_war.jpg', title: 'Events', url: 'events'},
-    {img: '/assets/image1-36d32.gif', title: 'Heroes', url: 'heroes'}
+    {img: '/assets/image1-36d32.gif', title: 'Characters', url: 'characters'}
   ];
 }
