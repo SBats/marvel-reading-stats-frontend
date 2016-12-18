@@ -1,0 +1,38 @@
+<div class="overlay" (click)="closePopup($event)"></div>
+<article class="popup">
+  <mrs-loader *ngIf="loading"></mrs-loader>
+  <section class="cover" *ngIf="!loading">
+    <img
+      [src]="comic.image.path + '.' + comic.image.extension"
+      [alt]="comic.title + '-cover'"/>
+  </section>
+  <section class="details" *ngIf="!loading">
+    <h1 class="title">{{ comic.title }}</h1>
+    <ul class="properties">
+      <li>
+        <span class="label">Published:</span>
+        <time class="value">{{ comic.date }}</time>
+      </li>
+      <li>
+        <span class="label">Writer:</span>
+        <span class="value"></span>
+      </li>
+      <li>
+        <span class="label">Penciller:</span>
+        <span class="value"></span>
+      </li>
+      <li>
+        <span class="label">Cover artist:</span>
+        <span class="value"></span>
+      </li>
+    </ul>
+    <p class="excerpt">{{ comic.description }}</p>
+    <section class="actions">
+      <button class="mrs-button">Add to my collection</button>
+      <a class="mrs-button" [href]="comic.url">
+        More on marvel.com
+      </a>
+    </section>
+  </section>
+  <button class="close" (click)="closePopup($event)">X</button>
+</article>

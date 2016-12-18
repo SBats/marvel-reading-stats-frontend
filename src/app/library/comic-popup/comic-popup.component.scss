@@ -1,0 +1,120 @@
+@import '../../../config/config.scss';
+
+:host {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 100vw;
+  z-index: 100;
+}
+
+.overlay {
+  background: rgba(0, 0, 0, 0.6);
+  height: 100%;
+  width: 100%;
+}
+
+.popup {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 1024px;
+  height: 600px;
+  background: white;
+  display: flex;
+}
+
+.cover {
+  flex: none;
+  width: calc(600px * 0.6666666667);
+  overflow: hidden;
+
+  img {
+    height: 100%;
+    width: auto;
+  }
+}
+
+.details {
+  flex: 1 1 auto;
+  padding: 3rem 2rem;
+}
+
+.close {
+  flex: none;
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background: none;
+  outline: 0;
+  border: 3px solid currentColor;
+  color: $light-grey;
+  font-weight: 700;
+  border-radius: 50%;
+  display: block;
+  padding: 0.5rem;
+  width: 2rem;
+  height: 2rem;
+  line-height: 0;
+  transition: all 0.2s ease-in-out;
+
+  &:hover, &:focus, &:active {
+    color: $marvel-color;
+  }
+
+  &:active {
+    background: $lighter-grey;
+  }
+}
+
+mrs-loader {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.title {
+  margin-bottom: 3rem;
+  text-transform: uppercase;
+}
+
+.properties {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  margin-bottom: 3rem;
+  line-height: 2rem;
+  text-transform: uppercase;
+
+  .label {
+    color: $marvel-color;
+  }
+}
+
+.excerpt {
+  margin: 0;
+  line-height: 1.5rem;
+  margin-bottom: 3rem;
+  text-transform: uppercase;
+}
+
+.actions {
+
+  .mrs-button {
+    font-size: 0.8rem;
+    line-height: 1;
+    padding: 1rem 2rem;
+    display: inline-block;
+
+    & + .mrs-button {
+      margin-left: 1rem;
+    }
+  }
+
+  a.mrs-button {
+    background: black;
+  }
+}
