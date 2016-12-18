@@ -1,6 +1,7 @@
 import {
   Component,
   OnInit,
+  OnDestroy,
   trigger,
   state,
   style,
@@ -19,12 +20,13 @@ import '../../rxjs-operators';
   templateUrl: './detail.component.html',
   styleUrls: ['./detail.component.scss']
 })
-export class DetailComponent implements OnInit {
+export class DetailComponent implements OnInit, OnDestroy {
 
   results: any[] = [];
   loading: boolean = true;
   libraryType: string;
   element: string;
+  detailComic: any;
   currentPage: number = 1;
   pageTotal: number = 1;
   breadcrumbLinks: any[] = [
@@ -67,7 +69,7 @@ export class DetailComponent implements OnInit {
       this.route
         .queryParams
         .subscribe(params => {
-          this.currentPage = parseInt(params['page']) || 1;
+          this.currentPage = parseInt(params['page'], 10) || 1;
           if (this.libraryType) {
             this.loadList();
           }
@@ -91,8 +93,13 @@ export class DetailComponent implements OnInit {
     }
   }
 
-  showDetailPopup(element) {
+  openDetailPopup(element) {
     console.log(element);
+    this.detailComic = element['marvel_id'];
+  }
+
+  closeDetailPopup() {
+    this.detailComic = null;
   }
 
   updateQueries() {

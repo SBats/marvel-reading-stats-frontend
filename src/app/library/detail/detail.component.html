@@ -8,7 +8,7 @@
 <div class="results" *ngIf="!loading">
   <mrs-comics-list
     [list]="results"
-    (selectAction)="showDetailPopup($event)">
+    (selectAction)="openDetailPopup($event)">
   </mrs-comics-list>
   <mrs-pagination
     *ngIf="pageTotal && pageTotal > 1"
@@ -18,3 +18,8 @@
   </mrs-pagination>
 </div>
 <mrs-footer></mrs-footer>
+<mrs-comic-popup
+  *ngIf="detailComic"
+  [comicId]="detailComic"
+  (close)="closeDetailPopup()">
+</mrs-comic-popup>
