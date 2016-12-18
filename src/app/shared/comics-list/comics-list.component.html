@@ -3,7 +3,7 @@
       <a *ngIf="item.title" href (click)="select($event, item)">
         <img *ngIf="item.image"
           class="cover"
-          [src]="item.image.path + '/portrait_incredible.' + item.image.extension"
+          [src]="item.image.path + '/portrait_uncanny.' + item.image.extension"
           [alt]="item.title + '-cover'"/>
         <div class="title">{{ item.title }}</div>
       </a>
