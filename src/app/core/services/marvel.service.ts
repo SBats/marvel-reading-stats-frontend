@@ -62,4 +62,13 @@ export class MarvelService {
       .map(this.checkStatus)
       .map(this.parseJSON);
   }
+
+  getComicDetail(id: number): Observable<any> {
+    let url = `${this.apiURL}/comics/${id}`;
+
+    this.loading = true;
+    return this.http.request(url)
+      .map(this.checkStatus)
+      .map(this.parseJSON);
+  }
 }
