@@ -26,7 +26,7 @@
         <span class="value"></span>
       </li>
     </ul>
-    <p class="excerpt">{{ comic.description }}</p>
+    <p [innerHTML]="comic.description" class="excerpt"></p>
     <section class="actions">
       <button class="mrs-button">Add to my collection</button>
       <a class="mrs-button" [href]="comic.url">
